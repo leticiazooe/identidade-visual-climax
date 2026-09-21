@@ -38,3 +38,7 @@ Os arquivos originais em PNG estão organizados em `assets/mascotes/`.
 
 ### Mascote técnico
 ![Mascote técnico](assets/mascotes/09-mascote-tecnico-condensadora-manifold.png)
+
+## Segundo cérebro do projeto
+
+A documentação de continuidade, inventário, decisões, riscos e mapa de evidências está em [docs/segundo-cerebro/README.md](docs/segundo-cerebro/README.md).
