@@ -1,6 +1,32 @@
 # Identidade Visual — CLIMAX Refrigeração
 
-Repositório oficial de ativos visuais da **CLIMAX Refrigeração**.
+Repositório oficial de identidade, ativos visuais e sistema de marca da **CLIMAX Refrigeração**.
+
+## Brand Center / Brand Book Mestre
+
+O sistema completo está em [brand-center/](brand-center/).
+
+Ele reúne:
+
+- **Brand Book Mestre** — estratégia, fundamentos, identidade verbal, identidade visual, mascote, aplicações e governança;
+- **Biblioteca oficial de assets** — logos, mascotes, tokens e arquivos de produção;
+- **Design Tokens** — CSS + JSON com cores, tipografia, spacing, radius, shadows, motion e breakpoints;
+- **UI / Digital Design System** — componentes, estados, acessibilidade e padrões digitais;
+- **Sistema editorial e conteúdo** — voz, hierarquia, CTAs, formatos, canais, microcopy e QA;
+- **Pacote de motion para produção** — source HTML/CSS, manifest, proporções e specs de export;
+- **Templates realmente editáveis** — PPTX, Word/RTF, HTML e Markdown.
+
+A entrada web do repositório redireciona para [brand-center/index.html](brand-center/index.html).
+
+## Logos
+
+Os masters estão em [assets/logos/](assets/logos/).
+
+- 4 variações de logo;
+- PNG para uso rápido;
+- SVG como master vetorial;
+- azul master observado nos SVGs: `#0B5BA5`;
+- branco master observado nos SVGs: `#F1F2F2`.
 
 ## Coleção de mascotes
 
