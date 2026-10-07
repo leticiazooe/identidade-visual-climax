@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CLIMAX Refrigeração · Brand Center</title>
+<meta name="description" content="Brand Center oficial da CLIMAX Refrigeração: estratégia, identidade visual, mascote, aplicações, governança e downloads.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=League+Spartan:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand:#0B5BA5;
+  --brand-deep:#074477;
+  --navy:#042F4C;
+  --navy-2:#021F33;
+  --ice:#8DE8F7;
+  --ice-soft:#EAF9FC;
+  --white:#F1F2F2;
+  --paper:#F4F8F9;
+  --surface:#FFFFFF;
+  --ink:#102633;
+  --muted:#60717B;
+  --line:#D9E5E9;
+  --ok:#0E8B74;
+  --warning:#B26A00;
+  --sidebar:310px;
+  --radius-sm:10px;
+  --radius-md:18px;
+  --radius-lg:28px;
+  --shadow:0 18px 56px rgba(4,47,76,.10);
+  --font-display:"League Spartan",Arial,sans-serif;
+  --font-body:"Inter",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--paper);color:var(--ink);font:16px/1.6 var(--font-body)}
+button,input,select{font:inherit}
+button{color:inherit}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--font-display);letter-spacing:-.02em}
+img{display:block;max-width:100%}
+.shell{min-height:100vh}
+.sidebar{
+  position:fixed;inset:0 auto 0 0;width:var(--sidebar);z-index:50;
+  display:flex;flex-direction:column;color:#fff;
+  background:linear-gradient(180deg,#021F33 0%,#042F4C 52%,#03273F 100%);
+  border-right:1px solid rgba(255,255,255,.09)
+}
+.side-head{padding:24px 22px 18px;border-bottom:1px solid rgba(255,255,255,.09)}
+.brand-lock{display:flex;align-items:center;gap:14px}
+.brand-chip{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:#fff;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,.16)}
+.brand-chip img{width:120px;max-width:none}
+.brand-lock strong{display:block;font:700 21px/1 var(--font-display);letter-spacing:.04em}
+.brand-lock small{display:block;margin-top:5px;color:#A9C7D7;font-size:16px}
+.version{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.version span{padding:6px 9px;border:1px solid rgba(255,255,255,.13);border-radius:999px;color:#B7D0DE;font-size:14px;font-weight:700}
+.version .approved{color:#DDFBFF;border-color:rgba(141,232,247,.38);background:rgba(141,232,247,.10)}
+.search{padding:14px 14px 6px}
+.search input{width:100%;padding:12px 13px;border-radius:11px;border:1px solid rgba(255,255,255,.13);background:#062A44;color:#fff;outline:none}
+.search input::placeholder{color:#8FB1C3}
+.side-nav{padding:10px 10px 22px;overflow:auto}
+.home-btn,.nav-item{width:100%;border:0;background:transparent;color:#fff;text-align:left;cursor:pointer;border-radius:13px}
+.home-btn{padding:12px 13px;margin-bottom:5px;font-weight:700}
+.home-btn:hover,.home-btn.active,.nav-item:hover,.nav-item.active{background:rgba(255,255,255,.08)}
+.nav-item{display:grid;grid-template-columns:38px 1fr;gap:10px;padding:11px 10px;margin:2px 0;align-items:start}
+.nav-item>span{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:#083453;color:#9EC7DA;font-size:14px;font-weight:800}
+.nav-item b{display:block;font:700 16px/1.2 var(--font-display)}
+.nav-item small{display:block;margin-top:4px;color:#8FB1C3;font-size:14px;line-height:1.35}
+.nav-item.active>span{background:var(--ice);color:var(--navy-2)}
+.side-foot{margin-top:auto;padding:16px 20px;border-top:1px solid rgba(255,255,255,.09);color:#9BB9C8;font-size:14px}
+.content{margin-left:var(--sidebar);min-height:100vh}
+.mobilebar{display:none}
+.home,.panel{padding:28px;min-height:100vh}
+.panel{display:none}
+.panel.active{display:block}
+.cover{
+  position:relative;overflow:hidden;min-height:530px;border-radius:var(--radius-lg);padding:54px;
+  display:grid;grid-template-columns:1.08fr .92fr;gap:42px;align-items:center;color:#fff;
+  background:
+    radial-gradient(circle at 82% 15%,rgba(141,232,247,.28),transparent 26%),
+    radial-gradient(circle at 72% 86%,rgba(11,91,165,.34),transparent 30%),
+    linear-gradient(135deg,#021F33 0%,#042F4C 54%,#0B5BA5 100%);
+  box-shadow:0 28px 90px rgba(2,31,51,.18)
+}
+.cover:after{content:"";position:absolute;inset:auto -120px -180px auto;width:420px;height:420px;border:1px solid rgba(255,255,255,.08);border-radius:50%}
+.eyebrow{font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ice)}
+.cover h1{font-size:clamp(58px,7vw,104px);line-height:.88;margin:14px 0 14px;letter-spacing:-.055em}
+.cover-meta{font-weight:700;color:#D7F7FC;margin-bottom:14px}
+.cover p{max-width:720px;margin:0;color:#D5E5ED;font-size:18px}
+.cover-tags{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
+.cover-tags span{padding:8px 11px;border:1px solid rgba(255,255,255,.15);border-radius:999px;background:rgba(255,255,255,.06);font-weight:700}
+.cover-mark{display:grid;place-items:center;min-height:320px}
+.hero-logo{width:min(100%,440px);filter:drop-shadow(0 28px 50px rgba(0,0,0,.17))}
+.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 8px 28px rgba(4,47,76,.035)}
+.card h2,.card h3{margin:0 0 8px}
+.card h2{font-size:28px}.card h3{font-size:22px}
+.card p{margin:0;color:var(--muted)}
+.flow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:18px}
+.flow span{padding:8px 11px;border:1px solid var(--line);border-radius:10px;background:#F7FBFC;font-weight:700}
+.flow i{font-style:normal;color:#91A4AE}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:18px}
+.stat{border:1px solid var(--line);border-radius:12px;padding:13px;background:#FBFDFD}
+.stat strong{display:block;font:700 26px/1 var(--font-display);color:var(--brand)}
+.stat span{display:block;margin-top:5px;color:var(--muted)}
+.index{margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.index-card{border:1px solid var(--line);background:#fff;border-radius:16px;padding:17px;text-align:left;display:grid;grid-template-columns:38px 1fr;gap:11px;cursor:pointer}
+.index-card>span{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--ice-soft);color:var(--brand);font-weight:800}
+.index-card b{font:700 18px var(--font-display)}
+.index-card p{margin:4px 0 0;color:var(--muted)}
+.index-card:hover{transform:translateY(-2px);border-color:#A9DCE5;box-shadow:0 12px 34px rgba(4,47,76,.07)}
+.section-toolbar{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;margin-bottom:10px}
+.section-toolbar small{font-weight:800;letter-spacing:.1em;color:#748B97}
+.section-toolbar h2{margin:4px 0 2px;font-size:32px}
+.section-toolbar p{margin:0;color:var(--muted)}
+.focus-btn{border:1px solid var(--line);background:#F8FBFC;border-radius:10px;padding:9px 12px;cursor:pointer;font-weight:700;white-space:nowrap}
+.section-note{padding:13px 15px;border:1px solid #CDEAF0;border-left:4px solid var(--brand);border-radius:12px;background:#F1FAFC;color:#425F6E;margin-bottom:10px}
+.reader{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.doc{padding:28px}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.block{border:1px solid var(--line);border-radius:16px;padding:20px;background:#fff}
+.block.dark{background:var(--navy-2);border-color:var(--navy-2);color:#fff}
+.block.blue{background:var(--brand);border-color:var(--brand);color:#fff}
+.block.ice{background:var(--ice-soft)}
+.block h3{margin:0 0 8px;font-size:23px}.block p{margin:0;color:var(--muted)}
+.block.dark p,.block.blue p{color:#D5E5ED}
+.kicker{font-weight:800;color:var(--brand);text-transform:uppercase;letter-spacing:.08em}
+.rule-list{display:grid;gap:10px;margin-top:14px}
+.rule{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;padding:13px;border:1px solid var(--line);border-radius:12px;background:#FBFDFD}
+.rule>span{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--ice-soft);color:var(--brand);font-weight:800}
+.rule strong{display:block}.rule p{margin:3px 0 0;color:var(--muted)}
+.logo-stage{min-height:260px;border-radius:18px;display:grid;place-items:center;overflow:hidden;padding:24px}
+.logo-stage img{width:min(100%,530px)}
+.logo-stage.blue-bg{background:#0B5BA5}
+.logo-stage.light-bg{background:#F1F2F2}
+.logo-stage.dark-bg{background:#021F33}
+.logo-stage.checker{background-color:#fff;background-image:linear-gradient(45deg,#eef3f5 25%,transparent 25%),linear-gradient(-45deg,#eef3f5 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#eef3f5 75%),linear-gradient(-45deg,transparent 75%,#eef3f5 75%);background-size:28px 28px;background-position:0 0,0 14px,14px -14px,-14px 0}
+.swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.swatch{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+.swatch-color{height:110px}.swatch-info{padding:13px}.swatch-info strong{display:block}.swatch-info code{font-size:16px;color:var(--muted)}
+.copy{margin-top:8px;border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 9px;cursor:pointer;font-weight:700}
+.type-sample{border:1px solid var(--line);border-radius:16px;padding:22px}
+.type-sample.display{font-family:var(--font-display)}
+.type-sample.body{font-family:var(--font-body)}
+.type-sample strong{display:block;font-size:40px;line-height:1.05}.type-sample p{color:var(--muted)}
+.mascot-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.mascot{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+.mascot-media{height:330px;display:grid;place-items:end center;background:linear-gradient(180deg,#F8FCFD,#EDF7F9);overflow:hidden}
+.mascot-media img{max-height:310px;max-width:94%;object-fit:contain}
+.mascot-body{padding:16px}.mascot-body strong{display:block;font:700 20px var(--font-display)}.mascot-body p{margin:5px 0 0;color:var(--muted)}
+.app-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.mock{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+.mock-head{padding:16px 18px;border-bottom:1px solid var(--line)}.mock-head strong{font:700 21px var(--font-display)}
+.mock-stage{min-height:300px;padding:24px;display:grid;place-items:center;background:#F5FAFB}
+.social-post{width:min(100%,420px);aspect-ratio:1;border-radius:18px;background:linear-gradient(145deg,#021F33,#0B5BA5);color:#fff;padding:28px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.social-post img{max-height:190px;object-fit:contain;align-self:flex-end}
+.social-post h3{font-size:36px;line-height:.98;margin:0}.social-post small{font-size:16px}
+.business-card{width:min(100%,480px);aspect-ratio:1.8/1;border-radius:16px;padding:24px;display:flex;justify-content:space-between;align-items:flex-end;color:#fff;background:linear-gradient(135deg,#021F33,#0B5BA5);box-shadow:var(--shadow)}
+.business-card img{width:140px}.business-card strong{font:700 25px var(--font-display)}
+.download-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.download{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none}
+.download:hover{border-color:#99CFDA;background:#FAFDFE}
+.download b{display:block}.download span{color:var(--muted)}
+.download em{font-style:normal;padding:6px 9px;border-radius:999px;background:var(--ice-soft);color:var(--brand);font-weight:800}
+.token-table{width:100%;border-collapse:collapse}.token-table th,.token-table td{text-align:left;padding:12px;border-bottom:1px solid var(--line)}.token-table th{color:#6D8490}.token-table code{font-size:16px}
+.codebox{margin-top:14px;background:#021F33;color:#D9F7FA;border-radius:14px;padding:18px;overflow:auto;font:16px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre}
+.badge{display:inline-flex;align-items:center;padding:6px 9px;border-radius:999px;font-weight:800}.badge.ok{background:#E8F7F3;color:var(--ok)}.badge.warn{background:#FFF3DF;color:var(--warning)}
+body.focus .sidebar{display:none}
+body.focus .content{margin-left:0}
+body.focus .home,body.focus .panel{padding:10px}
+body.focus .section-toolbar{position:sticky;top:0;z-index:4}
+@media(max-width:1120px){:root{--sidebar:270px}.index{grid-template-columns:repeat(2,1fr)}.mascot-grid{grid-template-columns:repeat(2,1fr)}.swatches{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:820px){
+  .sidebar{display:none}.content{margin-left:0}.mobilebar{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;background:#021F33;color:#fff}
+  .mobilebar b{font:700 18px var(--font-display)}.mobilebar select{max-width:58%;background:#062A44;color:#fff;border:1px solid rgba(255,255,255,.14);border-radius:9px;padding:9px}
+  .home,.panel{padding:14px}.cover{padding:36px 24px;grid-template-columns:1fr;min-height:auto}.cover-mark{min-height:220px}.hero-logo{width:320px}
+  .overview-grid,.grid-2,.grid-3,.app-grid{grid-template-columns:1fr}.index{grid-template-columns:1fr}.mascot-grid{grid-template-columns:1fr}.download-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}
+  .section-toolbar{align-items:flex-start}.swatches{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){.swatches,.stats{grid-template-columns:1fr}.cover h1{font-size:58px}.doc{padding:18px}.mascot-media{height:300px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="sidebar">
+  <div class="side-head">
+    <div class="brand-lock">
+      <div class="brand-chip"><img src="../assets/logos/ESCRITA%20AZUL%20SVG.svg" alt=""></div>
+      <div><strong>CLIMAX</strong><small>Brand Center</small></div>
+    </div>
+    <div class="version"><span class="approved">Sistema atual</span><span>HVAC</span><span>v1.0</span></div>
+  </div>
+  <div class="search"><input id="navSearch" type="search" placeholder="Buscar seção..." aria-label="Buscar seção"></div>
+  <nav class="side-nav">
+    <button class="home-btn active" data-section="home">Visão geral</button>
+    <button class="nav-item" data-section="strategy" data-search="estratégia posicionamento proposta confiança conforto técnica"><span>01</span><div><b>Estratégia</b><small>Posicionamento e princípios.</small></div></button>
+    <button class="nav-item" data-section="architecture" data-search="arquitetura marca climax refrigeração ativos"><span>02</span><div><b>Arquitetura</b><small>Marca e sistema de ativos.</small></div></button>
+    <button class="nav-item" data-section="foundations" data-search="fundamentos logo tipografia cores"><span>03</span><div><b>Fundamentos</b><small>Logo, type e princípios.</small></div></button>
+    <button class="nav-item" data-section="verbal" data-search="identidade verbal voz tom mensagem"><span>04</span><div><b>Identidade verbal</b><small>Tom e linguagem.</small></div></button>
+    <button class="nav-item" data-section="visual" data-search="identidade visual logo cores paleta"><span>05</span><div><b>Identidade visual</b><small>Logos, cores e contraste.</small></div></button>
+    <button class="nav-item" data-section="mascot" data-search="mascote personagens poses técnico"><span>06</span><div><b>Mascote</b><small>Biblioteca e usos.</small></div></button>
+    <button class="nav-item" data-section="applications" data-search="aplicações social cartão site materiais"><span>07</span><div><b>Aplicações</b><small>Direção de uso.</small></div></button>
+    <button class="nav-item" data-section="social" data-search="instagram whatsapp avatar post redes sociais"><span>08</span><div><b>Social</b><small>Avatar, post e canais.</small></div></button>
+    <button class="nav-item" data-section="motion" data-search="motion movimento animação logo vídeo"><span>09</span><div><b>Brand in Motion</b><small>Princípios de movimento.</small></div></button>
+    <button class="nav-item" data-section="governance" data-search="governança fonte verdade github revisão"><span>10</span><div><b>Governança</b><small>Fonte de verdade e QA.</small></div></button>
+    <button class="nav-item" data-section="downloads" data-search="downloads logos png svg mascotes"><span>11</span><div><b>Downloads</b><small>Assets oficiais.</small></div></button>
+    <button class="nav-item" data-section="tokens" data-search="design tokens cores fontes radius shadow"><span>12</span><div><b>Design Tokens</b><small>Referência técnica.</small></div></button>
+    <button class="nav-item" data-section="production" data-search="produção gráfica impressão rgb cmyk svg png"><span>13</span><div><b>Produção</b><small>Digital e gráfica.</small></div></button>
+  </nav>
+  <div class="side-foot">CLIMAX Refrigeração<br>Identidade · HVAC · Conforto</div>
+</aside>
+
+<div class="mobilebar">
+  <b>CLIMAX · BRAND CENTER</b>
+  <select id="mobileSelect" aria-label="Selecionar seção">
+    <option value="home">Visão geral</option>
+    <option value="strategy">01 · Estratégia</option>
+    <option value="architecture">02 · Arquitetura</option>
+    <option value="foundations">03 · Fundamentos</option>
+    <option value="verbal">04 · Identidade verbal</option>
+    <option value="visual">05 · Identidade visual</option>
+    <option value="mascot">06 · Mascote</option>
+    <option value="applications">07 · Aplicações</option>
+    <option value="social">08 · Social</option>
+    <option value="motion">09 · Brand in Motion</option>
+    <option value="governance">10 · Governança</option>
+    <option value="downloads">11 · Downloads</option>
+    <option value="tokens">12 · Design Tokens</option>
+    <option value="production">13 · Produção</option>
+  </select>
+</div>
+
+<main class="content">
+<section class="home active" id="section-home">
+  <div class="cover">
+    <div>
+      <span class="eyebrow">Brand Center / Brand Book Mestre</span>
+      <h1>CLIMAX</h1>
+      <div class="cover-meta">Refrigeração · Climatização · Conforto</div>
+      <p>Uma fonte única para organizar o que já existe da marca: logotipos, cores observadas nos masters, mascotes, aplicações e regras de governança.</p>
+      <div class="cover-tags"><span>Refrigeração</span><span>Climatização</span><span>HVAC</span><span>Confiança</span><span>Atendimento</span></div>
+    </div>
+    <div class="cover-mark"><img class="hero-logo" src="../assets/logos/LOGO%20AZUL%20-%20ESCRITA%20BRANCA.svg" alt="CLIMAX Refrigeração"></div>
+  </div>
+
+  <div class="overview-grid">
+    <article class="card">
+      <h2>Base atual da marca</h2>
+      <p>O repositório reúne versões oficiais do logo e uma coleção de mascotes orientada a atendimento, manutenção, instalação, diagnóstico, CTA e pós-venda.</p>
+      <div class="flow"><span>Logo</span><i>→</i><span>Cor</span><i>→</i><span>Mascote</span><i>→</i><span>Aplicação</span><i>→</i><span>Consistência</span></div>
+    </article>
+    <article class="card">
+      <h2>Inventário disponível</h2>
+      <p>Este Brand Center usa os arquivos já versionados no repositório como fonte de verdade visual.</p>
+      <div class="stats"><div class="stat"><strong>4</strong><span>variantes de logo</span></div><div class="stat"><strong>2</strong><span>formatos por logo</span></div><div class="stat"><strong>10</strong><span>mascotes PNG</span></div></div>
+    </article>
+  </div>
+
+  <div class="index">
+    <button class="index-card" data-goto="strategy"><span>01</span><div><b>Estratégia</b><p>O que a marca precisa comunicar.</p></div></button>
+    <button class="index-card" data-goto="architecture"><span>02</span><div><b>Arquitetura</b><p>Como os ativos se organizam.</p></div></button>
+    <button class="index-card" data-goto="foundations"><span>03</span><div><b>Fundamentos</b><p>Logo, type e consistência.</p></div></button>
+    <button class="index-card" data-goto="verbal"><span>04</span><div><b>Identidade verbal</b><p>Profissional, clara e próxima.</p></div></button>
+    <button class="index-card" data-goto="visual"><span>05</span><div><b>Identidade visual</b><p>Masters, paleta e contraste.</p></div></button>
+    <button class="index-card" data-goto="mascot"><span>06</span><div><b>Mascote</b><p>10 poses e usos sugeridos.</p></div></button>
+    <button class="index-card" data-goto="applications"><span>07</span><div><b>Aplicações</b><p>Exemplos coerentes de uso.</p></div></button>
+    <button class="index-card" data-goto="social"><span>08</span><div><b>Social</b><p>Avatar, feed e atendimento.</p></div></button>
+    <button class="index-card" data-goto="motion"><span>09</span><div><b>Brand in Motion</b><p>Movimento sutil e funcional.</p></div></button>
+    <button class="index-card" data-goto="governance"><span>10</span><div><b>Governança</b><p>Como manter a marca consistente.</p></div></button>
+    <button class="index-card" data-goto="downloads"><span>11</span><div><b>Downloads</b><p>Biblioteca oficial de assets.</p></div></button>
+    <button class="index-card" data-goto="tokens"><span>12</span><div><b>Design Tokens</b><p>Valores técnicos reutilizáveis.</p></div></button>
+  </div>
+</section>
+
+<section class="panel" id="section-strategy">
+  <div class="section-toolbar"><div><small>BRAND BOOK MESTRE</small><h2>Estratégia</h2><p>Posicionamento, promessa e percepção desejada.</p></div><button class="focus-btn">Modo foco</button></div>
+  <div class="section-note"><b>Base confirmada:</b> a documentação existente descreve uma marca focada em climatização e refrigeração, com linguagem amigável, profissional e consistente.</div>
+  <div class="reader"><div class="doc">
+    <div class="grid-3">
+      <div class="block"><span class="kicker">Essência</span><h3>Conforto com competência técnica</h3><p>A marca deve conectar sensação de bem-estar com execução profissional de serviços HVAC.</p></div>
+      <div class="block"><span class="kicker">Percepção</span><h3>Confiança antes da complexidade</h3><p>Comunicação clara, visual limpo e sinais técnicos suficientes para transmitir domínio sem parecer inacessível.</p></div>
+      <div class="block"><span class="kicker">Experiência</span><h3>Próxima e resolutiva</h3><p>O mascote humaniza a comunicação; o logo e a paleta sustentam a presença institucional.</p></div>
+    </div>
+    <div class="rule-list">
+      <div class="rule"><span>01</span><div><strong>Mostrar profissionalismo.</strong><p>Evitar linguagem visual improvisada, excesso de efeitos e inconsistência entre peças.</p></div></div>
+      <div class="rule"><span>02</span><div><strong>Usar o técnico para gerar confiança.</strong><p>Ferramentas, termômetro, manifold e condensadora aparecem nos mascotes como sinais de contexto real.</p></div></div>
+      <div class="rule"><span>03</span><div><strong>Manter a marca reconhecível.</strong><p>Azul, branco e assinatura CLIMAX Refrigeração devem permanecer dominantes.</p></div></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="panel" id="section-architecture">
+  <div class="section-toolbar"><div><small>BRAND BOOK MESTRE</small><h2>Arquitetura da marca</h2><p>Uma marca principal com biblioteca organizada de ativos.</p></div><button class="focus-btn">Modo foco</button></div>
+  <div class="reader"><div class="doc">
+    <div class="block dark" style="text-align:center;padding:34px"><span class="kicker" style="color:var(--ice)">Marca principal</span><h3 style="font-size:42px;margin:8px 0">CLIMAX REFRIGERAÇÃO</h3><p>Centro reputacional de toda a comunicação.</p></div>
+    <div style="height:28px;width:1px;background:var(--line);margin:auto"></div>
+    <div class="grid-3">
+      <div class="block ice"><h3>Logotipos</h3><p>Versões azul e branca, com e sem fundo, em PNG e SVG.</p></div>
+      <div class="block ice"><h3>Mascotes</h3><p>Personagem em 10 poses para comunicação comercial, institucional e técnica.</p></div>
+      <div class="block ice"><h3>Aplicações</h3><p>Site, social, atendimento, materiais impressos e comunicação técnica.</p></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="panel" id="section-foundations">
+  <div class="section-toolbar"><div><small>BRAND BOOK MESTRE</small><h2>Fundamentos compartilhados</h2><p>Tipografia, contraste, proporção e consistência digital.</p></div><button class="focus-btn">Modo foco</button></div>
+  <div class="section-note"><b>Tipografia digital utilizada no ecossistema CLIMAX:</b> League Spartan para destaque e Inter para leitura.</div>
+  <div class="reader"><div class="doc">
+    <div class="grid-2">
+      <div class="type-sample display"><span class="kicker">Display</span><strong>League Spartan</strong><p>Headlines, chamadas curtas, números e impacto institucional.</p></div>
+      <div class="type-sample body"><span class="kicker">Texto e UI</span><strong style="font-size:34px">Inter</strong><p>Parágrafos, navegação, formulários, descrições e interfaces.</p></div>
+    </div>
+    <div class="rule-list">
+      <div class="rule"><span>A</span><div><strong>Hierarquia clara</strong><p>Títulos fortes, texto confortável e poucos níveis por peça.</p></div></div>
+      <div class="rule"><span>B</span><div><strong>Contraste real</strong><p>Preferir escrita branca sobre fundos azul/navy e escrita azul sobre fundos claros.</p></div></div>
+      <div class="rule"><span>C</span><div><strong>Sem distorção</strong><p>O logo nunca deve ser comprimido, esticado, inclinado ou receber efeitos decorativos.</p></div></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="panel" id="section-verbal">
+  <div class="section-toolbar"><div><small>BRAND BOOK MESTRE</small><h2>Identidade verbal</h2><p>Como a CLIMAX fala com clientes e parceiros.</p></div><button class="focus-btn">Modo foco</button></div>
+  <div class="reader"><div class="doc">
+    <div class="grid-3">
+      <div class="block"><span class="kicker">Profissional</span><h3>Direta</h3><p>Explique o serviço sem rodeios e sem jargão desnecessário.</p></div>
+      <div class="block"><span class="kicker">Próxima</span><h3>Acolhedora</h3><p>Conforto é humano. A comunicação pode ser amigável sem perder credibilidade.</p></div>
+      <div class="block"><span class="kicker">Técnica</span><h3>Segura</h3><p>Quando houver orientação técnica, priorize precisão, segurança e clareza.</p></div>
+    </div>
+    <div class="block ice" style="margin-top:14px"><h3>Modelo de mensagem</h3><p><strong>Problema percebido → explicação simples → solução → ação.</strong> Exemplo de estrutura: “Seu ambiente demora para gelar? Alguns sinais indicam perda de desempenho. A CLIMAX avalia o sistema e orienta a solução adequada. Fale com a equipe.”</p></div>
+  </div></div>
+</section>
+
+<section class="panel" id="section-visual">
+  <div class="section-toolbar"><div><small>BRAND BOOK MESTRE</small><h2>Identidade visual</h2><p>Logotipos oficiais, cores observadas e uso por contraste.</p></div><button class="focus-btn">Modo foco</button></div>
+  <div class="section-note"><b>Master de marca:</b> o azul #0B5BA5 é comprovado diretamente nos SVGs oficiais do repositório.</div>
+  <div class="reader"><div class="doc">
+    <div class="grid-2">
+      <div><div class="logo-stage light-bg"><img src="../assets/logos/ESCRITA%20AZUL%20SVG.svg" alt="CLIMAX azul"></div><div class="block"><h3>Escrita azul</h3><p>Uso preferencial sobre fundos claros.</p></div></div>
+      <div><div class="logo-stage dark-bg"><img src="../assets/logos/ESCRITA%20BRANCA%20SVG.svg" alt="CLIMAX branca"></div><div class="block"><h3>Escrita branca</h3><p>Uso preferencial sobre fundos escuros ou fotográficos com contraste suficiente.</p></div></div>
+      <div><div class="logo-stage blue-bg"><img src="../assets/logos/LOGO%20AZUL%20-%20ESCRITA%20BRANCA.svg" alt="CLIMAX fundo azul"></div><div class="block"><h3>Fundo azul</h3><p>Versão institucional fechada.</p></div></div>
+      <div><div class="logo-stage light-bg"><img src="../assets/logos/LOGO%20FUNDO%20BRANCO%20-%20ESCRITA%20AZUL.svg" alt="CLIMAX fundo claro"></div><div class="block"><h3>Fundo claro</h3><p>Versão institucional para fundos brancos/claros.</p></div></div>
+    </div>
+    <h3 style="margin:30px 0 12px">Paleta de referência</h3>
+    <div class="swatches">
+      <div class="swatch"><div class="swatch-color" style="background:#0B5BA5"></div><div class="swatch-info"><strong>CLIMAX Blue</strong><code>#0B5BA5</code><button class="copy" data-copy="#0B5BA5">Copiar</button></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#F1F2F2"></div><div class="swatch-info"><strong>CLIMAX White</strong><code>#F1F2F2</code><button class="copy" data-copy="#F1F2F2">Copiar</button></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#042F4C"></div><div class="swatch-info"><strong>Navy digital</strong><code>#042F4C</code><button class="copy" data-copy="#042F4C">Copiar</button></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#8DE8F7"></div><div class="swatch-info"><strong>Ice digital</strong><code>#8DE8F7</code><button class="copy" data-copy="#8DE8F7">Copiar</button></div></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="panel" id="section-mascot">
+  <div class="section-toolbar"><div><small>BRAND BOOK MESTRE</small><h2>Mascote</h2><p>Biblioteca completa de poses e uso sugerido.</p></div><button class="focus-btn">Modo foco</button></div>
+  <div class="section-note"><b>Direção existente:</b> ilustração 2D/cartoon, uniforme azul institucional, aplicação do logo e foco em climatização/refrigeração.</div>
+  <div class="reader"><div class="doc">
+    <div class="mascot-grid">
+      <article class="mascot"><div class="mascot-media"><img src="../assets/mascotes/01-mascote-apontando-para-cima-invertido.png" alt="Mascote apontando para cima"></div><div class="mascot-body"><strong>01 · Destaque vertical</strong><p>CTA, destaques e chamadas.</p></div></article>
+      <article class="mascot"><div class="mascot-media"><img src="../assets/mascotes/02-mascote-principal-corpo-inteiro.png" alt="Mascote principal"></div><div class="mascot-body"><strong>02 · Principal</strong><p>Site, banners, carro, panfletos e campanhas.</p></div></article>
+      <article class="mascot"><div class="mascot-media"><img src="../assets/mascotes/03-mascote-recepcao-mao-estendida.png" alt="Mascote recepção"></div><div class="mascot-body"><strong>03 · Recepção</strong><p>Boas-vindas, atendimento e apresentação.</p></div></article>
+      <article class="mascot"><div class="mascot-media"><img src="../assets/mascotes/04-mascote-circulo-busto.png" alt="Mascote em círculo"></div><div class="mascot-body"><strong>04 · Avatar</strong><p>Instagram, WhatsApp, assinatura e selo.</p></div></article>
+      <article class="mascot"><div class="mascot-media"><img src="../assets/mascotes/05-mascote-apontando-cta.png" alt="Mascote CTA"></div><div class="mascot-body"><strong>05 · CTA</strong><p>Landing page e “Solicite seu orçamento”.</p></div></article>
+      <article class="mascot"><div class="mascot-media"><img src="../assets/mascotes/06-mascote-com-manifold.png" alt="Mascote com manifold"></div><div class="mascot-body"><strong>06 · Manutenção</strong><p>Manutenção, instalação e serviços HVAC.</p></div></article>
+      <article class="mascot"><div class="mascot-media"><img src="../assets/mascotes/07-mascote-tecnico-termometro.png" alt="Mascote com termômetro"></div><div class="mascot-body"><strong>07 · Diagnóstico</strong><p>Medição, diagnóstico e conteúdo educativo.</p></div></article>
+      <article class="mascot"><div class="mascot-media"><img src="../assets/mascotes/08-mascote-positivo.png" alt="Mascote positivo"></div><div class="mascot-body"><strong>08 · Positivo</strong><p>Garantia, avaliações e pós-venda.</p></div></article>
+      <article class="mascot"><div class="mascot-media"><img src="../assets/mascotes/09-mascote-tecnico-condensadora-manifold.png" alt="Mascote com condensadora"></div><div class="mascot-body"><strong>09 · Condensadora</strong><p>Instalação, condensadora e conteúdo técnico.</p></div></article>
+      <article class="mascot"><div class="mascot-media"><img src="../assets/mascotes/10-mascote-serio-apontando-para-cima.png" alt="Mascote sério"></div><div class="mascot-body"><strong>10 · Orientação</strong><p>Avisos técnicos e comunicação mais séria.</p></div></article>
+    </div>
+  </div></div>
+</section>
+
+<section class="panel" id="section-applications">
+  <div class="section-toolbar"><div><small>BRAND BOOK MESTRE</small><h2>Aplicações</h2><p>Como traduzir os ativos para peças reais.</p></div><button class="focus-btn">Modo foco</button></div>
+  <div class="reader"><div class="doc">
+    <div class="app-grid">
+      <article class="mock"><div class="mock-head"><strong>Post institucional</strong></div><div class="mock-stage"><div class="social-post"><small>CLIMAX REFRIGERAÇÃO</small><h3>Conforto que começa com um serviço bem feito.</h3><img src="../assets/mascotes/08-mascote-positivo.png" alt=""></div></div></article>
+      <article class="mock"><div class="mock-head"><strong>Cartão / contato</strong></div><div class="mock-stage"><div class="business-card"><div><strong>CLIMAX</strong><div>Refrigeração</div></div><div style="text-align:right">Atendimento<br>Instalação · Manutenção</div></div></div></article>
+      <article class="mock"><div class="mock-head"><strong>Conteúdo técnico</strong></div><div class="mock-stage"><div class="social-post" style="background:linear-gradient(145deg,#F1F2F2,#EAF9FC);color:#042F4C"><small style="color:#0B5BA5">DICA TÉCNICA</small><h3>Seu ar está demorando para gelar?</h3><img src="../assets/mascotes/07-mascote-tecnico-termometro.png" alt=""></div></div></article>
+      <article class="mock"><div class="mock-head"><strong>CTA comercial</strong></div><div class="mock-stage"><div class="social-post"><small>SOLICITE SEU ORÇAMENTO</small><h3>Seu conforto não precisa esperar.</h3><img src="../assets/mascotes/05-mascote-apontando-cta.png" alt=""></div></div></article>
+    </div>
+  </div></div>
+</section>
+
+<section class="panel" id="section-social">
+  <div class="section-toolbar"><div><small>BRAND BOOK MESTRE</small><h2>Social</h2><p>Avatar, feed, stories e atendimento.</p></div><button class="focus-btn">Modo foco</button></div>
+  <div class="reader"><div class="doc">
+    <div class="grid-3">
+      <div class="block"><h3>Avatar</h3><p>Priorize o mascote em círculo ou uma versão de logo legível em escala pequena. Não misture texto adicional.</p></div>
+      <div class="block"><h3>Feed</h3><p>Alternar conteúdo técnico, prova social, serviço e CTA. Azul institucional deve dominar a assinatura.</p></div>
+      <div class="block"><h3>WhatsApp</h3><p>Usar a pose de recepção ou avatar para humanizar o contato sem substituir a identificação clara da empresa.</p></div>
+    </div>
+    <div class="block ice" style="margin-top:14px"><h3>Ritmo recomendado</h3><p><strong>Informar → provar → orientar → convidar.</strong> O mascote ajuda a criar continuidade visual entre esses quatro tipos de conteúdo.</p></div>
+  </div></div>
+</section>
+
+<section class="panel" id="section-motion">
+  <div class="section-toolbar"><div><small>BRAND BOOK MESTRE</small><h2>Brand in Motion</h2><p>Princípios para vídeos, microinterações e entrada do logo.</p></div><button class="focus-btn">Modo foco</button></div>
+  <div class="section-note"><b>Status:</b> direção recomendada a partir do sistema digital já usado pela CLIMAX; exports oficiais de motion ainda devem ser versionados quando existirem.</div>
+  <div class="reader"><div class="doc">
+    <div class="grid-3">
+      <div class="block"><span class="kicker">Entrada</span><h3>Suave</h3><p>Opacidade + deslocamento curto. Evitar giros, bounce excessivo ou efeitos chamativos.</p></div>
+      <div class="block"><span class="kicker">Fluxo</span><h3>Fresco</h3><p>Movimentos contínuos e limpos podem remeter ao fluxo de ar sem cair em efeitos literais demais.</p></div>
+      <div class="block"><span class="kicker">Logo</span><h3>Preservado</h3><p>Animar posição, escala e opacidade; não deformar as letras nem alterar a proporção.</p></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="panel" id="section-governance">
+  <div class="section-toolbar"><div><small>BRAND BOOK MESTRE</small><h2>Governança</h2><p>Como manter a identidade rastreável e consistente.</p></div><button class="focus-btn">Modo foco</button></div>
+  <div class="reader"><div class="doc">
+    <div class="grid-2">
+      <div class="block"><span class="badge ok">Fonte de verdade</span><h3>GitHub / identidade-visual-climax</h3><p>Logos e mascotes usados como oficiais devem existir no repositório e ter histórico de versão.</p></div>
+      <div class="block"><span class="badge warn">Revisão humana</span><h3>Mudança de identidade</h3><p>Alterações de cor, forma, assinatura ou personagem devem ser revisadas antes de substituir um master.</p></div>
+    </div>
+    <div class="rule-list">
+      <div class="rule"><span>01</span><div><strong>Não sobrescrever sem contexto.</strong><p>Quando um master mudar, registrar no commit o que mudou e por quê.</p></div></div>
+      <div class="rule"><span>02</span><div><strong>SVG como master vetorial.</strong><p>Para logo, preferir SVG como referência de geometria e PNG como formato rápido de uso.</p></div></div>
+      <div class="rule"><span>03</span><div><strong>Manter nomes previsíveis.</strong><p>Novos arquivos devem indicar função, variante e formato de forma consistente.</p></div></div>
+      <div class="rule"><span>04</span><div><strong>Validar contraste.</strong><p>Antes de publicar, conferir legibilidade do logo, texto e CTA no fundo final.</p></div></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="panel" id="section-downloads">
+  <div class="section-toolbar"><div><small>BRAND BOOK MESTRE</small><h2>Downloads</h2><p>Biblioteca oficial do repositório.</p></div><button class="focus-btn">Modo foco</button></div>
+  <div class="section-note"><b>Uso rápido:</b> SVG para vetor e escala; PNG para inserção direta em materiais digitais.</div>
+  <div class="reader"><div class="doc">
+    <h3>Logos</h3>
+    <div class="download-grid">
+      <a class="download" href="../assets/logos/ESCRITA%20AZUL%20SVG.svg" download><div><b>Escrita azul</b><span>Master vetorial</span></div><em>SVG</em></a>
+      <a class="download" href="../assets/logos/ESCRITA%20AZUL%20PNG.png" download><div><b>Escrita azul</b><span>Raster</span></div><em>PNG</em></a>
+      <a class="download" href="../assets/logos/ESCRITA%20BRANCA%20SVG.svg" download><div><b>Escrita branca</b><span>Master vetorial</span></div><em>SVG</em></a>
+      <a class="download" href="../assets/logos/ESCRITA%20BRANCA%20PNG.png" download><div><b>Escrita branca</b><span>Raster</span></div><em>PNG</em></a>
+      <a class="download" href="../assets/logos/LOGO%20AZUL%20-%20ESCRITA%20BRANCA.svg" download><div><b>Fundo azul · escrita branca</b><span>Master vetorial</span></div><em>SVG</em></a>
+      <a class="download" href="../assets/logos/LOGO%20AZUL%20-%20ESCRITA%20BRANCA.png" download><div><b>Fundo azul · escrita branca</b><span>Raster</span></div><em>PNG</em></a>
+      <a class="download" href="../assets/logos/LOGO%20FUNDO%20BRANCO%20-%20ESCRITA%20AZUL.svg" download><div><b>Fundo claro · escrita azul</b><span>Master vetorial</span></div><em>SVG</em></a>
+      <a class="download" href="../assets/logos/LOGO%20FUNDO%20BRANCO%20-%20ESCRITA%20AZUL.png" download><div><b>Fundo claro · escrita azul</b><span>Raster</span></div><em>PNG</em></a>
+    </div>
+    <h3 style="margin-top:28px">Mascotes</h3>
+    <div class="download-grid">
+      <a class="download" href="../assets/mascotes/01-mascote-apontando-para-cima-invertido.png" download><div><b>01 · Apontando para cima</b><span>CTA vertical</span></div><em>PNG</em></a>
+      <a class="download" href="../assets/mascotes/02-mascote-principal-corpo-inteiro.png" download><div><b>02 · Principal</b><span>Corpo inteiro</span></div><em>PNG</em></a>
+      <a class="download" href="../assets/mascotes/03-mascote-recepcao-mao-estendida.png" download><div><b>03 · Recepção</b><span>Boas-vindas</span></div><em>PNG</em></a>
+      <a class="download" href="../assets/mascotes/04-mascote-circulo-busto.png" download><div><b>04 · Círculo</b><span>Avatar</span></div><em>PNG</em></a>
+      <a class="download" href="../assets/mascotes/05-mascote-apontando-cta.png" download><div><b>05 · CTA</b><span>Conversão</span></div><em>PNG</em></a>
+      <a class="download" href="../assets/mascotes/06-mascote-com-manifold.png" download><div><b>06 · Manifold</b><span>Manutenção</span></div><em>PNG</em></a>
+      <a class="download" href="../assets/mascotes/07-mascote-tecnico-termometro.png" download><div><b>07 · Termômetro</b><span>Diagnóstico</span></div><em>PNG</em></a>
+      <a class="download" href="../assets/mascotes/08-mascote-positivo.png" download><div><b>08 · Positivo</b><span>Pós-venda</span></div><em>PNG</em></a>
+      <a class="download" href="../assets/mascotes/09-mascote-tecnico-condensadora-manifold.png" download><div><b>09 · Condensadora</b><span>Técnico</span></div><em>PNG</em></a>
+      <a class="download" href="../assets/mascotes/10-mascote-serio-apontando-para-cima.png" download><div><b>10 · Sério</b><span>Orientação</span></div><em>PNG</em></a>
+    </div>
+  </div></div>
+</section>
+
+<section class="panel" id="section-tokens">
+  <div class="section-toolbar"><div><small>BRAND BOOK MESTRE</small><h2>Design Tokens</h2><p>Cores, fontes, radius, sombras e movimento.</p></div><button class="focus-btn">Modo foco</button></div>
+  <div class="section-note"><b>Nota:</b> #0B5BA5 e #F1F2F2 vêm diretamente dos masters de logo; navy, ice e tokens de UI refletem o sistema digital corrente da CLIMAX.</div>
+  <div class="reader"><div class="doc">
+    <table class="token-table">
+      <thead><tr><th>Token</th><th>Valor</th><th>Uso</th></tr></thead>
+      <tbody>
+        <tr><td><code>--brand</code></td><td>#0B5BA5</td><td>Logo e acento institucional</td></tr>
+        <tr><td><code>--white</code></td><td>#F1F2F2</td><td>Escrita branca dos masters</td></tr>
+        <tr><td><code>--navy</code></td><td>#042F4C</td><td>Superfícies digitais escuras</td></tr>
+        <tr><td><code>--navy-2</code></td><td>#021F33</td><td>Profundidade e header</td></tr>
+        <tr><td><code>--ice</code></td><td>#8DE8F7</td><td>Realces e foco</td></tr>
+        <tr><td><code>--font-display</code></td><td>League Spartan</td><td>Headlines</td></tr>
+        <tr><td><code>--font-body</code></td><td>Inter</td><td>Texto e UI</td></tr>
+        <tr><td><code>--radius-lg</code></td><td>28px</td><td>Hero e grandes superfícies</td></tr>
+      </tbody>
+    </table>
+    <div class="codebox">:root {
+  --brand: #0B5BA5;
+  --white: #F1F2F2;
+  --navy: #042F4C;
+  --navy-2: #021F33;
+  --ice: #8DE8F7;
+  --font-display: "League Spartan", Arial, sans-serif;
+  --font-body: "Inter", Arial, sans-serif;
+  --radius-lg: 28px;
+}</div>
+  </div></div>
+</section>
+
+<section class="panel" id="section-production">
+  <div class="section-toolbar"><div><small>BRAND BOOK MESTRE</small><h2>Produção digital e gráfica</h2><p>Escolha de formato, cor e cuidados de fechamento.</p></div><button class="focus-btn">Modo foco</button></div>
+  <div class="reader"><div class="doc">
+    <div class="grid-2">
+      <div class="block"><span class="kicker">Digital</span><h3>SVG + PNG</h3><p>Use SVG para interfaces, sites e peças que precisam escalar. Use PNG quando o fluxo exigir raster ou transparência pronta.</p></div>
+      <div class="block"><span class="kicker">Impressão</span><h3>Validar conversão</h3><p>Os masters atuais estão documentados em cor digital. Antes de impressão profissional, validar CMYK/perfil ICC com a gráfica e aprovar prova de cor.</p></div>
+    </div>
+    <div class="rule-list">
+      <div class="rule"><span>01</span><div><strong>Não converter o master destrutivamente.</strong><p>Preservar o SVG original e exportar derivados.</p></div></div>
+      <div class="rule"><span>02</span><div><strong>Não usar screenshots do logo.</strong><p>Baixar sempre o arquivo oficial.</p></div></div>
+      <div class="rule"><span>03</span><div><strong>Verificar fundo final.</strong><p>Escolher a versão azul ou branca pela legibilidade real da aplicação.</p></div></div>
+    </div>
+  </div></div>
+</section>
+
+</main>
+</div>
+
+<script>
+const sections = Array.from(document.querySelectorAll('.home,.panel'));
+const navButtons = Array.from(document.querySelectorAll('[data-section]'));
+const mobileSelect = document.getElementById('mobileSelect');
+function showSection(id){
+  sections.forEach(function(el){el.classList.toggle('active',el.id==='section-'+id)});
+  navButtons.forEach(function(el){el.classList.toggle('active',el.dataset.section===id)});
+  if(mobileSelect) mobileSelect.value=id;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+navButtons.forEach(function(btn){btn.addEventListener('click',function(){showSection(btn.dataset.section)})});
+document.querySelectorAll('[data-goto]').forEach(function(btn){btn.addEventListener('click',function(){showSection(btn.dataset.goto)})});
+if(mobileSelect) mobileSelect.addEventListener('change',function(){showSection(mobileSelect.value)});
+document.querySelectorAll('.focus-btn').forEach(function(btn){btn.addEventListener('click',function(){
+  document.body.classList.toggle('focus');
+  btn.textContent=document.body.classList.contains('focus')?'Sair do foco':'Modo foco';
+})});
+const search=document.getElementById('navSearch');
+if(search) search.addEventListener('input',function(){
+  const q=search.value.trim().toLowerCase();
+  document.querySelectorAll('.nav-item').forEach(function(item){
+    const text=(item.textContent+' '+(item.dataset.search||'')).toLowerCase();
+    item.style.display=!q||text.includes(q)?'grid':'none';
+  });
+});
+document.querySelectorAll('[data-copy]').forEach(function(btn){btn.addEventListener('click',async function(){
+  const value=btn.dataset.copy;
+  try{await navigator.clipboard.writeText(value);btn.textContent='Copiado';setTimeout(function(){btn.textContent='Copiar'},1200)}
+  catch(e){btn.textContent=value}
+})});
+</script>
+</body>
+</html>
