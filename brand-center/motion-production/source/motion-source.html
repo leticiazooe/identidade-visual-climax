@@ -1,0 +1,7 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CLIMAX · Motion Source</title><link rel="stylesheet" href="motion.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=League+Spartan:wght@600;700;800&display=swap" rel="stylesheet"></head><body>
+<div id="stage" class="stage clip-logo"><div class="air"></div><div class="logo"><img src="../../../assets/logos/ESCRITA%20BRANCA%20SVG.svg" alt="CLIMAX Refrigeração"></div><div class="sub">Conforto · Climatização · Refrigeração</div></div>
+<script>
+const p=new URLSearchParams(location.search),clip=p.get("clip")||"logo-sting",format=p.get("format")||"16x9",s=document.getElementById("stage");
+const clipClass={"logo-sting":"clip-logo","intro":"clip-intro","outro":"clip-outro","loading":"clip-loading","social-cut":"clip-social"}[clip]||"clip-logo";
+s.className="stage "+clipClass+" f-"+format;
+</script></body></html>

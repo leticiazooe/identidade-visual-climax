@@ -2,6 +2,5 @@
 .github/
 docs/
 README.md
-brand-center/
 wrangler.jsonc
 .assetsignore

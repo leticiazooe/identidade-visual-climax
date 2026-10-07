@@ -1,0 +1,12 @@
+{
+  "version":"2.0",
+  "brand":"CLIMAX Refrigeração",
+  "templates":{
+    "service":{"headline":"{{BENEFÍCIO_OU_PROBLEMA}}","subtitle":"{{CONTEXTO_SIMPLES}}","body":"{{EXPLICAÇÃO}}","cta":"Solicite seu orçamento"},
+    "technical_post":{"headline":"{{SINAL_TÉCNICO}}","body":"{{O_QUE_PODE_SIGNIFICAR}}\n{{ORIENTAÇÃO_SEGURA}}","cta":"Fale com a equipe"},
+    "testimonial":{"headline":"{{RESULTADO_PERCEBIDO}}","quote":"{{DEPOIMENTO}}","source":"{{CLIENTE_OU_CONTEXTO}}","cta":"Conheça nossos serviços"},
+    "case":{"context":"{{CONTEXTO}}","challenge":"{{DESAFIO}}","solution":"{{SOLUÇÃO}}","evidence":"{{EVIDÊNCIAS}}","result":"{{RESULTADO}}"},
+    "ad":{"headline":"{{BENEFÍCIO}}","proof":"{{DIFERENCIAL}}","offer":"{{CONDIÇÃO}}","cta":"{{CTA}}"},
+    "release_note":{"title":"{{MUDANÇA}}","summary":"{{RESUMO}}","impact":"{{IMPACTO}}","action":"{{AÇÃO_DO_USUÁRIO}}"}
+  }
+}

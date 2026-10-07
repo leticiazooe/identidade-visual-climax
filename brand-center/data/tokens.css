@@ -1,0 +1,57 @@
+:root{
+  /* CLIMAX Design Tokens · v2.0 */
+  --clx-color-master-blue:#0B5BA5;
+  --clx-color-master-white:#F1F2F2;
+  --clx-color-ice:#8DE8F7;
+  --clx-color-ice-soft:#EAF9FC;
+  --clx-color-blue:#0876B9;
+  --clx-color-blue-deep:#045F98;
+  --clx-color-navy:#042F4C;
+  --clx-color-navy-deep:#021F33;
+  --clx-color-ink:#102633;
+  --clx-color-muted:#60717B;
+  --clx-color-line:#D9E5E9;
+  --clx-color-paper:#FFFFFF;
+  --clx-color-soft:#F4F8F9;
+
+  --clx-font-display:"League Spartan",Arial,sans-serif;
+  --clx-font-body:"Inter",Arial,sans-serif;
+
+  --clx-type-xs:14px;
+  --clx-type-sm:16px;
+  --clx-type-md:18px;
+  --clx-type-lg:20px;
+  --clx-type-h3:24px;
+  --clx-type-h2:40px;
+  --clx-type-h1:56px;
+  --clx-type-display:72px;
+
+  --clx-space-1:4px;--clx-space-2:8px;--clx-space-3:12px;--clx-space-4:16px;
+  --clx-space-5:20px;--clx-space-6:24px;--clx-space-8:32px;--clx-space-10:40px;
+  --clx-space-12:48px;--clx-space-16:64px;--clx-space-20:80px;--clx-space-24:96px;
+
+  --clx-radius-sm:8px;--clx-radius-md:16px;--clx-radius-lg:28px;--clx-radius-pill:999px;
+  --clx-border:1px solid #D9E5E9;
+  --clx-shadow-sm:0 10px 30px rgba(4,47,76,.08);
+  --clx-shadow-md:0 24px 70px rgba(4,47,76,.12);
+
+  --clx-motion-fast:140ms;--clx-motion-standard:240ms;--clx-motion-slow:520ms;--clx-motion-expressive:900ms;
+  --clx-ease-enter:cubic-bezier(.16,1,.3,1);
+  --clx-ease-exit:cubic-bezier(.4,0,1,1);
+  --clx-ease-move:cubic-bezier(.22,.61,.36,1);
+  --clx-ease-spring:cubic-bezier(.2,.9,.25,1.18);
+  --clx-ease-cinematic:cubic-bezier(.22,1,.36,1);
+
+  --clx-breakpoint-mobile:520px;
+  --clx-breakpoint-tablet:820px;
+  --clx-breakpoint-desktop:1120px;
+  --clx-breakpoint-wide:1280px;
+
+  --clx-action-primary:#0876B9;
+  --clx-action-primary-hover:#045F98;
+  --clx-focus:#8DE8F7;
+  --clx-success:#0E8B74;--clx-success-soft:#E7F7F3;
+  --clx-warning:#A96918;--clx-warning-soft:#FFF4E5;
+  --clx-danger:#B44949;--clx-danger-soft:#FFF0F0;
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
