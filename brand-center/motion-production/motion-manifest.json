@@ -1,0 +1,21 @@
+{
+  "brand":"CLIMAX Refrigeração",
+  "version":"1.0",
+  "updated":"2026-10-07",
+  "export":{"codec":"H.264","container":"MP4","fps":30,"audio":false,"background":"#021F33"},
+  "formats":{
+    "16x9":{"width":1920,"height":1080},
+    "9x16":{"width":1080,"height":1920},
+    "4x5":{"width":1080,"height":1350},
+    "1x1":{"width":1080,"height":1080}
+  },
+  "clips":{
+    "logo-sting":{"duration":2,"name":"logo-sting-2s-{{format}}.mp4","purpose":"assinatura curta"},
+    "intro":{"duration":5,"name":"intro-5s-{{format}}.mp4","purpose":"abertura"},
+    "outro":{"duration":5,"name":"outro-5s-{{format}}.mp4","purpose":"encerramento"},
+    "loading":{"duration":2,"loop":true,"name":"loading-loop-2s-{{format}}.mp4","purpose":"loading"},
+    "social-cut":{"duration":8,"name":"social-cut-8s-{{format}}.mp4","purpose":"social"}
+  },
+  "source":["source/motion-source.html","source/motion.css"],
+  "rules":["sem bounce excessivo","sem deformar o logo","entrada por opacidade + escala curta","movimento contínuo pode remeter ao fluxo de ar","respeitar prefers-reduced-motion em interfaces"]
+}

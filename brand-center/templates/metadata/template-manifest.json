@@ -1,0 +1,86 @@
+{
+  "brand": "CLIMAX Refrigeração",
+  "version": "2.0",
+  "updated": "2026-10-07",
+  "placeholderConvention": "{{CAMPO}}",
+  "templates": [
+    {
+      "id": "presentation-master",
+      "format": "PPTX",
+      "path": "presentation/climax-presentation-master-template.pptx",
+      "editable": [
+        "text",
+        "shapes",
+        "layouts"
+      ]
+    },
+    {
+      "id": "documents-master-word",
+      "format": "RTF",
+      "path": "documents/climax-documents-master-template.rtf",
+      "editable": [
+        "text",
+        "headings"
+      ],
+      "note": "abre no Word/LibreOffice e pode ser salvo como DOCX"
+    },
+    {
+      "id": "documents-master-html",
+      "format": "HTML",
+      "path": "documents/climax-documents-master-template.html"
+    },
+    {
+      "id": "proposal-html",
+      "format": "HTML",
+      "path": "documents/climax-commercial-proposal-template.html"
+    },
+    {
+      "id": "technical-report-html",
+      "format": "HTML",
+      "path": "documents/climax-technical-report-template.html"
+    },
+    {
+      "id": "datasheet-html",
+      "format": "HTML",
+      "path": "documents/climax-datasheet-template.html"
+    },
+    {
+      "id": "case-html",
+      "format": "HTML",
+      "path": "documents/climax-case-study-template.html"
+    },
+    {
+      "id": "documentation-html",
+      "format": "HTML",
+      "path": "documents/climax-documentation-template.html"
+    },
+    {
+      "id": "social-4x5",
+      "format": "HTML",
+      "path": "social/climax-social-4x5-template.html",
+      "size": "1080x1350"
+    },
+    {
+      "id": "social-1x1",
+      "format": "HTML",
+      "path": "social/climax-social-1x1-template.html",
+      "size": "1080x1080"
+    },
+    {
+      "id": "story-9x16",
+      "format": "HTML",
+      "path": "social/climax-story-9x16-template.html",
+      "size": "1080x1920"
+    },
+    {
+      "id": "email-signature",
+      "format": "HTML",
+      "path": "email/climax-email-signature-template.html"
+    },
+    {
+      "id": "readme",
+      "format": "Markdown",
+      "path": "github/README-template.md"
+    }
+  ]
+}
