@@ -15,6 +15,12 @@ Este diretório é o sistema operacional da marca CLIMAX Refrigeração.
 - `sections/motion-production.html` + `motion-production/` — pacote de motion para produção.
 - `sections/production-templates.html` + `templates/` — templates realmente editáveis.
 
+## Automatizar Posts
+
+O [Studio Social](post-studio/index.html) reutiliza logos e mascotes oficiais e organiza os presets, formatos e cores em arquivos JSON. Há edição de conteúdo e exportação PNG/JPEG/ZIP.
+
+O [pacote Remotion](../motion/remotion/README.md) gera vídeos longos em React/TypeScript. Os MP4s devem ser renderizados antes da publicação.
+
 ## Masters visuais
 
 Os logos e mascotes oficiais continuam em `../assets/`; não são duplicados aqui.
