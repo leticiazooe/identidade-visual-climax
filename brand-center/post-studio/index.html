@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Studio de automação de posts da CLIMAX Refrigeração.">
+<title>CLIMAX · Automatizar Posts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=League+Spartan:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<link rel="stylesheet" href="./studio.css">
+<style type="text/tailwindcss">
+@theme {--color-climax:#0B5BA5;--color-climax-navy:#052D53;--font-brand:"League Spartan",sans-serif;}
+</style>
+</head>
+<body>
+<div class="studio-shell">
+<header class="topbar">
+  <div class="topbar-brand">
+    <div class="brand-symbol"><img src="../../assets/logos/ESCRITA%20AZUL%20SVG.svg" alt="CLIMAX Refrigeração"></div>
+    <div><span class="overline">CLIMAX REFRIGERAÇÃO / BRAND CENTER</span><h1>Automatizar Posts <span class="beta">STUDIO</span></h1></div>
+  </div>
+  <div class="topbar-actions">
+    <span class="pill live"><span></span> Salvamento local</span>
+    <a href="../index.html" class="outline-btn">Voltar ao Brand Center ↗</a>
+  </div>
+</header>
+<div class="workspace">
+  <aside class="sidebar">
+    <div class="panel-title"><span class="overline">01 / BIBLIOTECA</span><h2>Conteúdo & layout</h2><p>Escolha uma campanha e personalize o post em tempo real.</p></div>
+    <label for="preset">Modelo de conteúdo</label><select id="preset" class="control"></select>
+    <div class="field-row"><div><label for="format">Rede e formato</label><select id="format" class="control"></select></div><div><label for="layout">Estilo visual</label><select id="layout" class="control"><option value="editorial">Editorial claro</option><option value="technical">Técnico navy</option><option value="campaign">Campanha azul</option></select></div></div>
+    <div class="section-rule"><span>02 / EDIÇÃO</span><span>Campos editáveis</span></div>
+    <label for="kicker">Selo / categoria</label><input id="kicker" class="control" maxlength="96">
+    <label for="headline">Título principal</label><textarea id="headline" rows="2" class="control" maxlength="100"></textarea>
+    <label for="description">Texto de apoio</label><textarea id="description" rows="3" class="control" maxlength="280"></textarea>
+    <label for="benefit1">Benefícios</label>
+    <div class="benefit-inputs"><input id="benefit1" class="control" maxlength="60"><input id="benefit2" class="control" maxlength="60"><input id="benefit3" class="control" maxlength="60"></div>
+    <label for="cta">Chamada para ação</label><input id="cta" class="control" maxlength="80">
+    <label for="mascot">Mascote oficial</label><select id="mascot" class="control"></select>
+    <div class="panel-actions"><button id="reset" class="outline-btn">Restaurar modelo</button><button id="save" class="solid-btn">Salvar rascunho</button></div>
+  </aside>
+  <main class="stage-col">
+    <div class="stage-heading"><div><span class="overline">VISUALIZAÇÃO / RESULTADO FINAL</span><h2>Prévia da publicação</h2></div><div class="stage-controls"><button id="toggleGuides" class="outline-btn">Área segura</button><span id="dimension" class="dimension">1080 × 1350</span></div></div>
+    <div class="stage" id="stage"><div class="stage-sizer" id="stageSizer">
+      <article id="artwork" class="artwork" data-orientation="portrait" data-layout="editorial" aria-label="Prévia do post CLIMAX">
+        <div class="art-glow"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="art-header"><img id="postLogo" alt="CLIMAX" src="../../assets/logos/ESCRITA%20AZUL%20PNG.png"><span class="art-series" id="artSeries">CLIMAX / CONTEÚDO</span></div>
+        <div class="art-copy"><div class="art-kicker" id="artKicker"></div><h2 class="art-headline" id="artHeadline"></h2><p class="art-desc" id="artDescription"></p><div class="art-benefits" id="artBenefits"></div></div>
+        <div class="art-visual"><div class="art-halo"></div><div class="ac-unit"><div class="ac-slot"></div><div class="cool-air"></div></div><img id="artMascot" crossorigin="anonymous" alt="Mascote oficial CLIMAX"></div>
+        <div class="art-cta" id="artCTA"></div><div class="art-footer"><strong>CLIMAX <span>REFRIGERAÇÃO</span></strong><small>Atendimento técnico · Instalação · Manutenção</small></div>
+        <div id="safeGuides" class="safe-guides" hidden></div>
+      </article>
+    </div></div>
+    <div class="stage-bottom"><span id="sizeHint">Composição adaptada ao formato selecionado.</span><span>Logo e mascote oficiais</span></div>
+  </main>
+  <aside class="right-panel">
+    <div class="insight-card"><span class="overline">03 / EXPORTAÇÃO</span><h2>Pronto para publicar.</h2><p>Exportação em tamanho real. Selecione uma rede, confira a prévia e baixe.</p>
+      <div class="export-grid"><button id="exportPng" class="solid-btn">↓ PNG</button><button id="exportJpeg" class="outline-btn">↓ JPEG</button></div>
+      <button id="batchZip" class="outline-btn full">↓ Semana 1 em ZIP</button>
+      <button id="downloadJson" class="text-btn">↓ Exportar conteúdo em JSON</button>
+      <div id="progress" class="progress" role="status" aria-live="polite"></div>
+    </div>
+    <div class="insight-card"><span class="overline">04 / LEGENDA</span><h2>Texto para publicação</h2><label for="caption">Legenda editável</label><textarea id="caption" rows="8" class="control caption-input"></textarea><button id="copyCaption" class="outline-btn full">Copiar legenda</button></div>
+    <div class="spec-card"><span class="overline">PADRÕES DA MARCA</span><div><b>Cor principal</b><code>#0B5BA5</code></div><div><b>Tipografia</b><span>League Spartan / Inter</span></div><div><b>Assets</b><span>Repositório oficial</span></div><div><b>Publicação</b><span>Revisão humana necessária</span></div></div>
+  </aside>
+</div>
+</div>
+<script type="module" src="./studio.js"></script>
+</body>
+</html>
