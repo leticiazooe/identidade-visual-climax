@@ -1,0 +1,11 @@
+import fs from "node:fs/promises";
+import path from "node:path";
+import {fileURLToPath} from "node:url";
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),"..");
+const from=path.join(root,"audio-workspace/audition/04-mixdown/final-mix.wav");
+const target=path.join(root,"public/audio/mix/final-mix.wav");
+const file=await fs.open(from,"r");
+const header=Buffer.alloc(12);await file.read(header,0,12,0);await file.close();
+if(header.toString("ascii",0,4)!=="RIFF"||header.toString("ascii",8,12)!=="WAVE")throw new Error("Mixdown final precisa ser WAV RIFF");
+await fs.mkdir(path.dirname(target),{recursive:true});await fs.copyFile(from,target);
+console.log("Mixagem importada para o Remotion:",target);
