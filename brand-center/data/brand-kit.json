@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.0.0",
+  "brand": "CLIMAX Refrigeração",
+  "updated": "2026-10-07",
+  "purpose": "Reutilizar identidade em web, automações, apresentação e mídia.",
+  "sourceRepository": "leticiazooe/identidade-visual-climax",
+  "designTokens": "./tokens.json",
+  "designStyles": "./tokens.css",
+  "uiComponents": "./ui.css",
+  "postStudio": {
+    "config": "../post-studio/brand.config.json",
+    "formats": "../post-studio/formats.json",
+    "presets": "../post-studio/posts.json",
+    "app": "../post-studio/index.html"
+  },
+  "logo": {
+    "masterLight": "../../assets/logos/ESCRITA AZUL SVG.svg",
+    "masterDark": "../../assets/logos/ESCRITA BRANCA SVG.svg"
+  },
+  "mascotsBase": "../../assets/mascotes/",
+  "typography": {
+    "display": "League Spartan",
+    "body": "Inter"
+  },
+  "brandValues": {
+    "primary": "#0B5BA5",
+    "masterWhite": "#F1F2F2"
+  },
+  "motion": {
+    "manifest": "../motion-production/motion-manifest.json",
+    "longForm": "../../motion/remotion/film.config.json"
+  }
+}

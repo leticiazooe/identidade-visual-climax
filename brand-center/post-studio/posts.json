@@ -1,0 +1,248 @@
+{
+  "version": "1.0",
+  "sourceFiles": [
+    "climax-conteudo-profissional-unico-v2.html",
+    "climax-conteudo-7-dias-instagram.html",
+    "post-manutencao-preventiva-climax-oficial.html"
+  ],
+  "posts": [
+    {
+      "id": "dia01",
+      "name": "Manutenção preventiva",
+      "group": "semana-1",
+      "kicker": "Cuidado que evita imprevistos",
+      "headline": "MANUTENÇÃO\nPREVENTIVA",
+      "description": "Evite falhas, reduza custos e mantenha seu ar-condicionado eficiente por mais tempo.",
+      "benefits": [
+        "Mais eficiência",
+        "Menos consumo",
+        "Mais durabilidade"
+      ],
+      "cta": "Agende sua manutenção",
+      "mascot": "06-mascote-com-manifold.png",
+      "caption": "Manutenção preventiva ajuda a identificar problemas antes que eles virem imprevistos. Mantenha seu equipamento revisado e conte com a CLIMAX para cuidar do seu conforto.\n\n#CLIMAX #Refrigeracao #ArCondicionado #ManutencaoPreventiva #Climatizacao",
+      "scene": "maintenance"
+    },
+    {
+      "id": "dia02",
+      "name": "Limpeza de filtros",
+      "group": "semana-1",
+      "kicker": "Ar mais limpo, equipamento bem cuidado",
+      "headline": "LIMPEZA DE\nFILTROS",
+      "description": "Filtros limpos ajudam na qualidade do ar e no desempenho do equipamento.",
+      "benefits": [
+        "Melhor fluxo de ar",
+        "Menos poeira",
+        "Melhor desempenho"
+      ],
+      "cta": "Solicite uma revisão",
+      "mascot": "02-mascote-principal-corpo-inteiro.png",
+      "caption": "A limpeza dos filtros faz parte dos cuidados básicos com o ar-condicionado. Além de favorecer o fluxo de ar, ajuda a manter o equipamento trabalhando em boas condições.\n\n#CLIMAX #ArCondicionado #LimpezaDeFiltros #Climatizacao #Refrigeracao",
+      "scene": "airflow"
+    },
+    {
+      "id": "dia03",
+      "name": "Sinais de alerta",
+      "group": "semana-1",
+      "kicker": "Atenção aos sinais do equipamento",
+      "headline": "SINAIS DE\nALERTA",
+      "description": "Mau cheiro, pouca refrigeração ou ruídos incomuns podem indicar que está na hora de avaliar o equipamento.",
+      "benefits": [
+        "Mau cheiro",
+        "Pouca refrigeração",
+        "Ruídos incomuns"
+      ],
+      "cta": "Fale com a CLIMAX",
+      "mascot": "10-mascote-serio-apontando-para-cima.png",
+      "caption": "Seu ar-condicionado mudou de comportamento? Mau cheiro, ruídos diferentes ou baixa refrigeração merecem atenção. Uma avaliação técnica ajuda a entender o que está acontecendo.\n\n#CLIMAX #ArCondicionado #Manutencao #AssistenciaTecnica #HVAC",
+      "scene": "warning"
+    },
+    {
+      "id": "dia04",
+      "name": "Economia de energia",
+      "group": "semana-1",
+      "kicker": "Eficiência também é cuidado",
+      "headline": "ECONOMIA DE\nENERGIA",
+      "description": "Um sistema revisado e bem cuidado tende a trabalhar com menos esforço e melhor desempenho.",
+      "benefits": [
+        "Menos esforço",
+        "Melhor rendimento",
+        "Consumo controlado"
+      ],
+      "cta": "Agende uma avaliação",
+      "mascot": "08-mascote-positivo.png",
+      "caption": "Eficiência começa com equipamento bem cuidado. Revisões periódicas ajudam a manter o sistema funcionando dentro das condições esperadas e evitam esforço desnecessário.\n\n#CLIMAX #EconomiaDeEnergia #ArCondicionado #Climatizacao #ManutencaoPreventiva",
+      "scene": "efficiency"
+    },
+    {
+      "id": "dia05",
+      "name": "Qualidade do ar",
+      "group": "semana-1",
+      "kicker": "Conforto vai além da temperatura",
+      "headline": "QUALIDADE\nDO AR",
+      "description": "Manutenção periódica e limpeza adequada ajudam a manter o ambiente mais confortável.",
+      "benefits": [
+        "Menos impurezas",
+        "Conforto térmico",
+        "Mais bem-estar"
+      ],
+      "cta": "Cuide do seu ambiente",
+      "mascot": "07-mascote-tecnico-termometro.png",
+      "caption": "Conforto térmico também passa pelos cuidados com o equipamento. Limpeza e manutenção periódica contribuem para um ambiente mais agradável no dia a dia.\n\n#CLIMAX #QualidadeDoAr #Climatizacao #ArCondicionado #ConfortoTermico",
+      "scene": "air-quality"
+    },
+    {
+      "id": "dia06",
+      "name": "Instalação segura",
+      "group": "semana-1",
+      "kicker": "Um bom resultado começa na instalação",
+      "headline": "INSTALAÇÃO\nSEGURA",
+      "description": "Uma instalação correta faz diferença no desempenho, acabamento e durabilidade do sistema.",
+      "benefits": [
+        "Dimensionamento",
+        "Acabamento",
+        "Confiabilidade"
+      ],
+      "cta": "Peça seu orçamento",
+      "mascot": "09-mascote-tecnico-condensadora-manifold.png",
+      "caption": "Instalação de ar-condicionado exige atenção técnica em cada etapa. Dimensionamento, posicionamento e acabamento fazem parte de um serviço profissional.\n\n#CLIMAX #InstalacaoDeArCondicionado #HVAC #Climatizacao #Refrigeracao",
+      "scene": "installation"
+    },
+    {
+      "id": "dia07",
+      "name": "Hora de agendar",
+      "group": "semana-1",
+      "kicker": "Conte com a CLIMAX",
+      "headline": "HORA DE\nAGENDAR",
+      "description": "Conte com a CLIMAX para manter seu equipamento em dia com atendimento técnico e serviço profissional.",
+      "benefits": [
+        "Atendimento técnico",
+        "Serviço profissional",
+        "Suporte confiável"
+      ],
+      "cta": "Chame a CLIMAX",
+      "mascot": "05-mascote-apontando-cta.png",
+      "caption": "Depois de uma semana falando sobre cuidado, eficiência e instalação, fica o convite: mantenha seu equipamento em dia. Fale com a CLIMAX e agende seu atendimento.\n\n#CLIMAX #ArCondicionado #Refrigeracao #Climatizacao #Manutencao",
+      "scene": "cta"
+    },
+    {
+      "id": "extra01",
+      "name": "Atendimento residencial",
+      "group": "extras",
+      "kicker": "Conforto para a sua casa",
+      "headline": "ATENDIMENTO\nRESIDENCIAL",
+      "description": "Soluções em climatização para ambientes residenciais com atendimento técnico e cuidado profissional.",
+      "benefits": [
+        "Conforto diário",
+        "Ambiente agradável",
+        "Serviço profissional"
+      ],
+      "cta": "Solicite atendimento",
+      "mascot": "03-mascote-recepcao-mao-estendida.png",
+      "caption": "Ambientes residenciais merecem conforto e cuidado. A CLIMAX oferece atendimento técnico para instalação e manutenção em ar-condicionado.\n\n#CLIMAX #AtendimentoResidencial #ArCondicionado #Climatizacao",
+      "scene": "home"
+    },
+    {
+      "id": "extra02",
+      "name": "Atendimento comercial",
+      "group": "extras",
+      "kicker": "Soluções para o seu negócio",
+      "headline": "ATENDIMENTO\nCOMERCIAL",
+      "description": "Climatização adequada faz diferença no conforto, no atendimento e na rotina do ambiente comercial.",
+      "benefits": [
+        "Conforto no espaço",
+        "Rotina mais estável",
+        "Apoio técnico"
+      ],
+      "cta": "Fale com nossa equipe",
+      "mascot": "02-mascote-principal-corpo-inteiro.png",
+      "caption": "Seu negócio também precisa de um ambiente confortável e bem climatizado. Conte com a CLIMAX para atendimento comercial com foco em qualidade e profissionalismo.\n\n#CLIMAX #AtendimentoComercial #Climatizacao #HVAC",
+      "scene": "commercial"
+    },
+    {
+      "id": "extra03",
+      "name": "Troca de filtro",
+      "group": "extras",
+      "kicker": "Pequenos cuidados fazem diferença",
+      "headline": "TROCA DE\nFILTRO",
+      "description": "A atenção com os filtros ajuda o sistema a respirar melhor e contribui para o desempenho do equipamento.",
+      "benefits": [
+        "Fluxo de ar",
+        "Rotina de cuidado",
+        "Desempenho melhor"
+      ],
+      "cta": "Agende uma revisão",
+      "mascot": "07-mascote-tecnico-termometro.png",
+      "caption": "Entre os cuidados importantes com o ar-condicionado, a atenção aos filtros faz diferença no uso diário do equipamento.\n\n#CLIMAX #Filtro #ArCondicionado #Climatizacao",
+      "scene": "airflow"
+    },
+    {
+      "id": "extra04",
+      "name": "Antes do calor",
+      "group": "extras",
+      "kicker": "Prepare seu equipamento",
+      "headline": "ANTES DO\nCALOR",
+      "description": "Antes dos períodos mais quentes, vale revisar o sistema para manter conforto e funcionamento adequado.",
+      "benefits": [
+        "Prevenção",
+        "Conforto térmico",
+        "Mais tranquilidade"
+      ],
+      "cta": "Prepare seu ambiente",
+      "mascot": "06-mascote-com-manifold.png",
+      "caption": "Antecipar cuidados antes das épocas de maior uso é uma forma inteligente de manter o ar-condicionado pronto para a rotina.\n\n#CLIMAX #ManutencaoPreventiva #ConfortoTermico #ArCondicionado",
+      "scene": "airflow"
+    },
+    {
+      "id": "extra05",
+      "name": "Projeto ideal",
+      "group": "extras",
+      "kicker": "A solução certa para cada ambiente",
+      "headline": "PROJETO\nIDEAL",
+      "description": "Cada espaço pede uma solução bem pensada para gerar conforto, eficiência e melhor aproveitamento do sistema.",
+      "benefits": [
+        "Análise do ambiente",
+        "Escolha adequada",
+        "Resultado profissional"
+      ],
+      "cta": "Converse com a CLIMAX",
+      "mascot": "04-mascote-circulo-busto.png",
+      "caption": "Escolher a solução ideal para cada ambiente faz diferença no desempenho e no conforto. A CLIMAX trabalha com uma abordagem profissional e alinhada à necessidade do cliente.\n\n#CLIMAX #ProjetoDeClimatizacao #ArCondicionado #HVAC",
+      "scene": "project"
+    },
+    {
+      "id": "extra06",
+      "name": "Assistência técnica",
+      "group": "extras",
+      "kicker": "Suporte com profissionalismo",
+      "headline": "ASSISTÊNCIA\nTÉCNICA",
+      "description": "Quando surge a necessidade de avaliação, contar com suporte técnico faz toda a diferença.",
+      "benefits": [
+        "Diagnóstico",
+        "Atendimento",
+        "Confiabilidade"
+      ],
+      "cta": "Solicite suporte",
+      "mascot": "10-mascote-serio-apontando-para-cima.png",
+      "caption": "Assistência técnica é sobre orientação, avaliação e cuidado com o equipamento. Conte com a CLIMAX para um atendimento profissional.\n\n#CLIMAX #AssistenciaTecnica #ArCondicionado #Climatizacao",
+      "scene": "warning"
+    },
+    {
+      "id": "extra07",
+      "name": "Conforto no trabalho",
+      "group": "extras",
+      "kicker": "Ambientes mais agradáveis no dia a dia",
+      "headline": "CONFORTO NO\nTRABALHO",
+      "description": "Um ambiente bem climatizado contribui para a sensação de conforto em escritórios, comércios e empresas.",
+      "benefits": [
+        "Mais conforto",
+        "Ambiente agradável",
+        "Melhor experiência"
+      ],
+      "cta": "Leve conforto ao seu espaço",
+      "mascot": "08-mascote-positivo.png",
+      "caption": "Climatização adequada ajuda a tornar o ambiente de trabalho mais confortável e agradável para a rotina.\n\n#CLIMAX #ConfortoNoTrabalho #Climatizacao #AmbienteComercial",
+      "scene": "commercial"
+    }
+  ]
+}

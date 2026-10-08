@@ -1,0 +1,11 @@
+{
+  "name": "@climax/studio-visual-qa",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node visual-qa.mjs"
+  },
+  "dependencies": {
+    "playwright": "1.55.1"
+  }
+}

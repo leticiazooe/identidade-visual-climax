@@ -1,0 +1,37 @@
+{
+  "id": "climax",
+  "name": "CLIMAX Refrigeração",
+  "version": "2.2.0",
+  "reviewedAt": "2026-10-07",
+  "tokensPath": "../../data/tokens.json",
+  "colors": {
+    "masterBlue": "#0B5BA5",
+    "navy": "#052D53",
+    "midnight": "#021F33",
+    "ice": "#F1F2F2",
+    "mist": "#E9F3FC",
+    "text": "#18222C",
+    "white": "#FFFFFF"
+  },
+  "fonts": {
+    "display": "League Spartan",
+    "body": "Inter"
+  },
+  "assets": {
+    "logo": "../../assets/logos/ESCRITA AZUL PNG.png",
+    "logoWhite": "../../assets/logos/ESCRITA BRANCA PNG.png",
+    "mascotBase": "../../assets/mascotes/"
+  },
+  "policies": {
+    "minBodyPx": 16,
+    "useOfficialMascotsOnly": true,
+    "reviewClaims": true
+  },
+  "formatConfig": "./formats.json",
+  "presets": "./posts.json",
+  "templateVariants": [
+    "editorial",
+    "technical",
+    "campaign"
+  ]
+}

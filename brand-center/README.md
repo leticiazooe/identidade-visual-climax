@@ -1,6 +1,6 @@
 # CLIMAX · Brand Center / Brand Book Mestre
 
-Versão: 2.1  
+Versão: 2.2
 Última revisão: 2026-10-07
 
 Este diretório é o sistema operacional da marca **CLIMAX Refrigeração**: identidade, implementação digital, conteúdo, produção e governança.
@@ -9,28 +9,36 @@ Este diretório é o sistema operacional da marca **CLIMAX Refrigeração**: ide
 
 - `sections/brand-book.html` — Brand Book Mestre.
 - `sections/downloads.html` — biblioteca oficial de assets.
-- `sections/tokens.html` + `data/tokens.css` + `data/tokens.json` — Design Tokens.
-- `sections/ui-system.html` + `data/ui.css` + `data/component-manifest.json` — UI / Digital Design System.
-- `sections/editorial.html` + `editorial/` — sistema editorial e conteúdo.
-- `sections/motion-production.html` + `motion-production/` — pacote de motion para produção.
-- `sections/production-templates.html` + `templates/` — templates realmente editáveis.
+- `sections/tokens.html`, `data/tokens.css`, `data/tokens.json` — Design Tokens.
+- `sections/ui-system.html`, `data/ui.css`, `data/component-manifest.json` — UI / Digital Design System.
+- `sections/editorial.html`, `editorial/` — sistema editorial e conteúdo.
+- `sections/motion-production.html`, `motion-production/` — pacote de motion para produção.
+- `sections/production-templates.html`, `templates/` — templates realmente editáveis.
+- `post-studio/index.html` — módulo **Automatizar Posts**, com editor multiformato.
 
 ## Biblioteca oficial
 
-O catálogo estruturado está em:
+Os catálogos estruturados estão em:
 
-- `data/assets-manifest.json` — logos, mascotes e fontes de produção;
+- `data/assets-manifest.json` — logos, mascotes e arquivos de produção;
+- `data/brand-kit.json` — integração com o Studio e motion em outros projetos;
 - `templates/metadata/template-manifest.json` — templates e formatos;
-- `motion-production/motion-manifest.json` — clips, resoluções e regras de export;
+- `motion-production/motion-manifest.json` — clips, resoluções e specs de export;
 - `data/component-manifest.json` — componentes, estados e acessibilidade.
 
-## Masters visuais
+## Automatizar Posts
 
-Os logos e mascotes oficiais continuam em `../assets/`; não são duplicados aqui.
+O [Studio Social](post-studio/index.html) usa os logos e mascotes oficiais e organiza os 14 presets em `post-studio/posts.json`, as sete proporções em `post-studio/formats.json` e a identidade em `post-studio/brand.config.json`.
+
+Permite editar textos, benefícios e CTA; compor para Instagram, Facebook e WhatsApp; exportar PNG/JPEG/ZIP e salvar rascunho local. **Não publica automaticamente nas redes sociais.**
+
+## Motion de produção
+
+O [pacote Remotion](../motion/remotion/README.md) contém um filme institucional de oito cenas (68,4 segundos) para 16:9, 9:16, 4:5 e 1:1, com React e TypeScript. Vídeos MP4 são produzidos no pipeline GitHub Actions e devem passar por aprovação visual antes da distribuição.
 
 ## Templates Office
 
-O repositório contém um PPTX master e um RTF/Word master. Além disso, `templates/office/generate-office-templates.html` gera **PPTX e DOCX editáveis diretamente no navegador**, com texto, shapes, headings e tabelas editáveis.
+O repositório contém um PPTX master e um RTF/Word master. `templates/office/generate-office-templates.html` gera PPTX e DOCX editáveis diretamente no navegador, com texto, formas, headings e tabelas.
 
 ## Fundamentos digitais
 
@@ -41,11 +49,12 @@ O repositório contém um PPTX master e um RTF/Word master. Além disso, `templa
 - Display: League Spartan
 - Texto/UI: Inter
 - Base mínima de leitura: 16 px
-- Grid de spacing: 4 px
-- Motion: 140–900 ms
+- Grid de espaçamento: 4 px
 
 ## Governança
 
-Mudanças em master de logo, cor institucional, tipografia global, personagem, tokens, componentes base, regras editoriais ou motion devem ser versionadas e revisadas antes de substituir a referência vigente.
+Os logos e mascotes oficiais continuam em `../assets/`, sem duplicação.
 
-Qualquer atualização relevante de identidade deve manter sincronizados o Brand Book, os tokens, os componentes, a biblioteca e os templates afetados.
+Mudanças em masters visuais, tipografia, tokens globais, componentes base, regras editoriais ou motion devem ser versionadas e revisadas antes de substituir as versões vigentes.
+
+Mantenha o Brand Book, os tokens, a biblioteca, os componentes, os templates e o editor sincronizados após mudanças relevantes.

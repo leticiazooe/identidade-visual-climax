@@ -4,3 +4,6 @@ docs/
 README.md
 wrangler.jsonc
 .assetsignore
+motion/
+scripts/
+brand-center/wrangler.jsonc

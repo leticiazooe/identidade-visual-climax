@@ -1,0 +1,22 @@
+name: CLIMAX / Wrangler Build
+on:
+  pull_request:
+    paths:
+      - 'wrangler.jsonc'
+      - 'brand-center/wrangler.jsonc'
+      - '.assetsignore'
+      - '.github/workflows/climax-wrangler.yml'
+  workflow_dispatch:
+jobs:
+  validate-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar deploy raiz
+        run: npx --yes wrangler@4.148.0 deploy --dry-run --outdir /tmp/climax-root
+      - name: Verificar deploy com root brand-center
+        run: cd brand-center && npx --yes wrangler@4.148.0 deploy --dry-run --outdir /tmp/climax-brand-center

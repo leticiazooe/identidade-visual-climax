@@ -1,0 +1,29 @@
+{
+  "name": "@climax/brand-motion",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "assets:sync": "node scripts/sync-assets.mjs",
+    "studio": "npm run assets:sync && remotion studio src/index.ts",
+    "render:wide": "npm run assets:sync && remotion render src/index.ts CLIMAX-Film-16x9 out/climax-film-16x9.mp4 --codec=h264",
+    "render:vertical": "npm run assets:sync && remotion render src/index.ts CLIMAX-Film-9x16 out/climax-film-9x16.mp4 --codec=h264",
+    "render:square": "npm run assets:sync && remotion render src/index.ts CLIMAX-Film-1x1 out/climax-film-1x1.mp4 --codec=h264",
+    "render:portrait": "npm run assets:sync && remotion render src/index.ts CLIMAX-Film-4x5 out/climax-film-4x5.mp4 --codec=h264",
+    "compositions": "npm run assets:sync && remotion compositions src/index.ts",
+    "validate": "node scripts/validate.mjs"
+  },
+  "dependencies": {
+    "@remotion/transitions": "4.0.534",
+    "remotion": "4.0.534",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "@remotion/google-fonts": "4.0.534"
+  },
+  "devDependencies": {
+    "@remotion/cli": "4.0.534",
+    "@types/react": "19.2.0",
+    "@types/react-dom": "19.2.0",
+    "typescript": "5.9.3"
+  }
+}

@@ -18,6 +18,14 @@ Ele reúne:
 
 A entrada web do repositório redireciona para [brand-center/index.html](brand-center/index.html).
 
+## Automatizar Posts e Motion Remotion
+
+- [Studio Social](brand-center/post-studio/index.html): editor com 14 modelos, 7 formatos e exportação PNG/JPEG/ZIP.
+- [Presets em JSON](brand-center/post-studio/posts.json), [configuração da marca](brand-center/post-studio/brand.config.json) e [formatos](brand-center/post-studio/formats.json).
+- [Remotion](motion/remotion/README.md): filme de 8 cenas e 68,4 segundos, em quatro proporções.
+
+As imagens e vídeos precisam de revisão humana antes da publicação.
+
 ## Logos
 
 Os masters estão em [assets/logos/](assets/logos/).
