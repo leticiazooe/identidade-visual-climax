@@ -4,12 +4,12 @@ import {TransitionSeries,linearTiming} from "@remotion/transitions";
 import {fade} from "@remotion/transitions/fade";
 import {slide} from "@remotion/transitions/slide";
 import manifest from "../film.config.json";
+import {font} from "./fonts";
 
 type Variant="wide"|"vertical"|"portrait"|"square";
 export type FilmProps={variant:Variant};
 type SceneProps={variant:Variant};
 const C={navy:"#021F33",navy2:"#052D53",blue:"#0B5BA5",ice:"#8DE8F7",white:"#F1F2F2",mist:"#E9F3FC",ink:"#18222C"};
-const font={display:"League Spartan, Arial, sans-serif",body:"Inter, Arial, sans-serif"};
 const sequenceFrames=manifest.scenes.map(s=>s.frames);
 
 function useLayout(variant:Variant){

@@ -42,6 +42,10 @@ Os arquivos MP4 serão escritos em \`motion/remotion/out/\`. Renderizar requer C
 - \`scripts/validate.mjs\` — valida roteiro e duração.
 - \`public/\` — pasta **gerada localmente**, não commitada.
 
+## Fontes oficiais
+
+O pacote carrega League Spartan e Inter por @remotion/google-fonts antes de renderizar, evitando substituição tipográfica no vídeo. Requer conexão à internet durante a primeira renderização ou fontes disponíveis em cache.
+
 ## Regras de qualidade
 
 - Evitar bounce, flashes e partículas aleatórias que prejudiquem leitura.
