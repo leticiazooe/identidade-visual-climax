@@ -1,0 +1,46 @@
+name: CLIMAX / Audio Layer Smoke Test
+on:
+  pull_request:
+    paths:
+      - 'motion/remotion/**'
+      - 'brand-center/data/audio-production.json'
+      - '.github/workflows/climax-audio-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audio-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: motion/remotion
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instalar dependências e sincronizar masters
+        run: |
+          npm install --no-audit --no-fund
+          npm run assets:sync
+      - name: Criar tom de teste sintético (não é voz gerada)
+        run: |
+          mkdir -p public/audio/mix
+          ffmpeg -hide_banner -loglevel error -y -f lavfi -i 'sine=frequency=440:duration=3' -ac 2 -ar 48000 -c:a pcm_s24le public/audio/mix/final-mix.wav
+          printf '%s' '{"variant":"wide","audioMode":"master","musicEnabled":false,"soundEffectsEnabled":false}' > audio-ci-props.json
+          npm run audio:check -- --master
+      - name: Render curto com áudio mestre
+        run: npx remotion render src/index.ts CLIMAX-Film-16x9 out/audio-smoke.mp4 --frames=0-89 --scale=0.25 --codec=h264 --props=./audio-ci-props.json
+      - name: Verificar trilha no MP4
+        run: |
+          test -s out/audio-smoke.mp4
+          ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 out/audio-smoke.mp4 | grep -E 'aac|mp3|opus'
+          echo 'PASS: AudioTimeline renderizou um vídeo com áudio.'
+      - name: Salvar vídeo de smoke test
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: climax-audio-smoke
+          path: motion/remotion/out/audio-smoke.mp4
+          retention-days: 3
