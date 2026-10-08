@@ -30,7 +30,7 @@ async function boot(){
   const restored=restoreDraft();loadPreset("dia01");
   if(restored&&state.posts.some(x=>x.id===restored.id)){
    $("preset").value=restored.id;loadPreset(restored.id,true);
-   Object.entries(restored.fields||{}).forEach(([k,v])=>{if($(k))$(k).value=v;});
+   Object.entries(restored.fields||{}).forEach(([k,v])=>{if($(k)&&typeof v==="string")$(k).value=v;});if(Array.isArray(restored.fields?.benefits))restored.fields.benefits.forEach((v,i)=>{if($("benefit"+(i+1)))$("benefit"+(i+1)).value=v;});if(restored.fields?.mascot&&$("mascot").querySelector("option[value=\""+restored.fields.mascot+"\"]"))$("mascot").value=restored.fields.mascot;
    if(state.formats[restored.formatKey])$("format").value=restored.formatKey;
    $("layout").value=restored.layout||"editorial";
    state.formatKey=$("format").value;state.layout=$("layout").value;render();toast("Rascunho local recuperado.");
@@ -49,7 +49,7 @@ function draw(p,formatKey=state.formatKey,layout=state.layout){
  art.dataset.orientation=f.width/f.height>1.5?"wide":f.height/f.width>1.55?"story":f.width===f.height?"square":"portrait";
  art.dataset.layout=layout;
  $("postLogo").src=layout==="editorial"?state.config.assets.logo:state.config.assets.logoWhite;
- $("artMascot").src=mascotUrl(p.mascot);$("artSeries").textContent=(state.current?.id||"CLIMAX").toUpperCase()+" / "+f.platform;
+ $("artMascot").src=mascotUrl(p.mascot);$("artSeries").textContent=(p.id||"CLIMAX").toUpperCase()+" / "+f.platform;
  $("artKicker").textContent=p.kicker;
  const h=$("artHeadline");clear(h);
  const parts=p.headline.split("\n");parts.forEach((part,i)=>{if(i>0)h.appendChild(document.createElement("br"));const span=document.createElement("span");span.className=i?"accent":"";span.textContent=part;h.appendChild(span);});
