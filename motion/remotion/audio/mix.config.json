@@ -25,7 +25,7 @@
   "status": {
     "elevenlabs": "requires-key-and-voice",
     "audition": "native-session-manual-handoff",
-    "remotion": "audio-layer-implementation-pending",
+    "remotion": "audio-layer-implemented; qa-pending",
     "render": "not-yet-rendered"
   }
 }

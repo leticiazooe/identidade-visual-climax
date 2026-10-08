@@ -29,5 +29,10 @@
   "motion": {
     "manifest": "../motion-production/motion-manifest.json",
     "longForm": "../../motion/remotion/film.config.json"
+  },
+  "audio": {
+    "voiceStudio": "../sections/audio-production.html",
+    "manifest": "./audio-production.json",
+    "productionGuide": "../../motion/remotion/README.md"
   }
 }

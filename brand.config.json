@@ -62,5 +62,13 @@
     "repository": "leticiazooe/identidades-visuais",
     "path": "climax/"
   },
-  "updated": "2026-10-07"
+  "updated": "2026-10-07",
+  "audio": {
+    "studio": "brand-center/sections/audio-production.html",
+    "narrationManifest": "brand-center/data/audio-production.json",
+    "provider": "elevenlabs",
+    "mixing": "adobe-audition",
+    "render": "motion/remotion",
+    "status": "requires-owner-api-key-and-audition-mix"
+  }
 }
