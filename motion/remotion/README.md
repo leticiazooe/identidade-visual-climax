@@ -107,3 +107,8 @@ As locuções e o mix final ficam no diretório local \`public/audio/\` (gitigno
 - Selecionar música e efeitos com licenças comerciais documentadas.
 - Conferir tempos da fala, pronúncia, mixagem, loudness/true peak e áreas seguras antes de publicar.
 - Os scripts sem chave são testados na CI; chamadas cobradas dependem de credenciais do proprietário.
+
+
+## Pipeline cinematográfico de áudio
+
+Consulte [docs/audio-production.md](../../../docs/audio-production.md) para ElevenLabs, entrega Audition, mixagem e Remotion.
