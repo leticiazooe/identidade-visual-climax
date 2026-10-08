@@ -3,6 +3,9 @@ on:
   pull_request:
     paths:
       - 'brand-center/post-studio/**'
+      - 'brand-center/sections/audio-production.html'
+      - 'brand-center/audio-studio.*'
+      - 'brand-center/data/audio-production.json'
       - 'assets/**'
       - 'scripts/visual-qa/**'
       - '.github/workflows/climax-visual-qa.yml'
@@ -24,6 +27,8 @@ jobs:
         run: python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/climax-static.log 2>&1 &
       - name: Validar 7 formatos e exportações
         run: npm test --prefix scripts/visual-qa
+      - name: Validar Estúdio de Áudio em desktop e mobile
+        run: cd scripts/visual-qa && node audio-qa.mjs
       - name: Salvar capturas e exports
         if: always()
         uses: actions/upload-artifact@v4
