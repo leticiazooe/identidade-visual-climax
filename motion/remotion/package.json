@@ -11,14 +11,25 @@
     "render:square": "npm run assets:sync && remotion render src/index.ts CLIMAX-Film-1x1 out/climax-film-1x1.mp4 --codec=h264",
     "render:portrait": "npm run assets:sync && remotion render src/index.ts CLIMAX-Film-4x5 out/climax-film-4x5.mp4 --codec=h264",
     "compositions": "npm run assets:sync && remotion compositions src/index.ts",
-    "validate": "node scripts/validate.mjs"
+    "validate": "node scripts/validate.mjs",
+    "voice:plan": "node scripts/voice-cli.mjs plan",
+    "voice:list": "node scripts/voice-cli.mjs list",
+    "voice:generate": "node scripts/voice-cli.mjs generate",
+    "audio:check": "node scripts/check-audio.mjs",
+    "audition:prepare": "node scripts/prepare-audition.mjs",
+    "audition:import": "node scripts/import-audition-mix.mjs",
+    "render:audio:wide": "node scripts/render-audio.mjs --format=wide",
+    "render:audio:vertical": "node scripts/render-audio.mjs --format=vertical",
+    "render:audio:portrait": "node scripts/render-audio.mjs --format=portrait",
+    "render:audio:square": "node scripts/render-audio.mjs --format=square"
   },
   "dependencies": {
     "@remotion/transitions": "4.0.534",
     "remotion": "4.0.534",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "@remotion/google-fonts": "4.0.534"
+    "@remotion/google-fonts": "4.0.534",
+    "@remotion/media": "4.0.534"
   },
   "devDependencies": {
     "@remotion/cli": "4.0.534",

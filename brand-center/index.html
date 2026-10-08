@@ -24,10 +24,11 @@
     <button data-doc="motion-production" data-search="motion production logo sting intro outro loading social cut 16 9 9 16"><span>06</span><div><b>Motion Production</b><small>Source, specs e formatos.</small></div></button>
     <button data-doc="production-templates" data-search="templates editáveis pptx docx html markdown social assinatura readme proposta relatório"><span>07</span><div><b>Templates editáveis</b><small>Masters de produção.</small></div></button>
     <button data-doc="automatizar-posts" data-search="automatizar posts instagram facebook whatsapp social conteúdo png jpeg zip editor"><span>08</span><div><b>Automatizar Posts</b><small>Editor social e export multiformato.</small></div></button>
+    <button data-doc="audio-production" data-search="audio voz locução elevenlabs audition remotion trilha efeitos sonoros sound design mixagem"><span>09</span><div><b>Estúdio de Áudio</b><small>Locução, trilhas e direção sonora.</small></div></button>
   </nav>
   <div class="side-foot">CLIMAX Refrigeração<br>Brand Center · Fonte de verdade</div>
 </aside>
-<div class="mobile"><b>CLIMAX · BRAND CENTER</b><select id="mobileSelect"><option value="brand-book">Brand Book</option><option value="downloads">Assets</option><option value="tokens">Tokens</option><option value="ui-system">UI System</option><option value="editorial">Editorial</option><option value="motion-production">Motion</option><option value="production-templates">Templates</option><option value="automatizar-posts">Automatizar Posts</option></select></div>
+<div class="mobile"><b>CLIMAX · BRAND CENTER</b><select id="mobileSelect"><option value="brand-book">Brand Book</option><option value="downloads">Assets</option><option value="tokens">Tokens</option><option value="ui-system">UI System</option><option value="editorial">Editorial</option><option value="motion-production">Motion</option><option value="production-templates">Templates</option><option value="automatizar-posts">Automatizar Posts</option><option value="audio-production">Estúdio de Áudio</option></select></div>
 <main class="content">
   <div class="toolbar"><div><small>BRAND CENTER / BRAND BOOK MESTRE</small><h1 id="title">Brand Book Mestre</h1><p id="desc">Estratégia, identidade visual, linguagem, aplicações e governança.</p></div><button class="focus" id="focusBtn">Modo foco</button></div>
   <div class="reader"><iframe id="frame" class="docframe" src="sections/brand-book.html" title="Brand Book Mestre"></iframe></div>
@@ -42,7 +43,8 @@ const meta={
  "editorial":["Sistema editorial e conteúdo","Voz, hierarquia, CTAs, formatos, canais e QA editorial."],
  "motion-production":["Pacote de motion para produção","Logo sting, intro, outro, loading e social cutdowns."],
  "production-templates":["Templates realmente editáveis","PPTX, DOCX, HTML e Markdown para produção real."],
- "automatizar-posts":["Automatizar Posts","Crie campanhas, adapte para Instagram, Facebook e WhatsApp e exporte imagens."]
+ "automatizar-posts":["Automatizar Posts","Crie campanhas, adapte para Instagram, Facebook e WhatsApp e exporte imagens."],
+ "audio-production":["Estúdio de Áudio e Locução","Roteiro narrado, ElevenLabs, Audition e mixagem Remotion por cena."]
 };
 const frame=document.getElementById("frame"),title=document.getElementById("title"),desc=document.getElementById("desc"),mobile=document.getElementById("mobileSelect");
 function go(id){frame.src=id==="automatizar-posts"?"post-studio/index.html":"sections/"+id+".html";title.textContent=meta[id][0];desc.textContent=meta[id][1];document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.doc===id));mobile.value=id}

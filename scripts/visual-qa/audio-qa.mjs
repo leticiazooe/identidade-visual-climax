@@ -1,0 +1,36 @@
+import {chromium} from "playwright";
+import {mkdir,readFile} from "node:fs/promises";
+import path from "node:path";
+const output=path.resolve("out");
+await mkdir(output,{recursive:true});
+const browser=await chromium.launch({headless:true,args:["--no-sandbox"]});
+const page=await browser.newPage({viewport:{width:1580,height:1050},acceptDownloads:true});
+const errors=[];
+page.on("pageerror",e=>errors.push(e.message));
+try{
+ const response=await page.goto("http://127.0.0.1:8000/brand-center/sections/audio-production.html",{waitUntil:"domcontentloaded",timeout:45000});
+ if(!response?.ok())throw new Error("Audio Studio não respondeu");
+ await page.locator("#timeline button").first().waitFor({timeout:12000});
+ const total=await page.locator("#timeline button").count();
+ if(total!==8)throw new Error("Esperadas 8 cenas; obtidas "+total);
+ await page.screenshot({path:path.join(output,"audio-studio-desktop.png"),fullPage:true});
+ await page.locator("#scenes button").nth(3).click();
+ if(!String(await page.locator("#sceneTitle").textContent()).includes("Manutenção"))throw new Error("Navegação de cenas falhou");
+ await page.locator("#sceneText").fill("Locução de revisão da quarta cena para teste automatizado.");
+ const [json]=await Promise.all([page.waitForEvent("download"),page.locator("#downloadBtn").click()]);
+ const jsonFile=path.join(output,"climax-voice-project.json");
+ await json.saveAs(jsonFile);
+ const manifest=JSON.parse(await readFile(jsonFile,"utf8"));
+ if(manifest.scenes.length!==8||!manifest.scenes[3].text.includes("revisão"))throw new Error("Export JSON inválido");
+ const [csv]=await Promise.all([page.waitForEvent("download"),page.locator("#csvBtn").click()]);
+ const csvFile=path.join(output,"climax-cue-sheet.csv");
+ await csv.saveAs(csvFile);
+ const csvData=await readFile(csvFile,"utf8");
+ if(csvData.split("\n").filter(Boolean).length!==9)throw new Error("Cue-sheet não tem 8 cenas");
+ const mobile=await browser.newPage({viewport:{width:390,height:844}});
+ await mobile.goto("http://127.0.0.1:8000/brand-center/sections/audio-production.html",{waitUntil:"domcontentloaded"});
+ await mobile.locator("#timeline button").first().waitFor();
+ await mobile.screenshot({path:path.join(output,"audio-studio-mobile.png"),fullPage:true});
+ if(errors.length)throw new Error("Erros no navegador: "+errors.join("; "));
+ console.log("PASS Audio Studio: 8 cenas, navegação, edição, JSON, cue sheet CSV e viewport mobile");
+}finally{await browser.close();}

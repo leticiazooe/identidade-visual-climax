@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "1.0.0",
+  "brand": "CLIMAX Refrigeração",
+  "updated": "2026-10-08",
+  "language": "pt-BR",
+  "provider": "elevenlabs",
+  "modelId": "eleven_multilingual_v2",
+  "voiceProfile": {
+    "name": "CLIMAX Institucional",
+    "description": "Português brasileiro adulto, elegante, técnico e acolhedor.",
+    "voiceIdFromEnv": "ELEVENLABS_VOICE_ID",
+    "settings": {
+      "stability": 0.65,
+      "similarity_boost": 0.8,
+      "style": 0.18,
+      "use_speaker_boost": true
+    }
+  },
+  "fps": 30,
+  "transitionFrames": 24,
+  "leadInFrames": 12,
+  "scenes": [
+    {
+      "index": 1,
+      "id": "signature",
+      "title": "A assinatura",
+      "frames": 240,
+      "text": "A CLIMAX transforma tecnologia em conforto. Uma presença que combina cuidado, precisão e confiança.",
+      "direction": "confiante e cinematográfica",
+      "filename": "scene-01-signature.mp3"
+    },
+    {
+      "index": 2,
+      "id": "problem",
+      "title": "O desconforto",
+      "frames": 300,
+      "text": "Quando o calor interrompe a rotina, seu ambiente pede mais do que uma solução improvisada. Pede atenção profissional.",
+      "direction": "pausada e empática",
+      "filename": "scene-02-problem.mp3"
+    },
+    {
+      "index": 3,
+      "id": "diagnosis",
+      "title": "Diagnóstico técnico",
+      "frames": 300,
+      "text": "Começamos ouvindo, analisando o ambiente e avaliando o equipamento. Cada detalhe importa antes de definir o melhor caminho.",
+      "direction": "técnica e segura",
+      "filename": "scene-03-diagnosis.mp3"
+    },
+    {
+      "index": 4,
+      "id": "care",
+      "title": "Manutenção preventiva",
+      "frames": 300,
+      "text": "Manutenção preventiva é cuidado contínuo: ajuda a identificar sinais e a manter o seu sistema em boas condições de funcionamento.",
+      "direction": "didática e tranquilizadora",
+      "filename": "scene-04-care.mp3"
+    },
+    {
+      "index": 5,
+      "id": "flow",
+      "title": "Fluxo de ar",
+      "frames": 270,
+      "text": "Quando tudo funciona em equilíbrio, o conforto se percebe no ambiente. Uma experiência mais leve para todos os momentos.",
+      "direction": "contemplativa e fluida",
+      "filename": "scene-05-flow.mp3"
+    },
+    {
+      "index": 6,
+      "id": "solutions",
+      "title": "Soluções CLIMAX",
+      "frames": 270,
+      "text": "Instalação, manutenção e suporte. Soluções de climatização pensadas para cada necessidade, com atenção técnica em cada etapa.",
+      "direction": "direta, ritmo moderado",
+      "filename": "scene-06-solutions.mp3"
+    },
+    {
+      "index": 7,
+      "id": "proof",
+      "title": "Padrão profissional",
+      "frames": 300,
+      "text": "Mais do que climatizar, queremos oferecer uma experiência organizada, transparente e próxima. Da primeira conversa ao cuidado de todos os dias.",
+      "direction": "acolhedora e confiante",
+      "filename": "scene-07-proof.mp3"
+    },
+    {
+      "index": 8,
+      "id": "outro",
+      "title": "Chamada para ação",
+      "frames": 240,
+      "text": "Seu ambiente merece conforto. Fale com a CLIMAX Refrigeração e solicite seu orçamento.",
+      "direction": "firme e natural",
+      "filename": "scene-08-outro.mp3"
+    }
+  ],
+  "music": {
+    "description": "Instrumental eletrônico/cinemático minimalista, sem voz, licença comercial verificada.",
+    "filename": "audio/music/bed.wav",
+    "licenseRequired": true
+  },
+  "mix": {
+    "sampleRate": 48000,
+    "bitDepth": 24,
+    "targetIntegratedLufs": -16,
+    "truePeakDb": -1.5,
+    "voiceLevel": 1,
+    "musicLevelDuringVoice": 0.16,
+    "musicLevelBetweenVoice": 0.29,
+    "sfxLevel": 0.35,
+    "fadeInFrames": 24,
+    "fadeOutFrames": 45
+  },
+  "soundDesign": [
+    {
+      "id": "logo-rise",
+      "scene": "signature",
+      "offsetFrames": 12,
+      "filename": "rise.wav",
+      "description": "Elevação discreta"
+    },
+    {
+      "id": "diagnostics",
+      "scene": "diagnosis",
+      "offsetFrames": 58,
+      "filename": "precision-click.wav",
+      "description": "Detalhe mecânico"
+    },
+    {
+      "id": "airflow",
+      "scene": "flow",
+      "offsetFrames": 6,
+      "filename": "airflow.wav",
+      "description": "Fluxo de ar suave"
+    },
+    {
+      "id": "outro",
+      "scene": "outro",
+      "offsetFrames": 35,
+      "filename": "logo-resolve.wav",
+      "description": "Assinatura sonora"
+    }
+  ],
+  "safety": {
+    "consentForClonedVoices": true,
+    "commercialLicensesRequired": true,
+    "noCredentialsInBrowser": true,
+    "humanReviewBeforePublishing": true
+  }
+}

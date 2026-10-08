@@ -60,3 +60,55 @@ O pacote carrega League Spartan e Inter por @remotion/google-fonts antes de rend
 - https://www.remotion.dev/docs/sequence
 - https://www.remotion.dev/docs/animation
 - https://www.remotion.dev/docs/options/public-dir
+
+
+## Produção de áudio / Voice Studio
+
+Camadas disponíveis no Remotion:
+- **silent** (padrão): filme existente sem áudio, para manter CI e renders anteriores compatíveis.
+- **stems**: 8 locuções individuais alinhadas aos frames das cenas; trilha e SFX opcionais.
+- **master**: mix final WAV 48kHz exportado pelo Adobe Audition.
+
+### ElevenLabs (API segura no CLI)
+
+1. Configure as variáveis \`ELEVENLABS_API_KEY\` e \`ELEVENLABS_VOICE_ID\` no terminal local (arquivo \`.env\` não é carregado automaticamente e nunca deve ser versionado).
+2. \`npm run voice:plan\`: revisa roteiro e alinhamento sem chamadas à API.
+3. \`npm run voice:list\`: lista vozes disponíveis na sua conta.
+4. \`npm run voice:generate -- --scene=care --generate\`: uma cena; consome créditos.
+5. \`npm run voice:generate -- --all --generate\`: todas as cenas; consome créditos.
+
+Para consumir um roteiro personalizado exportado pelo editor web, use:
+\`npm run voice:generate -- --manifest=/CAMINHO/CLIMAX-VOICE-PROJECT.json --all --generate\`.
+
+### Audition (handoff nativo e mixagem)
+
+Após gerar as 8 locuções, execute \`npm run audition:prepare\` (necessário FFmpeg + ffprobe).
+Será criada uma pasta local \`audio-workspace/audition/\` com WAVs 48kHz, voiceover-aligned.wav, cue-sheet.csv e instruções de edição.
+
+O Audition deve ser usado para criar e salvar a sessão nativa \`.sesx\`, equalização, compressão e mixagem. Não é anunciada integração direta com uma API inexistente do Audition.
+
+Exporte \`04-mixdown/final-mix.wav\` estéreo 48kHz/24bit e execute \`npm run audition:import\`.
+
+### Renderização
+
+- \`npm run render:audio:wide -- --mode=stems\`
+- \`npm run render:audio:vertical -- --mode=stems\`
+- \`npm run render:audio:wide -- --mode=master\`
+- \`npm run render:audio:portrait -- --mode=master\`
+
+\`--mode=stems\` exige as oito vozes; \`--mode=master\` exige a mixagem final.
+As locuções e o mix final ficam no diretório local \`public/audio/\` (gitignored), nunca no GitHub.
+
+### Direitos, qualidade e segurança
+
+- ElevenLabs é pago por uso/plano; o CLI exige \`--generate\` explícito.
+- Não armazenar chaves em JS de navegador, repositório, commits ou JSON público.
+- Usar voz própria/licenciada e obter consentimento específico para clonagem de voz.
+- Selecionar música e efeitos com licenças comerciais documentadas.
+- Conferir tempos da fala, pronúncia, mixagem, loudness/true peak e áreas seguras antes de publicar.
+- Os scripts sem chave são testados na CI; chamadas cobradas dependem de credenciais do proprietário.
+
+
+## Pipeline cinematográfico de áudio
+
+Consulte [docs/audio-production.md](../../../docs/audio-production.md) para ElevenLabs, entrega Audition, mixagem e Remotion.

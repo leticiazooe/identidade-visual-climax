@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0.0",
+  "workflow": "ElevenLabs CLI → Adobe Audition WAV stems → Remotion",
+  "audio": {
+    "voiceDir": "public/audio/voice",
+    "music": "public/audio/music/bed.wav",
+    "sfxDir": "public/audio/sfx",
+    "master": "public/audio/mix/final-mix.wav",
+    "auditionDir": "audio-workspace/audition"
+  },
+  "profiles": [
+    {
+      "id": "institutional",
+      "name": "Institucional Premium"
+    },
+    {
+      "id": "technical",
+      "name": "Explicação Técnica"
+    },
+    {
+      "id": "social",
+      "name": "Campanha Social"
+    }
+  ],
+  "status": {
+    "elevenlabs": "requires-key-and-voice",
+    "audition": "native-session-manual-handoff",
+    "remotion": "audio-layer-implemented; qa-pending",
+    "render": "not-yet-rendered"
+  }
+}

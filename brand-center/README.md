@@ -58,3 +58,11 @@ Os logos e mascotes oficiais continuam em `../assets/`, sem duplicação.
 Mudanças em masters visuais, tipografia, tokens globais, componentes base, regras editoriais ou motion devem ser versionadas e revisadas antes de substituir as versões vigentes.
 
 Mantenha o Brand Book, os tokens, a biblioteca, os componentes, os templates e o editor sincronizados após mudanças relevantes.
+
+## Estúdio de Áudio e Locução
+
+- [Estúdio de Áudio](sections/audio-production.html): editor de roteiro por oito cenas, cronologia, exportação JSON e cue-sheet CSV.
+- [Manifest de voz](data/audio-production.json): roteiros, interpretação, mixagem e trilha.
+- [CLI ElevenLabs, Audition e Remotion](../motion/remotion/README.md): produção de takes, export para mixagem e render de vídeo narrado.
+
+**Segurança:** a chave ElevenLabs fica somente no terminal local; o site público nunca solicita ou grava credenciais. O Audition opera por arquivos WAV, sem alegar edição remota automática.

@@ -34,4 +34,14 @@ const frames=motion.scenes.reduce((acc,s)=>acc+s.frames,0)-(motion.scenes.length
 if(frames!==motion.totalFrames)fail("Duração Remotion divergente.");
 const check=spawnSync(process.execPath,["--check",path.join(root,"brand-center/post-studio/studio.js")],{encoding:"utf8"});
 if(check.status!==0)fail("studio.js inválido: "+check.stderr);
+const audio=json("brand-center/data/audio-production.json");
+if(audio.scenes.length!==motion.scenes.length)fail("Áudio tem cenas divergentes.");
+for(let i=0;i<audio.scenes.length;i++){
+ if(audio.scenes[i].id!==motion.scenes[i].id||audio.scenes[i].frames!==motion.scenes[i].frames)fail("Áudio fora da timeline: "+i);
+ if(!audio.scenes[i].text||audio.scenes[i].text.length>650)fail("Locução inválida: "+i);
+}
+if(!master.includes('data-doc="audio-production"'))fail("Estúdio de áudio não está no menu.");
+const audioCheck=spawnSync(process.execPath,["--check",path.join(root,"brand-center/audio-studio.js")],{encoding:"utf8"});
+if(audioCheck.status!==0)fail("audio-studio.js inválido: "+audioCheck.stderr);
+console.log("PASS: 8 cenas de locução, audio-studio.js e timeline compatíveis.");
 console.log("PASS: 14 presets, 7 formatos, links de mascotes, marca, JS e 8 cenas / "+frames+" frames.");

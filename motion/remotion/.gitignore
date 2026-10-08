@@ -4,3 +4,9 @@ out/
 *.mp4
 *.webm
 *.mov
+
+.env
+.env.*
+!.env.example
+audio-workspace/
+.audio-render-props.json
