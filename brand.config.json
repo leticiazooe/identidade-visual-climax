@@ -7,12 +7,13 @@
   "visualSystem": "CLIMAX HVAC Digital Brand",
   "theme": {
     "primary": "#0B5BA5",
-    "navy": "#052D53",
+    "navy": "#042F4C",
     "midnight": "#021F33",
     "ice": "#F1F2F2",
     "mist": "#E9F3FC",
     "white": "#FFFFFF",
-    "text": "#18222C"
+    "text": "#18222C",
+    "socialDeep": "#052D53"
   },
   "typography": {
     "family": {
