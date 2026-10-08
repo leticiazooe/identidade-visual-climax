@@ -1,0 +1,19 @@
+name: CLIMAX / Brand Studio Quality
+on:
+  pull_request:
+    paths:
+      - 'brand-center/**'
+      - 'brand.config.json'
+      - 'scripts/validate-brand-center.mjs'
+      - '.github/workflows/climax-post-studio.yml'
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar conteúdo, formatos, scripts e assets
+        run: node scripts/validate-brand-center.mjs
