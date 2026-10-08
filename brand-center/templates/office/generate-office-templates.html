@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CLIMAX · Gerador de Templates Office</title>
+<link rel="stylesheet" href="../../shared.css">
+</head>
+<body>
+<main class="wrap">
+<section class="hero">
+  <div>
+    <span class="eyebrow">Templates realmente editáveis · Office</span>
+    <h1>Gerar PPTX e DOCX.</h1>
+    <p>Os arquivos são construídos no navegador com texto, formas, tabelas e placeholders editáveis. Nada é achatado em imagem.</p>
+  </div>
+  <div class="hero-side">
+    <div><b>PPTX</b><span>5 slides master</span></div>
+    <div><b>DOCX</b><span>blocos reutilizáveis</span></div>
+    <div><b>Campos</b><span>{{CAMPO}}</span></div>
+    <div><b>Privacidade</b><span>geração local no navegador</span></div>
+  </div>
+</section>
+
+<div class="note"><b>Dependências:</b> PptxGenJS e docx são carregados por CDN apenas para gerar os arquivos. O conteúdo preenchido não é enviado pelo Brand Center.</div>
+
+<section class="section">
+  <div class="section-head"><div><span class="kicker">01 · Apresentação</span><h2>CLIMAX Presentation Master</h2></div><p>Capa, conteúdo/KPI, técnico, social 4:5 e encerramento.</p></div>
+  <div class="card"><div class="button-row"><button class="button" id="pptxBtn">Gerar e baixar PPTX</button></div><p style="margin-top:12px">Formato 16:9. Texto e formas continuam editáveis no PowerPoint.</p></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div><span class="kicker">02 · Documentos</span><h2>CLIMAX Documents Master</h2></div><p>Proposta, relatório, datasheet, case e documentação em blocos reutilizáveis.</p></div>
+  <div class="card"><div class="button-row"><button class="button" id="docxBtn">Gerar e baixar DOCX</button></div><p style="margin-top:12px">O documento usa estilos, headings, tabela de escopo e placeholders editáveis.</p></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div><span class="kicker">03 · Convenção</span><h2>Placeholders.</h2></div><p>Use a mesma sintaxe em qualquer master.</p></div>
+  <pre class="code">{{TÍTULO}}
+{{CLIENTE}}
+{{DATA}}
+{{RESPONSÁVEL}}
+{{CONTEXTO}}
+{{ESCOPO}}
+{{EVIDÊNCIAS}}
+{{RESULTADO}}
+{{CTA}}</pre>
+</section>
+
+<footer class="footer">CLIMAX · Gerador Office · v1.0</footer>
+</main>
+
+<script type="module">
+import PptxGenJS from "https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/+esm";
+import {Document,Packer,Paragraph,TextRun,HeadingLevel,Table,TableRow,TableCell,WidthType,AlignmentType} from "https://cdn.jsdelivr.net/npm/docx@9.5.1/+esm";
+
+const BLUE="0B5BA5", NAVY="042F4C", NAVY2="021F33", ICE="8DE8F7", WHITE="F1F2F2", INK="102633", MUTED="60717B";
+
+document.getElementById("pptxBtn").addEventListener("click", async () => {
+  const pptx=new PptxGenJS();
+  pptx.layout="LAYOUT_WIDE";
+  pptx.author="CLIMAX Refrigeração";
+  pptx.subject="Template editável";
+  pptx.title="CLIMAX Presentation Master";
+  pptx.theme={headFontFace:"League Spartan",bodyFontFace:"Inter",lang:"pt-BR"};
+
+  const addBrand=(slide,dark=false)=>{
+    slide.addText("CLIMAX",{x:.65,y:.45,w:2.3,h:.45,fontFace:"League Spartan",fontSize:22,bold:true,color:dark?WHITE:NAVY2});
+    slide.addText("REFRIGERAÇÃO",{x:.67,y:.88,w:2.2,h:.22,fontFace:"Inter",fontSize:7,bold:true,color:dark?ICE:BLUE,charSpacing:1.4});
+  };
+
+  let s=pptx.addSlide();
+  s.background={color:NAVY2};
+  addBrand(s,true);
+  s.addText("{{TÍTULO_DA_APRESENTAÇÃO}}",{x:.75,y:2.15,w:8.9,h:.9,fontFace:"League Spartan",fontSize:32,bold:true,color:WHITE});
+  s.addText("{{SUBTÍTULO / CONTEXTO}}",{x:.77,y:3.15,w:7.6,h:.45,fontFace:"Inter",fontSize:12,color:"BFD7E2"});
+  s.addText("{{DATA}} · {{RESPONSÁVEL}}",{x:.77,y:6.45,w:5.5,h:.25,fontFace:"Inter",fontSize:8,color:ICE});
+
+  s=pptx.addSlide();
+  s.background={color:"F4F8F9"};
+  addBrand(s);
+  s.addText("01",{x:.7,y:.45,w:.4,h:.25,fontSize:10,bold:true,color:BLUE});
+  s.addText("{{SEÇÃO}}",{x:1.1,y:.43,w:2.4,h:.3,fontFace:"Inter",fontSize:9,bold:true,color:MUTED});
+  s.addText("{{HEADLINE PRINCIPAL}}",{x:.72,y:1.25,w:7.8,h:.65,fontFace:"League Spartan",fontSize:27,bold:true,color:NAVY2});
+  s.addText("{{Texto curto que contextualiza o problema, a solução ou o benefício.}}",{x:.72,y:2.05,w:8.8,h:.55,fontFace:"Inter",fontSize:11,color:MUTED});
+  [0,1,2].forEach((i)=>{
+    const x=.72+i*3.15;
+    s.addShape(pptx.ShapeType.roundRect,{x,y:3.4,w:2.85,h:1.25,rectRadius:.08,fill:{color:"FFFFFF"},line:{color:"D9E5E9"}});
+    s.addText("{{KPI_"+(i+1)+"}}",{x:x+.22,y:3.68,w:1.2,h:.22,fontSize:8,bold:true,color:BLUE});
+    s.addText("{{VALOR}}",{x:x+.22,y:4.08,w:2.2,h:.35,fontFace:"League Spartan",fontSize:20,bold:true,color:NAVY2});
+  });
+
+  s=pptx.addSlide();
+  s.background={color:NAVY2};
+  addBrand(s,true);
+  s.addText("{{TÍTULO TÉCNICO}}",{x:.75,y:1.35,w:4.6,h:.6,fontFace:"League Spartan",fontSize:28,bold:true,color:WHITE});
+  s.addText("{{Explique o serviço, diagnóstico, etapas ou recomendação.}}",{x:.77,y:2.08,w:4.5,h:.65,fontFace:"Inter",fontSize:11,color:"BFD7E2"});
+  ["{{ETAPA 1}}","{{ETAPA 2}}","{{ETAPA 3}}"].forEach((t,i)=>s.addText(t,{x:1.05,y:3.0+i*.66,w:3.7,h:.28,fontSize:10,bold:true,color:WHITE}));
+  s.addShape(pptx.ShapeType.roundRect,{x:7.15,y:.8,w:4.1,h:5.6,rectRadius:.14,fill:{color:"1766A7"},line:{color:ICE,transparency:55}});
+  s.addText("{{FOTO / MASCOTE / DIAGRAMA}}",{x:7.6,y:3.35,w:3.2,h:.4,fontSize:9,bold:true,color:WHITE,align:"center"});
+
+  s=pptx.addSlide();
+  s.background={color:"F4F8F9"};
+  addBrand(s);
+  s.addText("Template social · 4:5",{x:.75,y:.6,w:3.3,h:.35,fontFace:"League Spartan",fontSize:16,bold:true,color:NAVY2});
+  s.addShape(pptx.ShapeType.roundRect,{x:1.6,y:1.25,w:3.25,h:5.75,rectRadius:.14,fill:{color:NAVY2},line:{color:"D9E5E9"}});
+  s.addText("{{HEADLINE}}",{x:1.95,y:3.0,w:2.45,h:1.1,fontFace:"League Spartan",fontSize:25,bold:true,color:WHITE});
+  s.addText("{{SUBTÍTULO}}",{x:1.95,y:4.3,w:2.3,h:.7,fontFace:"Inter",fontSize:8,color:"BFD7E2"});
+  s.addShape(pptx.ShapeType.roundRect,{x:1.95,y:6.05,w:1.8,h:.48,rectRadius:.1,fill:{color:BLUE},line:{color:BLUE}});
+  s.addText("{{CTA}}",{x:2.05,y:6.18,w:1.6,h:.15,fontSize:8,bold:true,color:WHITE,align:"center"});
+
+  s=pptx.addSlide();
+  s.background={color:"1766A7"};
+  addBrand(s,true);
+  s.addText("{{MENSAGEM FINAL}}",{x:.9,y:2.6,w:8.5,h:.8,fontFace:"League Spartan",fontSize:32,bold:true,color:WHITE});
+  s.addText("{{Contato / site / WhatsApp}}",{x:.92,y:3.58,w:5.5,h:.4,fontFace:"Inter",fontSize:11,color:"D7F4F8"});
+  s.addText("Conforto · Climatização · Refrigeração",{x:.92,y:6.55,w:4.5,h:.25,fontSize:8,color:ICE});
+
+  await pptx.writeFile({fileName:"climax-presentation-master-template.pptx"});
+});
+
+document.getElementById("docxBtn").addEventListener("click", async () => {
+  const p=(text)=>new Paragraph({text,spacing:{after:140}});
+  const h=(text,level=HeadingLevel.HEADING_1)=>new Paragraph({text,heading:level,spacing:{before:260,after:120}});
+  const table=new Table({
+    width:{size:100,type:WidthType.PERCENTAGE},
+    rows:[
+      new TableRow({children:["Item","Descrição","Status"].map(t=>new TableCell({children:[p(t)]}))}),
+      ...[1,2,3,4].map(()=>new TableRow({children:[
+        new TableCell({children:[p("{{ITEM}}")]}),
+        new TableCell({children:[p("{{DESCRIÇÃO}}")]}),
+        new TableCell({children:[p("{{STATUS}}")]})
+      ]}))
+    ]
+  });
+
+  const doc=new Document({
+    creator:"CLIMAX Refrigeração",
+    title:"CLIMAX Documents Master",
+    styles:{
+      default:{document:{run:{font:"Inter",size:22,color:INK},paragraph:{spacing:{line:276}}}},
+      paragraphStyles:[
+        {id:"Title",name:"Title",basedOn:"Normal",next:"Normal",run:{font:"League Spartan",size:44,bold:true,color:NAVY2},paragraph:{spacing:{after:240}}},
+        {id:"Heading1",name:"Heading 1",basedOn:"Normal",next:"Normal",run:{font:"League Spartan",size:28,bold:true,color:BLUE},paragraph:{spacing:{before:280,after:120}}}
+      ]
+    },
+    sections:[
+      {children:[
+        new Paragraph({children:[new TextRun({text:"CLIMAX",bold:true,size:34,color:BLUE,font:"League Spartan"})]}),
+        p("REFRIGERAÇÃO"),
+        new Paragraph({text:"{{TIPO_DO_DOCUMENTO}}",style:"Title"}),
+        p("{{TÍTULO}}"),
+        p("{{CLIENTE}} · {{DATA}} · {{RESPONSÁVEL}}")
+      ]},
+      {children:[
+        h("1. Resumo executivo"),p("{{RESUMO_EXECUTIVO}}"),
+        h("2. Contexto / necessidade"),p("{{CONTEXTO}}"),
+        h("3. Escopo"),table,
+        h("4. Solução / metodologia"),p("{{SOLUÇÃO_OU_METODOLOGIA}}"),
+        h("5. Evidências, dados ou resultados"),p("{{EVIDÊNCIAS}}"),
+        h("6. Próximos passos"),p("{{AÇÃO_1}} · {{AÇÃO_2}} · {{AÇÃO_3}}")
+      ]},
+      {children:[
+        h("Blocos reutilizáveis"),
+        h("Proposta comercial",HeadingLevel.HEADING_2),p("Investimento: {{VALOR}} · Condições: {{CONDIÇÕES}} · Validade: {{VALIDADE}}"),
+        h("Relatório técnico",HeadingLevel.HEADING_2),p("Diagnóstico: {{DIAGNÓSTICO}} · Recomendação: {{RECOMENDAÇÃO}}"),
+        h("Datasheet",HeadingLevel.HEADING_2),p("Modelo: {{MODELO}} · Capacidade: {{CAPACIDADE}} · Aplicação: {{APLICAÇÃO}}"),
+        h("Case",HeadingLevel.HEADING_2),p("Contexto → Desafio → Solução → Resultado · {{CASE}}")
+      ]}
+    ]
+  });
+
+  const blob=await Packer.toBlob(doc);
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download="climax-documents-master-template.docx";
+  a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+});
+</script>
+</body>
+</html>

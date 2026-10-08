@@ -1,0 +1,22 @@
+{
+  "brand":"CLIMAX Refrigeração",
+  "version":"1.0",
+  "components":[
+    {"name":"Button","variants":["primary","secondary","ghost"],"states":["default","hover","focus","disabled"],"minHeight":44},
+    {"name":"Input","states":["default","focus","error","disabled"],"label":"persistent"},
+    {"name":"Select","states":["default","focus","error","disabled"],"label":"persistent"},
+    {"name":"Textarea","states":["default","focus","error","disabled"],"label":"persistent"},
+    {"name":"Tabs","states":["default","hover","selected","focus"]},
+    {"name":"Chip","uses":["filter","tag","metadata"]},
+    {"name":"Status","variants":["success","warning","danger","info"],"rule":"color-is-not-the-only-signal"},
+    {"name":"Card","uses":["service","content","contact","KPI"]},
+    {"name":"Table","rules":["header-visible","numeric-alignment","predictable-actions"]},
+    {"name":"Alert","variants":["info","success","warning","danger"]},
+    {"name":"Modal","rules":["one-decision","title-context-actions","no-modal-stacking"]},
+    {"name":"EmptyState","rules":["explain-cause","offer-next-step"]},
+    {"name":"Loading","rules":["avoid-false-error","reduced-motion"]},
+    {"name":"KPI","rules":["number-context-period","unit-visible"]},
+    {"name":"Tooltip","rules":["supplementary-only","never-hide-essential-information"]}
+  ],
+  "accessibility":{"baseText":16,"minControlHeight":44,"focusVisible":true,"reducedMotion":true}
+}

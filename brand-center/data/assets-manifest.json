@@ -1,0 +1,33 @@
+{
+  "brand":"CLIMAX Refrigeração",
+  "version":"2.1",
+  "updated":"2026-10-07",
+  "sourceOfTruth":"leticiazooe/identidade-visual-climax",
+  "assets":[
+    {"id":"logo-wordmark-blue-svg","category":"logo","path":"assets/logos/ESCRITA AZUL SVG.svg","format":"SVG","role":"master-vector","usage":"fundos claros"},
+    {"id":"logo-wordmark-blue-png","category":"logo","path":"assets/logos/ESCRITA AZUL PNG.png","format":"PNG","role":"quick-raster","usage":"fundos claros"},
+    {"id":"logo-wordmark-white-svg","category":"logo","path":"assets/logos/ESCRITA BRANCA SVG.svg","format":"SVG","role":"master-vector","usage":"fundos escuros"},
+    {"id":"logo-wordmark-white-png","category":"logo","path":"assets/logos/ESCRITA BRANCA PNG.png","format":"PNG","role":"quick-raster","usage":"fundos escuros"},
+    {"id":"logo-blue-bg-svg","category":"logo","path":"assets/logos/LOGO AZUL - ESCRITA BRANCA.svg","format":"SVG","role":"master-vector","usage":"assinatura institucional fechada"},
+    {"id":"logo-blue-bg-png","category":"logo","path":"assets/logos/LOGO AZUL - ESCRITA BRANCA.png","format":"PNG","role":"quick-raster","usage":"assinatura institucional fechada"},
+    {"id":"logo-light-bg-svg","category":"logo","path":"assets/logos/LOGO FUNDO BRANCO - ESCRITA AZUL.svg","format":"SVG","role":"master-vector","usage":"assinatura institucional clara"},
+    {"id":"logo-light-bg-png","category":"logo","path":"assets/logos/LOGO FUNDO BRANCO - ESCRITA AZUL.png","format":"PNG","role":"quick-raster","usage":"assinatura institucional clara"},
+    {"id":"mascot-01","category":"mascot","path":"assets/mascotes/01-mascote-apontando-para-cima-invertido.png","format":"PNG","usage":"CTA vertical e destaque"},
+    {"id":"mascot-02","category":"mascot","path":"assets/mascotes/02-mascote-principal-corpo-inteiro.png","format":"PNG","usage":"principal / campanhas"},
+    {"id":"mascot-03","category":"mascot","path":"assets/mascotes/03-mascote-recepcao-mao-estendida.png","format":"PNG","usage":"recepção e atendimento"},
+    {"id":"mascot-04","category":"mascot","path":"assets/mascotes/04-mascote-circulo-busto.png","format":"PNG","usage":"avatar e selo"},
+    {"id":"mascot-05","category":"mascot","path":"assets/mascotes/05-mascote-apontando-cta.png","format":"PNG","usage":"CTA comercial"},
+    {"id":"mascot-06","category":"mascot","path":"assets/mascotes/06-mascote-com-manifold.png","format":"PNG","usage":"manutenção / HVAC"},
+    {"id":"mascot-07","category":"mascot","path":"assets/mascotes/07-mascote-tecnico-termometro.png","format":"PNG","usage":"diagnóstico e conteúdo técnico"},
+    {"id":"mascot-08","category":"mascot","path":"assets/mascotes/08-mascote-positivo.png","format":"PNG","usage":"pós-venda e prova social"},
+    {"id":"mascot-09","category":"mascot","path":"assets/mascotes/09-mascote-tecnico-condensadora-manifold.png","format":"PNG","usage":"instalação e condensadora"},
+    {"id":"mascot-10","category":"mascot","path":"assets/mascotes/10-mascote-serio-apontando-para-cima.png","format":"PNG","usage":"orientação técnica"}
+  ],
+  "production":{
+    "tokens":["brand-center/data/tokens.css","brand-center/data/tokens.json"],
+    "ui":["brand-center/data/ui.css","brand-center/data/component-manifest.json"],
+    "editorial":["brand-center/editorial/content-style-guide.md","brand-center/editorial/content-templates.json"],
+    "motion":["brand-center/motion-production/motion-manifest.json","brand-center/motion-production/source/motion-source.html","brand-center/motion-production/source/motion.css"],
+    "templates":["brand-center/templates/metadata/template-manifest.json","brand-center/templates/office/generate-office-templates.html"]
+  }
+}
