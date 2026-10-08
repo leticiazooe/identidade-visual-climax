@@ -131,7 +131,7 @@ function Care({variant}:SceneProps){
   <div style={{display:"grid",gap:15,marginTop:55}}>
   {["Mais eficiência","Atenção aos sinais","Vida útil preservada"].map((x,i)=><div key={x} style={{...reveal(frame,75+i*14,l.fps),font:"700 "+(l.vertical?33:26)+"px "+font.body,color:C.white,borderLeft:"5px solid "+C.ice,paddingLeft:20}}>{x}</div>)}
   </div></div>
-  <Img src={staticFile("assets/mascotes/06-mascote-com-manifold.png")} style={{position:l.vertical?"absolute":"relative",right:l.vertical?-160:0,bottom:l.vertical?80:0,maxWidth:l.vertical?"78%":"42%",maxHeight:l.vertical?"55%":"90%",objectFit:"contain",objectPosition:"center bottom",filter:"drop-shadow(0 35px 40px rgba(0,0,0,.12))",opacity:interpolate(frame,[15,60],[0,1],{extrapolateRight:"clamp"}),transform:"translateY("+(Math.sin(frame/35)*13)+"px)"}}/>
+  <Img src={staticFile("assets/mascotes/06-mascote-com-manifold.png")} style={{position:l.vertical?"absolute":"relative",right:l.vertical?20:0,bottom:l.vertical?80:0,maxWidth:l.vertical?"68%":"42%",maxHeight:l.vertical?"55%":"90%",objectFit:"contain",objectPosition:"center bottom",filter:"drop-shadow(0 35px 40px rgba(0,0,0,.12))",opacity:interpolate(frame,[15,60],[0,1],{extrapolateRight:"clamp"}),transform:"translateY("+(Math.sin(frame/35)*13)+"px)"}}/>
  </div></SceneShell>;
 }
 function Flow({variant}:SceneProps){
@@ -168,7 +168,7 @@ function Proof({variant}:SceneProps){
   <Kinetic lines={["Técnica.","Organização.","Confiança."]} size={l.vertical?125:117} light/>
   <p style={{...reveal(frame,92,l.fps),font:"500 "+(l.vertical?34:28)+"px/1.4 "+font.body,color:"#4E687A",maxWidth:830}}>Do primeiro contato aos cuidados recorrentes, uma experiência profissional e próxima.</p>
   </div>
-  <Img src={staticFile("assets/mascotes/08-mascote-positivo.png")} style={{position:l.vertical?"absolute":"relative",right:l.vertical?-145:0,bottom:l.vertical?80:0,maxWidth:l.vertical?"78%":"42%",maxHeight:l.vertical?"53%":"88%",objectFit:"contain",objectPosition:"bottom",opacity:interpolate(frame,[24,64],[0,1],{extrapolateRight:"clamp"}),transform:"translateY("+(Math.sin(frame/40)*10)+"px)"}}/>
+  <Img src={staticFile("assets/mascotes/08-mascote-positivo.png")} style={{position:l.vertical?"absolute":"relative",right:l.vertical?20:0,bottom:l.vertical?80:0,maxWidth:l.vertical?"68%":"42%",maxHeight:l.vertical?"53%":"88%",objectFit:"contain",objectPosition:"bottom",opacity:interpolate(frame,[24,64],[0,1],{extrapolateRight:"clamp"}),transform:"translateY("+(Math.sin(frame/40)*10)+"px)"}}/>
  </div></SceneShell>;
 }
 function Outro({variant}:SceneProps){
