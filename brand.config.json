@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "climax",
+  "name": "CLIMAX Refrigeração",
+  "status": "defined",
+  "parentBrand": null,
+  "visualSystem": "CLIMAX HVAC Digital Brand",
+  "theme": {
+    "primary": "#0B5BA5",
+    "navy": "#052D53",
+    "midnight": "#021F33",
+    "ice": "#F1F2F2",
+    "mist": "#E9F3FC",
+    "white": "#FFFFFF",
+    "text": "#18222C"
+  },
+  "typography": {
+    "family": {
+      "brand": "League Spartan, sans-serif",
+      "body": "Inter, sans-serif"
+    },
+    "minimumTextSize": "16px"
+  },
+  "tokens": {
+    "json": "brand-center/data/tokens.json",
+    "css": "brand-center/data/tokens.css",
+    "uiCss": "brand-center/data/ui.css"
+  },
+  "assets": {
+    "logos": [
+      "assets/logos/ESCRITA AZUL SVG.svg",
+      "assets/logos/ESCRITA BRANCA SVG.svg",
+      "assets/logos/LOGO AZUL - ESCRITA BRANCA.svg",
+      "assets/logos/LOGO FUNDO BRANCO - ESCRITA AZUL.svg"
+    ],
+    "mascotsDirectory": "assets/mascotes"
+  },
+  "editorial": "brand-center/editorial/content-style-guide.md",
+  "posts": {
+    "editor": "brand-center/post-studio/index.html",
+    "config": "brand-center/post-studio/brand.config.json",
+    "presets": "brand-center/post-studio/posts.json",
+    "formats": "brand-center/post-studio/formats.json"
+  },
+  "motion": {
+    "engine": "remotion",
+    "source": "motion/remotion",
+    "manifest": "motion/remotion/film.config.json",
+    "fps": 30,
+    "filmDurationSeconds": 68.4,
+    "scenes": 8,
+    "compositions": [
+      "CLIMAX-Film-16x9",
+      "CLIMAX-Film-9x16",
+      "CLIMAX-Film-4x5",
+      "CLIMAX-Film-1x1"
+    ],
+    "renderedAssetsStatus": "not-rendered"
+  },
+  "source": {
+    "repository": "leticiazooe/identidades-visuais",
+    "path": "climax/"
+  },
+  "updated": "2026-10-07"
+}
