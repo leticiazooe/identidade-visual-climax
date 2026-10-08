@@ -1,0 +1,101 @@
+{
+  "brand": "CLIMAX Refrigeração",
+  "version": "1.0",
+  "reviewedAt": "2026-10-07",
+  "fps": 30,
+  "transitionFrames": 24,
+  "totalFrames": 2052,
+  "formats": {
+    "16x9": {
+      "width": 1920,
+      "height": 1080
+    },
+    "9x16": {
+      "width": 1080,
+      "height": 1920
+    },
+    "4x5": {
+      "width": 1080,
+      "height": 1350
+    },
+    "1x1": {
+      "width": 1080,
+      "height": 1080
+    }
+  },
+  "scenes": [
+    {
+      "id": "signature",
+      "name": "A assinatura",
+      "frames": 240,
+      "concept": "logo reveal + fluxo de ar sutil",
+      "direction": "scale / opacity / slow orbit"
+    },
+    {
+      "id": "problem",
+      "name": "O desconforto",
+      "frames": 300,
+      "concept": "calor e ar instável antes da climatização",
+      "direction": "cinematic typography + thermal orbit"
+    },
+    {
+      "id": "diagnosis",
+      "name": "Diagnóstico técnico",
+      "frames": 300,
+      "concept": "avaliação e clareza",
+      "direction": "staggered diagnostics + diagram"
+    },
+    {
+      "id": "care",
+      "name": "Manutenção preventiva",
+      "frames": 300,
+      "concept": "mascote + benefícios",
+      "direction": "staggered benefit cards + parallax"
+    },
+    {
+      "id": "flow",
+      "name": "Fluxo de ar",
+      "frames": 270,
+      "concept": "energia e ventilação",
+      "direction": "vector airflow + overshoot-free spring"
+    },
+    {
+      "id": "solutions",
+      "name": "Soluções CLIMAX",
+      "frames": 270,
+      "concept": "instalação, manutenção e suporte",
+      "direction": "card reveals + masked panels"
+    },
+    {
+      "id": "proof",
+      "name": "Padrão profissional",
+      "frames": 300,
+      "concept": "confiança, planejamento e cuidado",
+      "direction": "editorial kinetic typography"
+    },
+    {
+      "id": "outro",
+      "name": "Chamada para ação",
+      "frames": 240,
+      "concept": "logo e CTA",
+      "direction": "slow resolve + CTA reveal"
+    }
+  ],
+  "output": {
+    "codec": "h264",
+    "container": "mp4",
+    "audio": "none",
+    "quality": "review-before-publish"
+  },
+  "professionalPrinciples": [
+    "frame-deterministic animations",
+    "storyboarded narrative",
+    "staggered typography",
+    "layered motion",
+    "reduced visual noise",
+    "brand assets from official repository",
+    "aspect-aware composition",
+    "safe areas for vertical formats",
+    "no unlicensed stock footage"
+  ]
+}
