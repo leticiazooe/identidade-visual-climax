@@ -1,5 +1,5 @@
 import {chromium} from "playwright";
-import {mkdir,stat} from "node:fs/promises";
+import {mkdir,stat,readFile} from "node:fs/promises";
 import path from "node:path";
 
 const base=process.env.TEST_URL||"http://127.0.0.1:8000/brand-center/post-studio/";
@@ -31,14 +31,29 @@ try{
   await page.screenshot({path:path.join(output,id+".png"),fullPage:true});
   console.log("PASS:",id,metrics.w+"x"+metrics.h,metrics.label);
  }
- for(const [id,button,ext] of [["instagramFeedPortrait","exportPng","png"],["facebookFeed","exportJpeg","jpeg"],["whatsappStatus","exportPng","png"]]){
+ for(const id of formats){
   await page.selectOption("#format",id);
-  const [download]=await Promise.all([page.waitForEvent("download",{timeout:120000}),page.locator("#"+button).click()]);
-  const file=path.join(output,id+"-export."+ext);await download.saveAs(file);
-  const size=(await stat(file)).size;
-  if(size<50000)throw new Error("Exportação vazia: "+id+" "+size);
-  console.log("PASS export:",file,size+" bytes");
+  const [download]=await Promise.all([page.waitForEvent("download",{timeout:120000}),page.locator("#exportPng").click()]);
+  const file=path.join(output,id+"-export.png");
+  await download.saveAs(file);
+  const bytes=await readFile(file);
+  const expected=await page.evaluate(()=>{
+   const art=document.getElementById("artwork");
+   return {w:Number.parseInt(art.style.getPropertyValue("--w")),h:Number.parseInt(art.style.getPropertyValue("--h"))};
+  });
+  if(bytes.length<50000)throw new Error("PNG vazio: "+id+" "+bytes.length);
+  if(bytes.subarray(0,8).toString("hex")!=="89504e470d0a1a0a")throw new Error("Assinatura PNG inválida: "+id);
+  const width=bytes.readUInt32BE(16),height=bytes.readUInt32BE(20);
+  if(width!==expected.w||height!==expected.h)throw new Error("Dimensões incorretas: "+id+" "+width+"x"+height);
+  console.log("PASS export PNG",id,width+"x"+height,bytes.length+" bytes");
  }
+ await page.selectOption("#format","facebookFeed");
+ const [jpegDownload]=await Promise.all([page.waitForEvent("download",{timeout:120000}),page.locator("#exportJpeg").click()]);
+ const jpegFile=path.join(output,"facebookFeed-export.jpeg");
+ await jpegDownload.saveAs(jpegFile);
+ const jpeg=await readFile(jpegFile);
+ if(jpeg.length<50000||jpeg[0]!==0xff||jpeg[1]!==0xd8)throw new Error("Exportação JPEG inválida.");
+ console.log("PASS export JPEG facebookFeed",jpeg.length+" bytes");
  if(errors.length)throw new Error("Erros no navegador: "+errors.join(" | ").slice(0,2000));
- console.log("PASS: 7 screenshots, imagens oficiais, PNG e JPEG.");
+ console.log("PASS: 7 screenshots, 7 PNGs dimensionados, JPEG, imagens oficiais e ausência de erros.");
 }catch(err){await page.screenshot({path:path.join(output,"startup-failure.png"),fullPage:true}).catch(()=>null);throw err;}finally{await browser.close();}
