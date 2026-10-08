@@ -13,7 +13,10 @@ page.on("console",message=>{if(message.type()==="error")errors.push(message.text
 try{
  const response=await page.goto(base,{waitUntil:"domcontentloaded",timeout:60000});
  if(!response?.ok())throw new Error("Editor não respondeu HTTP 200");
- await page.locator("#preset option").first().waitFor();
+ await page.waitForTimeout(2300);
+ console.log("INIT",JSON.stringify(await page.evaluate(()=>({url:location.href,preset:document.getElementById("preset")?.options.length,notice:document.getElementById("progress")?.textContent,scripts:[...document.scripts].map(s=>s.src)}))));
+ console.log("BROWSER-ERRORS",errors);
+ await page.locator("#preset option").first().waitFor({timeout:10000});
  await page.locator("#artMascot").evaluate(img=>img.decode());
  const formats=await page.locator("#format option").evaluateAll(items=>items.map(item=>item.value));
  if(formats.length!==7)throw new Error("Esperados 7 formatos, obtidos "+formats.length);
@@ -38,4 +41,4 @@ try{
  }
  if(errors.length)throw new Error("Erros no navegador: "+errors.join(" | ").slice(0,2000));
  console.log("PASS: 7 screenshots, imagens oficiais, PNG e JPEG.");
-}finally{await browser.close();}
+}catch(err){await page.screenshot({path:path.join(output,"startup-failure.png"),fullPage:true}).catch(()=>null);throw err;}finally{await browser.close();}
