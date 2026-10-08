@@ -27,6 +27,13 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Verificar storyboard e assets
         run: npm run validate
+      - name: Validar roteiro de voz e CLI sem consumir créditos
+        run: |
+          npm run voice:plan
+          npm run audio:check
+          node --check scripts/voice-cli.mjs
+          node --check scripts/prepare-audition.mjs
+          node --check scripts/render-audio.mjs
       - name: Typecheck TypeScript
         run: npx tsc --noEmit
       - name: Renderizar 16:9
