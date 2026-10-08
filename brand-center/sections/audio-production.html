@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CLIMAX · Estúdio de Áudio e Locução</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=League+Spartan:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<link rel="stylesheet" href="../audio-studio.css">
+</head><body>
+<main class="audio-page">
+ <section class="audio-hero">
+  <div><span class="audio-eyebrow">CLIMAX / SOUND PRODUCTION SYSTEM</span>
+  <h1>Uma identidade que<br><em>também se ouve.</em></h1>
+  <p>Direção de voz, roteiros, trilhas, efeitos e finalização em oito cenas. Da primeira palavra ao último frame, cada camada tem uma intenção.</p>
+  <div class="hero-stats"><span>08 cenas</span><span>68,4 segundos</span><span>48 kHz / 24-bit</span><span>Português brasileiro</span></div>
+  </div>
+  <div class="hero-art"><div class="sound-ring one"></div><div class="sound-ring two"></div><div class="sound-ring three"></div><span>CLIMAX</span><small>SONIC IDENTITY</small></div>
+ </section>
+ <section class="editor-intro">
+  <div><span class="kicker">01 / DIREÇÃO CRIATIVA</span><h2>Uma história. Oito momentos.</h2><p>Selecione uma cena, ajuste o texto e a interpretação. A mesma estrutura controla a produção de voz e o posicionamento na timeline Remotion.</p></div>
+  <div class="editor-actions"><button class="button secondary" id="resetBtn">Restaurar roteiro</button><button class="button" id="downloadBtn">Baixar projeto JSON ↗</button></div>
+ </section>
+ <section class="timeline-shell">
+  <div class="timeline-meta"><strong>STORYBOARD / AUDIO TIMELINE</strong><span id="timelineStatus">Carregando…</span></div>
+  <div class="timeline" id="timeline" aria-label="Linha do tempo de oito cenas"></div>
+  <div class="timeline-axis"><span>00:00</span><span>00:17</span><span>00:34</span><span>00:51</span><span>01:08</span></div>
+ </section>
+ <section class="studio-grid">
+  <aside class="scene-picker"><div class="panel-header"><span class="kicker">CENAS</span><h3>Escolha um momento</h3></div><div id="scenes" class="scene-list"></div></aside>
+  <div class="scene-editor">
+   <div class="scene-top"><div><span class="kicker" id="selectedId">01 / ASSINATURA</span><h2 id="sceneTitle">A assinatura</h2></div><span class="scene-time" id="sceneTime">00:00</span></div>
+   <label for="sceneText">Texto de locução</label><textarea id="sceneText" rows="6" maxlength="650" spellcheck="true"></textarea>
+   <div class="analysis-row"><span id="count">0 caracteres</span><span id="readTime">Estimativa: 0s</span><span id="fitStatus">Tempo em análise</span></div>
+   <label for="sceneDirection">Direção de interpretação</label><input id="sceneDirection" maxlength="180" placeholder="Natural, segura, com pausas intencionais…">
+   <div class="voice-card">
+    <div><span class="kicker">DIREÇÃO DE VOZ</span><h3>CLIMAX Institucional</h3><p>Português brasileiro, adulto, preciso, elegante e acolhedor. Sem exageros de propaganda.</p></div>
+    <div class="voice-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+   </div>
+   <div class="audio-preview">
+    <div><strong>Ouvir take local</strong><p>Selecione um MP3 gerado. Ele não é enviado a servidores.</p></div>
+    <input type="file" id="sampleInput" accept=".mp3,audio/mpeg,.wav,audio/wav" aria-label="Abrir arquivo de voz para ouvir">
+    <audio id="localAudio" controls preload="metadata" hidden></audio>
+   </div>
+  </div>
+  <aside class="workflow-panel">
+   <div class="panel-header"><span class="kicker">02 / PIPELINE</span><h3>Da voz ao filme.</h3><p>Integração de produção, com chaves privadas apenas no terminal.</p></div>
+   <div class="workflow-step"><span class="step-num">01</span><div><strong>ElevenLabs</strong><p>Escolha a voz, gere takes por cena e revise interpretação.</p><small>API via CLI seguro</small></div></div>
+   <div class="workflow-step"><span class="step-num">02</span><div><strong>Adobe Audition</strong><p>WAVs e cue-sheet alinhados; equalização, compressão e mixagem.</p><small>Handoff de arquivos</small></div></div>
+   <div class="workflow-step"><span class="step-num">03</span><div><strong>Remotion</strong><p>Posicionamento por frame, ducking musical e exportação MP4.</p><small>React / TypeScript</small></div></div>
+   <div class="command-panel"><span>GERAR VOZ (CONSOME CRÉDITOS)</span><code>npm run voice:generate -- --all --generate</code><button id="copyCommand">Copiar comando</button></div>
+  </aside>
+ </section>
+ <section class="audio-bottom">
+  <div class="deliverable"><span class="kicker">03 / ARQUIVOS DE PRODUÇÃO</span><h2>Arquivos que seguem para o editor.</h2><p>Sem dependências de serviços expostos no navegador: roteiros JSON, guia de mixagem e tempos de edição.</p><div class="deliverable-row"><button class="button secondary" id="csvBtn">Exportar cue-sheet CSV</button><a class="button secondary" href="https://github.com/leticiazooe/identidade-visual-climax/tree/main/motion/remotion" target="_blank" rel="noopener">Documentação de produção ↗</a></div></div>
+  <div class="deliverable dark"><span class="kicker">04 / MIXAGEM PROFISSIONAL</span><h2>Voz + trilha + sound design.</h2><p>Mixagem final no Audition, depois sincronização automática no Remotion. Metas preliminares: -16 LUFS e -1,5 dBTP, sujeitas à medição real.</p><p class="warning">A geração de vozes reais exige uma conta ElevenLabs e credenciais configuradas localmente. Este editor não aceita nem armazena chaves de API.</p></div>
+ </section>
+ <footer class="audio-footer">CLIMAX Refrigeração · Audio Production System · Direção profissional com revisão humana obrigatória.</footer>
+</main>
+<script type="module" src="../audio-studio.js"></script>
+</body></html>
