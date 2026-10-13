@@ -4,13 +4,13 @@ import {ClimaxFilm} from "./ClimaxFilm";
 import {AudioTimeline,type AudioMode} from "./AudioTimeline";
 import film from "../film.config.json";
 type Variant="wide"|"vertical"|"portrait"|"square";
-type ProductionProps={variant:Variant;audioMode?:AudioMode;musicEnabled?:boolean;soundEffectsEnabled?:boolean};
-const Production:React.FC<ProductionProps>=({variant,audioMode="silent",musicEnabled=false,soundEffectsEnabled=false})=>
+type ProductionProps={variant:Variant;audioMode?:AudioMode;musicEnabled?:boolean;musicVolume?:number;soundEffectsEnabled?:boolean};
+const Production:React.FC<ProductionProps>=({variant,audioMode="silent",musicEnabled=false,musicVolume=0.16,soundEffectsEnabled=false})=>
  <AbsoluteFill>
   <ClimaxFilm variant={variant}/>
-  <AudioTimeline mode={audioMode} musicEnabled={musicEnabled} soundEffectsEnabled={soundEffectsEnabled}/>
+  <AudioTimeline mode={audioMode} musicEnabled={musicEnabled} musicVolume={musicVolume} soundEffectsEnabled={soundEffectsEnabled}/>
  </AbsoluteFill>;
-const defaultProps=(variant:Variant):ProductionProps=>({variant,audioMode:"silent",musicEnabled:false,soundEffectsEnabled:false});
+const defaultProps=(variant:Variant):ProductionProps=>({variant,audioMode:"silent",musicEnabled:false,musicVolume:0.16,soundEffectsEnabled:false});
 export const RemotionRoot:React.FC=()=>(
  <Folder name="CLIMAX-Filmes-de-Marca">
   <Composition id="CLIMAX-Film-16x9" component={Production} durationInFrames={film.totalFrames} fps={film.fps} width={film.formats["16x9"].width} height={film.formats["16x9"].height} defaultProps={defaultProps("wide")}/>

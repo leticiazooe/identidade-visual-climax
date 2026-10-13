@@ -5,7 +5,7 @@ import film from "../film.config.json";
 import production from "../../../brand-center/data/audio-production.json";
 
 export type AudioMode="silent"|"stems"|"master";
-type Props={mode:AudioMode;musicEnabled?:boolean;soundEffectsEnabled?:boolean};
+type Props={mode:AudioMode;musicEnabled?:boolean;musicVolume?:number;soundEffectsEnabled?:boolean};
 const startFrames=film.scenes.map((_,i)=>film.scenes.slice(0,i).reduce((sum,s)=>sum+s.frames-film.transitionFrames,0));
 const windows=production.scenes.map((s,i)=>({
  start:startFrames[i]+production.leadInFrames,
@@ -14,7 +14,7 @@ const windows=production.scenes.map((s,i)=>({
  id:s.id
 }));
 const limit=(frame:number,a:number,b:number)=>Math.max(0,Math.min(1,(frame-a)/(b-a)));
-export const AudioTimeline:React.FC<Props>=({mode,musicEnabled=false,soundEffectsEnabled=false})=>{
+export const AudioTimeline:React.FC<Props>=({mode,musicEnabled=false,musicVolume=0.16,soundEffectsEnabled=false})=>{
  const frame=useCurrentFrame();
  if(mode==="silent")return null;
  if(mode==="master")return <AbsoluteFill><Audio src={staticFile("audio/mix/final-mix.wav")} volume={1} name="MASTER / Adobe Audition" /></AbsoluteFill>;
@@ -22,8 +22,8 @@ export const AudioTimeline:React.FC<Props>=({mode,musicEnabled=false,soundEffect
  const fade=limit(frame,0,production.mix.fadeInFrames)*
   (1-limit(frame,film.totalFrames-production.mix.fadeOutFrames,film.totalFrames));
  const speech=Math.max(0,...windows.map(w=>Math.min(limit(frame,w.start-15,w.start),1-limit(frame,w.end,w.end+15))));
- const bgVolume=fade*(production.mix.musicLevelBetweenVoice-
-  speech*(production.mix.musicLevelBetweenVoice-production.mix.musicLevelDuringVoice));
+ const gain=Math.max(0,Math.min(0.32,musicVolume));
+ const bgVolume=fade*gain*(1-speech*0.46);
  return <AbsoluteFill>
   {musicEnabled&&<Audio loop src={staticFile("audio/music/bed.wav")} volume={bgVolume} name="MUSIC / ducking automático"/>}
   {windows.map(w=><Audio key={w.id} src={staticFile("audio/voice/"+w.filename)}

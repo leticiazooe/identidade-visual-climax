@@ -13,6 +13,7 @@ const format=opt("format","wide"),mode=opt("mode","stems");
 const variants={wide:"16x9",vertical:"9x16",portrait:"4x5",square:"1x1"};
 if(!(format in variants)||!["stems","master"].includes(mode))throw new Error("Formato: wide, vertical, portrait, square; modo: stems ou master.");
 const musicChoice=opt("music","original");
+const smoke=options.includes("--smoke");
 const vol=Number(opt("music-volume","0.16"));
 if(!Number.isFinite(vol)||vol<0||vol>0.32)throw new Error("Volume de música permitido: 0 a 0.32.");
 const args=(cmd,argv,{cwd=root}={})=>{
@@ -23,7 +24,14 @@ const musicFile=path.join(root,"public/audio/music/bed.wav");
 if(mode==="stems"){
  args(process.execPath,["scripts/check-audio.mjs","--stems"]);
  if(musicChoice==="original"){
-  try{await fs.access(musicFile);}catch{args(process.execPath,["scripts/generate-ambient.mjs"]);}
+  let regenerate=false;
+  try{
+   await fs.access(musicFile);
+   const test=spawnSync("ffprobe",["-v","error","-show_entries","format=duration","-of","default=noprint_wrappers=1:nokey=1",musicFile],{encoding:"utf8"});
+   const film=JSON.parse(await fs.readFile(path.join(root,"film.config.json"),"utf8"));
+   regenerate=test.status!==0||Number(test.stdout.trim())<film.totalFrames/film.fps-0.2;
+  }catch{regenerate=true;}
+  if(regenerate)args(process.execPath,["scripts/generate-ambient.mjs"]);
  }else if(musicChoice!=="off"){
   const src=path.resolve(musicChoice);
   if(src===musicFile)throw new Error("Não use --music apontando para a saída atual. Escolha um arquivo original.");
@@ -37,7 +45,7 @@ if(mode==="stems"){
  if(musicChoice!=="off")console.warn("Modo master: a mixagem Audition já deve conter a música. Não será adicionada outra trilha.");
 }
 args(process.execPath,["scripts/sync-assets.mjs"]);
-const outputName="climax-final-"+variants[format]+".mp4";
+const outputName="climax-final-"+variants[format]+(smoke?"-smoke":"")+".mp4";
 const output=path.join(root,"out",outputName);
 await fs.mkdir(path.dirname(output),{recursive:true});
 const propsFile=path.join(root,".final-render-props.json");
@@ -47,7 +55,7 @@ await fs.writeFile(propsFile,JSON.stringify({
 }));
 try{
  const bin=process.platform==="win32"?"npx.cmd":"npx";
- args(bin,["remotion","render","src/index.ts","CLIMAX-Film-"+variants[format],"out/"+outputName,"--codec=h264","--audio-codec=aac","--props="+propsFile]);
+ args(bin,["remotion","render","src/index.ts","CLIMAX-Film-"+variants[format],"out/"+outputName,"--codec=h264","--audio-codec=aac","--props="+propsFile,...(smoke?["--frames=0-89","--scale=0.25"]:[])]);
  const probe=spawnSync("ffprobe",["-v","error","-show_entries","stream=codec_type,codec_name","-of","json",output],{encoding:"utf8"});
  if(probe.error||probe.status!==0)throw new Error("Não foi possível validar codecs finais. Instale ffprobe.");
  const streams=JSON.parse(probe.stdout).streams??[];

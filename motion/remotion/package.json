@@ -21,7 +21,10 @@
     "render:audio:wide": "node scripts/render-audio.mjs --format=wide",
     "render:audio:vertical": "node scripts/render-audio.mjs --format=vertical",
     "render:audio:portrait": "node scripts/render-audio.mjs --format=portrait",
-    "render:audio:square": "node scripts/render-audio.mjs --format=square"
+    "render:audio:square": "node scripts/render-audio.mjs --format=square",
+    "music:generate": "node scripts/generate-ambient.mjs",
+    "final:render": "node scripts/render-final.mjs",
+    "final:publish": "node scripts/publish-final.mjs"
   },
   "dependencies": {
     "@remotion/transitions": "4.0.534",

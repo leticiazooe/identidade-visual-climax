@@ -10,3 +10,5 @@ out/
 !.env.example
 audio-workspace/
 .audio-render-props.json
+
+.final-render-props.json
