@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0.0",
+  "brand": "CLIMAX Refrigeração",
+  "updated": "2026-10-13",
+  "state": "awaiting-render",
+  "note": "URLs só devem ser cadastradas após upload e validação do MP4 com narração e trilha licenciada.",
+  "formats": {
+    "wide": {
+      "label": "Horizontal 16:9",
+      "width": 1920,
+      "height": 1080,
+      "url": null,
+      "fileName": "climax-final-16x9.mp4"
+    },
+    "vertical": {
+      "label": "Vertical 9:16",
+      "width": 1080,
+      "height": 1920,
+      "url": null,
+      "fileName": "climax-final-9x16.mp4"
+    },
+    "portrait": {
+      "label": "Feed 4:5",
+      "width": 1080,
+      "height": 1350,
+      "url": null,
+      "fileName": "climax-final-4x5.mp4"
+    },
+    "square": {
+      "label": "Quadrado 1:1",
+      "width": 1080,
+      "height": 1080,
+      "url": null,
+      "fileName": "climax-final-1x1.mp4"
+    }
+  }
+}
