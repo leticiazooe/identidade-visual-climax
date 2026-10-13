@@ -35,10 +35,23 @@ try{
  const generatedCommand=await page.locator("#finalCommand").getAttribute("title");
  if(!generatedCommand?.includes("--format=vertical")||!generatedCommand?.includes("--music-volume=0.12"))throw new Error("Comando MP4 final incorreto: "+generatedCommand);
  await page.screenshot({path:path.join(output,"audio-studio-final-download.png"),fullPage:true});
+ await page.locator("#sfxList button").first().waitFor();
+ if((await page.locator("#sfxList button").count())!==9)throw new Error("Esperados nove efeitos no editor");
+ await page.locator("#sfxList button").nth(5).click();
+ if(!String(await page.locator("#sfxName").textContent()).includes("Fluxo de ar"))throw new Error("Seleção de SFX falhou");
+ await page.locator("#sfxPrompt").fill("Test sound prompt for HVAC soft airflow, no speech or music.");
+ const [sfxManifest]=await Promise.all([page.waitForEvent("download"),page.locator("#downloadSfxManifest").click()]);
+ const sfxFile=path.join(output,"climax-sfx-manifest.json");
+ await sfxManifest.saveAs(sfxFile);
+ const sfx=JSON.parse(await readFile(sfxFile,"utf8"));
+ if(sfx.assets.length!==9||sfx.cues.length!==11||!sfx.assets[5].prompt.includes("Test sound prompt"))throw new Error("Exportação SFX incorreta");
+ await page.locator("#sfxMaster").fill("0.65");
+ const commandWithSfx=await page.locator("#finalCommand").getAttribute("title");
+ if(!commandWithSfx?.includes("--sfx=on")||!commandWithSfx?.includes("--sfx-volume=0.65"))throw new Error("Comando final não inclui SFX");
  const mobile=await browser.newPage({viewport:{width:390,height:844}});
  await mobile.goto("http://127.0.0.1:8000/brand-center/sections/audio-production.html",{waitUntil:"domcontentloaded"});
  await mobile.locator("#timeline button").first().waitFor();
  await mobile.screenshot({path:path.join(output,"audio-studio-mobile.png"),fullPage:true});
  if(errors.length)throw new Error("Erros no navegador: "+errors.join("; "));
- console.log("PASS Audio Studio: 8 cenas, JSON, CSV, formato final, mixagem suave, download condicional e mobile");
+ console.log("PASS Audio Studio: 8 cenas, 9 SFX, JSONs, mixer SFX, download e mobile.");
 }finally{await browser.close();}

@@ -47,8 +47,11 @@ jobs:
           for scene in scene-01-signature scene-02-problem scene-03-diagnosis scene-04-care scene-05-flow scene-06-solutions scene-07-proof scene-08-outro; do
             ffmpeg -hide_banner -loglevel error -y -f lavfi -i 'sine=frequency=523:duration=2' -ar 44100 -ac 1 public/audio/voice/${scene}.mp3
           done
+          node --input-type=module -e "import fs from 'node:fs'; import {spawnSync} from 'node:child_process'; const s=JSON.parse(fs.readFileSync('../../brand-center/data/sound-design.json')); fs.mkdirSync('public/audio/sfx',{recursive:true}); for(const a of s.assets){const r=spawnSync('ffmpeg',['-hide_banner','-loglevel','error','-y','-f','lavfi','-i','sine=frequency=450:duration='+a.durationSeconds,'-ar','44100','public/audio/sfx/'+a.filename],{stdio:'inherit'});if(r.status!==0)process.exit(1)}"
+          npm run sfx:plan
+          npm run sfx:check -- --files
           npm run music:generate
-          npm run final:render -- --format=wide --music=original --music-volume=0.16 --smoke
+          npm run final:render -- --format=wide --music=original --music-volume=0.16 --sfx=on --sfx-volume=0.75 --smoke
           ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 out/climax-final-16x9-smoke.mp4 | grep -x 'aac'
           ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 out/climax-final-16x9-smoke.mp4 | grep -x 'h264'
           echo 'PASS: MP4 final contém vídeo e áudio.'

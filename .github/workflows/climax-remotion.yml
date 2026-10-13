@@ -31,6 +31,9 @@ jobs:
         run: |
           npm run voice:plan
           npm run audio:check
+          npm run sfx:plan
+          npm run sfx:check
+          node --check scripts/sfx-cli.mjs
           node --check scripts/voice-cli.mjs
           node --check scripts/prepare-audition.mjs
           node --check scripts/render-audio.mjs

@@ -69,6 +69,13 @@
     "provider": "elevenlabs",
     "mixing": "adobe-audition",
     "render": "motion/remotion",
-    "status": "requires-owner-api-key-and-audition-mix"
+    "status": "requires-owner-api-key-and-audition-mix",
+    "soundDesignManifest": "brand-center/data/sound-design.json",
+    "soundEffects": {
+      "provider": "elevenlabs",
+      "model": "eleven_text_to_sound_v2",
+      "generate": "motion/remotion/scripts/sfx-cli.mjs",
+      "status": "requires-owner-api-key-and-generated-mp3"
+    }
   }
 }

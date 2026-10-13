@@ -43,5 +43,10 @@ for(let i=0;i<audio.scenes.length;i++){
 if(!master.includes('data-doc="audio-production"'))fail("Estúdio de áudio não está no menu.");
 const audioCheck=spawnSync(process.execPath,["--check",path.join(root,"brand-center/audio-studio.js")],{encoding:"utf8"});
 if(audioCheck.status!==0)fail("audio-studio.js inválido: "+audioCheck.stderr);
+const sound=json("brand-center/data/sound-design.json");
+if(sound.assets.length!==9||sound.cues.length!==11)fail("Manifesto de efeitos incompleto.");
+for(const a of sound.assets){if(!a.prompt||a.prompt.length>450||a.durationSeconds<.5||a.durationSeconds>30)fail("Efeito inválido "+a.id);}
+for(const cue of sound.cues){if(!motion.scenes.some(s=>s.id===cue.scene)||!sound.assets.some(a=>a.id===cue.assetId))fail("Cue inválida "+cue.id);}
+console.log("PASS: 9 efeitos, 11 cues contextualizadas.");
 console.log("PASS: 8 cenas de locução, audio-studio.js e timeline compatíveis.");
 console.log("PASS: 14 presets, 7 formatos, links de mascotes, marca, JS e 8 cenas / "+frames+" frames.");
