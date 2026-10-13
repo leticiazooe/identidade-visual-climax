@@ -53,3 +53,78 @@ async function init(){
  }catch(error){$("timelineStatus").textContent="Não foi possível abrir o roteiro: "+error.message;console.error(error);}
 }
 init();
+
+let deliveryRegistry=null,localFinalUrl=null,localFinalFile=null;
+const finalFormatInfo={wide:"16x9",vertical:"9x16",portrait:"4x5",square:"1x1"};
+const playback=$("finalPreview");
+function clearLocalFinal(){
+ if(localFinalUrl)URL.revokeObjectURL(localFinalUrl);
+ localFinalUrl=null;localFinalFile=null;
+ $("finalLocalFile").value="";playback.pause();playback.removeAttribute("src");playback.hidden=true;playback.load();
+}
+function finalCommand(){
+ const fmt=$("finalFormat").value,vol=Number($("finalMusicVolume").value).toFixed(2);
+ return "npm run final:render -- --format="+fmt+" --music=original --music-volume="+vol;
+}
+function publishedFinal(){
+ const format=$("finalFormat").value;
+ const item=deliveryRegistry?.formats?.[format];
+ if(!item||typeof item.url!=="string")return null;
+ try{const target=new URL(item.url);return target.protocol==="https:"&&target.pathname.toLowerCase().endsWith(".mp4")?target.href:null;}catch{return null;}
+}
+function updateFinalButton(){
+ const ready=Boolean(localFinalUrl||publishedFinal());
+ $("finalDownload").disabled=!ready;
+ $("finalStatus").textContent=localFinalUrl?"MP4 local carregado. Ouça o vídeo e confirme voz e trilha antes de baixar.":
+ publishedFinal()?"Versão final publicada. Você pode reproduzir e baixar o MP4.":
+ "Aguardando a geração e publicação do MP4 com narração e música.";
+ $("finalMusicLabel").textContent="Suave · "+Math.round(Number($("finalMusicVolume").value)*100)+"%";
+ $("finalCommand").title=finalCommand();
+ if(!localFinalUrl&&publishedFinal()){
+  playback.src=publishedFinal();playback.hidden=false;$("finalPlaceholder").hidden=true;
+ }else if(!localFinalUrl){
+  playback.removeAttribute("src");playback.hidden=true;$("finalPlaceholder").hidden=false;
+ }
+}
+function bindDelivery(){
+ $("finalFormat").addEventListener("change",()=>{clearLocalFinal();updateFinalButton();});
+ $("finalMusicVolume").addEventListener("input",updateFinalButton);
+ $("finalCommand").addEventListener("click",()=>navigator.clipboard.writeText(finalCommand())
+  .then(()=>{$("finalStatus").textContent="Comando copiado! Execute em motion/remotion após gerar as locuções.";})
+  .catch(()=>{$("finalStatus").textContent="Cópia bloqueada. Comando: "+finalCommand();}));
+ $("finalLocalFile").addEventListener("change",async event=>{
+  const chosen=event.target.files?.[0];if(!chosen)return;
+  if(localFinalUrl){URL.revokeObjectURL(localFinalUrl);localFinalUrl=null;}
+  if(chosen.size<10000||!chosen.name.toLowerCase().endsWith(".mp4")){
+   $("finalStatus").textContent="Selecione um MP4 válido, já renderizado.";event.target.value="";updateFinalButton();return;
+  }
+  const url=URL.createObjectURL(chosen);
+  const probe=document.createElement("video");probe.preload="metadata";probe.src=url;
+  try{
+   await new Promise((resolve,reject)=>{
+    probe.onloadedmetadata=resolve;probe.onerror=()=>reject(new Error("Não foi possível ler o MP4."));
+   });
+   const f=deliveryRegistry?.formats?.[$("finalFormat").value];
+   if(f&&(probe.videoWidth!==f.width||probe.videoHeight!==f.height))throw new Error("O arquivo tem "+probe.videoWidth+"×"+probe.videoHeight+"; o formato escolhido requer "+f.width+"×"+f.height+".");
+   localFinalUrl=url;localFinalFile=chosen;playback.src=url;playback.hidden=false;$("finalPlaceholder").hidden=true;
+   updateFinalButton();
+  }catch(error){URL.revokeObjectURL(url);localFinalUrl=null;localFinalFile=null;event.target.value="";updateFinalButton();$("finalStatus").textContent=error.message;}
+ });
+ $("finalDownload").addEventListener("click",()=>{
+  if(localFinalUrl&&localFinalFile){
+   const a=document.createElement("a");a.href=localFinalUrl;a.download=localFinalFile.name;document.body.append(a);a.click();a.remove();return;
+  }
+  const url=publishedFinal();
+  if(url)window.location.assign(url);
+ });
+}
+async function initDelivery(){
+ bindDelivery();
+ try{
+  const response=await fetch("../data/final-exports.json",{cache:"no-store"});
+  if(!response.ok)throw new Error("Catálogo ainda não foi publicado.");
+  deliveryRegistry=await response.json();
+ }catch(error){console.warn("Catálogo de MP4 final indisponível:",error.message);}
+ updateFinalButton();
+}
+initDelivery();

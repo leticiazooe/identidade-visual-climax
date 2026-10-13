@@ -27,10 +27,18 @@ try{
  await csv.saveAs(csvFile);
  const csvData=await readFile(csvFile,"utf8");
  if(csvData.split("\n").filter(Boolean).length!==9)throw new Error("Cue-sheet não tem 8 cenas");
+ await page.locator("#finalFormat").waitFor();
+ await page.waitForFunction(()=>document.querySelector("#finalStatus")?.textContent?.includes("Aguardando"),{timeout:10000});
+ if(!(await page.locator("#finalDownload").isDisabled()))throw new Error("Download deve ficar bloqueado quando nenhum MP4 existe");
+ await page.selectOption("#finalFormat","vertical");
+ await page.locator("#finalMusicVolume").fill("0.12");
+ const generatedCommand=await page.locator("#finalCommand").getAttribute("title");
+ if(!generatedCommand?.includes("--format=vertical")||!generatedCommand?.includes("--music-volume=0.12"))throw new Error("Comando MP4 final incorreto: "+generatedCommand);
+ await page.screenshot({path:path.join(output,"audio-studio-final-download.png"),fullPage:true});
  const mobile=await browser.newPage({viewport:{width:390,height:844}});
  await mobile.goto("http://127.0.0.1:8000/brand-center/sections/audio-production.html",{waitUntil:"domcontentloaded"});
  await mobile.locator("#timeline button").first().waitFor();
  await mobile.screenshot({path:path.join(output,"audio-studio-mobile.png"),fullPage:true});
  if(errors.length)throw new Error("Erros no navegador: "+errors.join("; "));
- console.log("PASS Audio Studio: 8 cenas, navegação, edição, JSON, cue sheet CSV e viewport mobile");
+ console.log("PASS Audio Studio: 8 cenas, JSON, CSV, formato final, mixagem suave, download condicional e mobile");
 }finally{await browser.close();}

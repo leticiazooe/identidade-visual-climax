@@ -54,6 +54,35 @@
   <div class="deliverable"><span class="kicker">03 / ARQUIVOS DE PRODUÇÃO</span><h2>Arquivos que seguem para o editor.</h2><p>Sem dependências de serviços expostos no navegador: roteiros JSON, guia de mixagem e tempos de edição.</p><div class="deliverable-row"><button class="button secondary" id="csvBtn">Exportar cue-sheet CSV</button><a class="button secondary" href="https://github.com/leticiazooe/identidade-visual-climax/tree/main/motion/remotion" target="_blank" rel="noopener">Documentação de produção ↗</a></div></div>
   <div class="deliverable dark"><span class="kicker">04 / MIXAGEM PROFISSIONAL</span><h2>Voz + trilha + sound design.</h2><p>Mixagem final no Audition, depois sincronização automática no Remotion. Metas preliminares: -16 LUFS e -1,5 dBTP, sujeitas à medição real.</p><p class="warning">A geração de vozes reais exige uma conta ElevenLabs e credenciais configuradas localmente. Este editor não aceita nem armazena chaves de API.</p></div>
  </section>
+ <section class="final-delivery" aria-labelledby="finalTitle">
+  <div class="delivery-copy">
+   <span class="kicker">05 / EXPORTAÇÃO FINAL</span>
+   <h2 id="finalTitle">Seu filme, pronto para baixar.</h2>
+   <p>Uma entrega só: <strong>motion + locução + música ambiente suave</strong> sincronizados em MP4 (H.264 + AAC). A trilha fica mais discreta durante a narração e termina com um fade-out elegante.</p>
+   <div class="delivery-steps"><span>01 Roteiro</span><span>02 Narração</span><span>03 Música</span><span>04 Mixagem</span><span>05 MP4</span></div>
+   <label for="finalFormat">Formato do vídeo final</label>
+   <select id="finalFormat">
+    <option value="wide">Horizontal · 16:9 (1920 × 1080)</option>
+    <option value="vertical">Stories / Reels · 9:16 (1080 × 1920)</option>
+    <option value="portrait">Feed Instagram · 4:5 (1080 × 1350)</option>
+    <option value="square">Feed quadrado · 1:1 (1080 × 1080)</option>
+   </select>
+   <label for="finalMusicVolume">Intensidade da trilha ambiente</label>
+   <div class="music-control"><span>Discreta</span><input type="range" id="finalMusicVolume" min="0.08" max="0.25" value="0.16" step="0.01"><span id="finalMusicLabel">Suave · 16%</span></div>
+   <button class="button secondary" id="finalCommand">Copiar comando de produção</button>
+   <p class="delivery-hint">A música original pode ser substituída por uma faixa sua com licença comercial. Para renderizar, é necessário configurar as locuções no computador. Este site estático não processa voz nem vídeo na nuvem.</p>
+  </div>
+  <div class="delivery-result">
+   <div class="result-header"><span class="kicker">ARQUIVO ENTREGÁVEL</span><strong>MP4 FINAL</strong></div>
+   <video id="finalPreview" controls playsinline preload="metadata" hidden aria-label="Visualização do motion completo"></video>
+   <div class="result-placeholder" id="finalPlaceholder"><span>▶</span><strong>Motion + voz + música</strong><small>68,4s · H.264 / AAC</small></div>
+   <p id="finalStatus" role="status" aria-live="polite">Consultando arquivos finais disponíveis…</p>
+   <button class="button" id="finalDownload" disabled>Baixar motion completo em MP4 ↓</button>
+   <label for="finalLocalFile" class="local-label">Já renderizou no computador? Selecione o MP4 final desse formato:</label>
+   <input id="finalLocalFile" type="file" accept=".mp4,video/mp4">
+   <small>O MP4 local permanece no seu navegador e não é enviado ao servidor. O botão será habilitado somente para um arquivo selecionado ou publicado.</small>
+  </div>
+ </section>
  <footer class="audio-footer">CLIMAX Refrigeração · Audio Production System · Direção profissional com revisão humana obrigatória.</footer>
 </main>
 <script type="module" src="../audio-studio.js"></script>
