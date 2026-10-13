@@ -50,6 +50,27 @@
    <div class="command-panel"><span>GERAR VOZ (CONSOME CRÉDITOS)</span><code>npm run voice:generate -- --all --generate</code><button id="copyCommand">Copiar comando</button></div>
   </aside>
  </section>
+
+ <section class="sfx-module" aria-labelledby="soundTitle">
+  <div class="sfx-intro">
+   <div><span class="kicker">06 / SOUND DESIGN CONTEXTUAL</span><h2 id="soundTitle">Cada cena tem uma textura sonora.</h2><p>Fluxo de ar, clicks técnicos, pequenas transições e assinatura final. Os efeitos são planejados para acompanhar a imagem sem competir com a voz.</p></div>
+   <div class="sfx-actions"><button id="downloadSfxManifest" class="button secondary" type="button">Exportar roteiro SFX JSON</button><a class="button secondary" href="https://elevenlabs.io/pt/sound-effects" target="_blank" rel="noopener noreferrer">Conhecer ElevenLabs Sound Effects ↗</a></div>
+  </div>
+  <div class="sfx-edit">
+   <aside class="sfx-list-box"><h3>Efeitos da produção</h3><p id="sfxCount" aria-live="polite">Carregando efeitos…</p><div id="sfxList" class="sfx-list"></div></aside>
+   <div class="sfx-parameters">
+    <span class="kicker" id="sfxSceneTag">01 / CENA</span><h3 id="sfxName">Selecione um efeito</h3>
+    <label for="sfxPrompt">Direção do efeito para a ElevenLabs</label>
+    <textarea id="sfxPrompt" rows="5" maxlength="450"></textarea>
+    <div class="sfx-row"><div><label for="sfxDuration">Duração planejada (segundos)</label><input type="number" id="sfxDuration" min="0.5" max="30" step="0.1"/></div><div><label for="sfxGain">Volume de referência</label><input type="number" id="sfxGain" min="0" max="0.25" step="0.01"/></div></div>
+    <div class="sfx-meter"><span>Intensidade global no filme</span><input type="range" id="sfxMaster" min="0" max="1" value="0.75" step="0.05"/><b id="sfxMasterLabel">75%</b></div>
+    <p class="sfx-info" id="sfxCueInfo"></p>
+    <div class="sfx-playback"><label for="sfxLocalFile">Ouvir um take gerado (MP3 local)</label><input type="file" id="sfxLocalFile" accept=".mp3,audio/mpeg"/><audio id="sfxAudio" controls hidden></audio><small>Nenhum arquivo local é enviado à nuvem.</small></div>
+    <div class="sfx-commands"><button id="copySfxPlan" class="button secondary" type="button">Copiar comando de planejamento</button><button id="copySfxGenerate" class="button" type="button">Copiar geração deste efeito</button></div>
+    <p class="sfx-caution">A geração real pela ElevenLabs depende de créditos e chave privada no terminal. Este editor salva apenas o roteiro, nunca a credencial. Para usar ajustes feitos aqui, substitua o JSON do projeto antes de gerar os takes.</p>
+   </div>
+  </div>
+ </section>
  <section class="audio-bottom">
   <div class="deliverable"><span class="kicker">03 / ARQUIVOS DE PRODUÇÃO</span><h2>Arquivos que seguem para o editor.</h2><p>Sem dependências de serviços expostos no navegador: roteiros JSON, guia de mixagem e tempos de edição.</p><div class="deliverable-row"><button class="button secondary" id="csvBtn">Exportar cue-sheet CSV</button><a class="button secondary" href="https://github.com/leticiazooe/identidade-visual-climax/tree/main/motion/remotion" target="_blank" rel="noopener">Documentação de produção ↗</a></div></div>
   <div class="deliverable dark"><span class="kicker">04 / MIXAGEM PROFISSIONAL</span><h2>Voz + trilha + sound design.</h2><p>Mixagem final no Audition, depois sincronização automática no Remotion. Metas preliminares: -16 LUFS e -1,5 dBTP, sujeitas à medição real.</p><p class="warning">A geração de vozes reais exige uma conta ElevenLabs e credenciais configuradas localmente. Este editor não aceita nem armazena chaves de API.</p></div>

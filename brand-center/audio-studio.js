@@ -55,6 +55,7 @@ async function init(){
 init();
 
 let deliveryRegistry=null,localFinalUrl=null,localFinalFile=null;
+let soundDesign=null,sfxSelected=0,sfxUrl=null;
 const finalFormatInfo={wide:"16x9",vertical:"9x16",portrait:"4x5",square:"1x1"};
 const playback=$("finalPreview");
 function clearLocalFinal(){
@@ -64,7 +65,7 @@ function clearLocalFinal(){
 }
 function finalCommand(){
  const fmt=$("finalFormat").value,vol=Number($("finalMusicVolume").value).toFixed(2);
- return "npm run final:render -- --format="+fmt+" --music=original --music-volume="+vol;
+ return "npm run final:render -- --format="+fmt+" --music=original --music-volume="+vol+" --sfx=on --sfx-volume="+(Number($("sfxMaster").value).toFixed(2));
 }
 function publishedFinal(){
  const format=$("finalFormat").value;
@@ -128,3 +129,62 @@ async function initDelivery(){
  updateFinalButton();
 }
 initDelivery();
+
+function sfxSelectedAsset(){return soundDesign?.assets?.[sfxSelected]||null;}
+function sfxLayout(){
+ const list=$("sfxList");list.replaceChildren();
+ soundDesign.assets.forEach((asset,i)=>{
+  const b=document.createElement("button");b.type="button";b.className=i===sfxSelected?"active":"";
+  b.textContent=String(i+1).padStart(2,"0")+" · "+asset.title;
+  b.addEventListener("click",()=>selectSfx(i));list.append(b);
+ });
+ $("sfxCount").textContent=soundDesign.assets.length+" efeitos · "+soundDesign.cues.length+" momentos sonoros";
+}
+function selectSfx(i){
+ sfxSelected=i;const asset=sfxSelectedAsset();if(!asset)return;
+ sfxLayout();$("sfxSceneTag").textContent=asset.scene.toUpperCase()+" / "+asset.id;
+ $("sfxName").textContent=asset.title;$("sfxPrompt").value=asset.prompt;
+ $("sfxDuration").value=asset.durationSeconds;$("sfxGain").value=asset.volume;
+ const cueList=soundDesign.cues.filter(c=>c.assetId===asset.id);
+ $("sfxCueInfo").textContent=cueList.length+" entrada(s) de áudio na timeline, nos frames "+cueList.map(c=>c.offsetFrames).join(", ")+" da(s) cena(s).";
+}
+function sfxDownload(name,content,type){
+ const url=URL.createObjectURL(new Blob([content],{type}));
+ const link=document.createElement("a");link.href=url;link.download=name;document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),4000);
+}
+function bindSfx(){
+ $("sfxPrompt").addEventListener("input",e=>{if(sfxSelectedAsset())sfxSelectedAsset().prompt=e.target.value;});
+ $("sfxDuration").addEventListener("change",e=>{
+  const a=sfxSelectedAsset(),n=Number(e.target.value);if(!a)return;
+  if(!Number.isFinite(n)||n<.5||n>30){e.target.value=a.durationSeconds;return;}
+  a.durationSeconds=n;
+ });
+ $("sfxGain").addEventListener("change",e=>{
+  const a=sfxSelectedAsset(),n=Number(e.target.value);if(!a)return;
+  if(!Number.isFinite(n)||n<0||n>.25){e.target.value=a.volume;return;}
+  a.volume=n;
+ });
+ $("sfxMaster").addEventListener("input",()=>{
+  $("sfxMasterLabel").textContent=Math.round(Number($("sfxMaster").value)*100)+"%";
+  updateFinalButton();
+ });
+ $("downloadSfxManifest").addEventListener("click",()=>sfxDownload("CLIMAX-SOUND-DESIGN.json",JSON.stringify(soundDesign,null,2),"application/json"));
+ const copy=(text)=>navigator.clipboard.writeText(text).catch(()=>alert("Copie o comando manualmente: "+text));
+ $("copySfxPlan").addEventListener("click",()=>copy("npm run sfx:plan"));
+ $("copySfxGenerate").addEventListener("click",()=>{const asset=sfxSelectedAsset();if(asset)copy("npm run sfx:generate -- --asset="+asset.id+" --generate");});
+ $("sfxLocalFile").addEventListener("change",e=>{
+  if(sfxUrl)URL.revokeObjectURL(sfxUrl);
+  const file=e.target.files?.[0];if(!file)return;
+  sfxUrl=URL.createObjectURL(file);
+  const player=$("sfxAudio");player.src=sfxUrl;player.hidden=false;
+ });
+}
+async function initSfx(){
+ try{
+  const response=await fetch("../data/sound-design.json",{cache:"no-store"});
+  if(!response.ok)throw new Error("Roteiro sonoro indisponível");
+  soundDesign=await response.json();
+  bindSfx();selectSfx(0);
+ }catch(error){$("sfxCount").textContent="Não foi possível carregar os efeitos.";console.error(error);}
+}
+initSfx();
