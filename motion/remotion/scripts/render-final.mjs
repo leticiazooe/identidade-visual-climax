@@ -11,7 +11,7 @@ const options=process.argv.slice(2);
 const opt=(name,def)=>options.find(x=>x.startsWith("--"+name+"="))?.slice(name.length+3)??def;
 const format=opt("format","wide"),mode=opt("mode","stems");
 const variants={wide:"16x9",vertical:"9x16",portrait:"4x5",square:"1x1"};
-if(!(format in variants)||!["stems","master"].includes(mode))throw new Error("Formato: wide, vertical, portrait, square; modo: stems ou master.");
+if(!(format in variants)||!["stems","master","silent"].includes(mode))throw new Error("Formato: wide, vertical, portrait, square; modo: stems, master ou silent.");
 const musicChoice=opt("music","original");
 const smoke=options.includes("--smoke");
 const sfxChoice=opt("sfx","on");
@@ -24,8 +24,8 @@ const args=(cmd,argv,{cwd=root}={})=>{
  if(run.error||run.status!==0)throw new Error("Falha em "+cmd+" ("+(run.status??run.error?.message)+")");
 };
 const musicFile=path.join(root,"public/audio/music/bed.wav");
-if(mode==="stems"){
- args(process.execPath,["scripts/check-audio.mjs","--stems"]);
+if(mode!=="master"){
+ if(mode==="stems")args(process.execPath,["scripts/check-audio.mjs","--stems"]);
  if(sfxChoice==="on")args(process.execPath,["scripts/check-sfx.mjs","--files"]);
  if(musicChoice==="original"){
   let regenerate=false;
@@ -55,8 +55,8 @@ const output=path.join(root,"out",outputName);
 await fs.mkdir(path.dirname(output),{recursive:true});
 const propsFile=path.join(root,".final-render-props.json");
 await fs.writeFile(propsFile,JSON.stringify({
- variant:format,audioMode:mode,musicEnabled:mode==="stems"&&musicChoice!=="off",
- musicVolume:vol,soundEffectsEnabled:mode==="stems"&&sfxChoice==="on",sfxVolume
+ variant:format,audioMode:mode,musicEnabled:mode!=="master"&&musicChoice!=="off",
+ musicVolume:vol,soundEffectsEnabled:mode!=="master"&&sfxChoice==="on",sfxVolume
 }));
 try{
  const bin=process.platform==="win32"?"npx.cmd":"npx";
@@ -65,6 +65,6 @@ try{
  if(probe.error||probe.status!==0)throw new Error("Não foi possível validar codecs finais. Instale ffprobe.");
  const streams=JSON.parse(probe.stdout).streams??[];
  if(!streams.some(x=>x.codec_type==="video"&&x.codec_name==="h264")||!streams.some(x=>x.codec_type==="audio"&&x.codec_name==="aac"))throw new Error("Arquivo final não contém vídeo H.264 e áudio AAC.");
- console.log("MP4 FINAL COM NARRAÇÃO "+(musicChoice==="off"?"":"E MÚSICA")+(sfxChoice==="on"&&mode==="stems"?" + SFX CONTEXTUAIS":"")+" DISPONÍVEL EM: "+output);
+ console.log("MP4 FINAL "+(mode==="silent"?"SEM NARRAÇÃO ":"COM NARRAÇÃO ")+(musicChoice==="off"?"":"E MÚSICA")+(sfxChoice==="on"&&mode!=="master"?" + SFX CONTEXTUAIS":"")+" DISPONÍVEL EM: "+output);
  console.log("Valide a mixagem ao ouvir o resultado antes de publicar.");
 }catch(error){await fs.rm(output,{force:true});throw error;}finally{await fs.rm(propsFile,{force:true});}

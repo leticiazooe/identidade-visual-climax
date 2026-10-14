@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="CLIMAX Studio: produza seu motion em quatro etapas simples.">
+<title>CLIMAX · Criar vídeo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=League+Spartan:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./studio.css">
+</head>
+<body>
+<main class="app" id="app">
+<header class="intro">
+ <div class="intro-mark"><img src="../../assets/logos/ESCRITA%20BRANCA%20SVG.svg" alt="CLIMAX Refrigeração"></div>
+ <div class="intro-copy"><p class="eyebrow">CLIMAX / ESTÚDIO DE PRODUÇÃO</p><h1>Seu vídeo, do início ao fim.</h1><p>Escolha o motion, prepare a voz e os sons. No final, revise tudo e baixe o MP4 completo.</p></div>
+ <span class="intro-counter">4 etapas simples</span>
+</header>
+<div class="journey" aria-label="Etapas da produção">
+ <button type="button" class="journey-step current" data-go="0" aria-current="step"><span class="number">01</span><span><strong>Motion</strong><small>Escolha o vídeo</small></span></button>
+ <div class="journey-connector"></div>
+ <button type="button" class="journey-step" data-go="1"><span class="number">02</span><span><strong>Narração</strong><small>Defina a voz</small></span></button>
+ <div class="journey-connector"></div>
+ <button type="button" class="journey-step" data-go="2"><span class="number">03</span><span><strong>Sons</strong><small>Música e efeitos</small></span></button>
+ <div class="journey-connector"></div>
+ <button type="button" class="journey-step" data-go="3"><span class="number">04</span><span><strong>Finalizar</strong><small>Revisar e baixar</small></span></button>
+</div>
+<div class="workspace">
+<div class="work-main">
+<div class="alert" id="loadError" role="alert" hidden>Os dados da marca não carregaram. Abra esta página pelo Brand Center publicado ou por um servidor local.</div>
+
+<section class="step-panel" data-panel="0" aria-labelledby="motionTitle">
+ <div class="step-heading"><div><span class="eyebrow dark">ETAPA 01 / MOTION</span><h2 id="motionTitle">Qual vídeo vamos criar?</h2><p>O filme institucional já tem oito cenas animadas. Você escolhe a proporção e visualiza um trecho da linguagem de movimento.</p></div><span class="time-pill">68,4 s · 8 cenas</span></div>
+ <div class="chosen-film"><div class="film-icon"><span>▶</span></div><div><strong>Filme institucional CLIMAX</strong><p>Conforto, diagnóstico, manutenção, soluções e assinatura final.</p></div><span class="selected-label">Selecionado</span></div>
+ <h3 class="field-title">Onde você vai publicar?</h3>
+ <div class="formats" role="group" aria-label="Formato do vídeo">
+  <button type="button" data-format="wide" class="format-card selected"><span class="ratio-icon wide"></span><strong>Horizontal</strong><small>Site / YouTube</small><em>16:9</em></button>
+  <button type="button" data-format="vertical" class="format-card"><span class="ratio-icon vertical"></span><strong>Vertical</strong><small>Story / Reels</small><em>9:16</em></button>
+  <button type="button" data-format="portrait" class="format-card"><span class="ratio-icon portrait"></span><strong>Feed retrato</strong><small>Instagram</small><em>4:5</em></button>
+  <button type="button" data-format="square" class="format-card"><span class="ratio-icon square"></span><strong>Quadrado</strong><small>Feed / WhatsApp</small><em>1:1</em></button>
+ </div>
+ <div class="scene-overview"><h3 class="field-title">O que acontece no vídeo?</h3><div id="sceneOverview" class="scene-chips"></div></div>
+ <div class="helper"><span class="helper-icon">i</span><p><strong>Esta é uma prévia da identidade em movimento.</strong> O filme completo é produzido pelo Remotion. Os motions curtos (logo sting, intro e outros) continuam disponíveis no <a href="../sections/motion-production.html" target="_blank" rel="noopener">acervo avançado</a>.</p></div>
+</section>
+
+<section class="step-panel" data-panel="1" aria-labelledby="voiceTitle" hidden>
+ <div class="step-heading"><div><span class="eyebrow dark">ETAPA 02 / NARRAÇÃO</span><h2 id="voiceTitle">Como será a voz do vídeo?</h2><p>Escolha como obter a narração. O roteiro já está dividido nas oito cenas para facilitar a gravação e o sincronismo.</p></div></div>
+ <h3 class="field-title">Escolha uma opção</h3>
+ <div class="option-stack" role="group" aria-label="Origem da narração">
+  <label class="option-card"><input type="radio" name="voiceMode" value="elevenlabs" checked><span class="option-art">✦</span><span><strong>Gerar com ElevenLabs</strong><small>Locução em português brasileiro, com voz profissional. Requer conta e créditos.</small></span><span class="radio-ui"></span></label>
+  <label class="option-card"><input type="radio" name="voiceMode" value="recorded"><span class="option-art">◉</span><span><strong>Vou usar uma voz gravada</strong><small>Você grava ou contrata uma locução e coloca os arquivos no projeto.</small></span><span class="radio-ui"></span></label>
+  <label class="option-card"><input type="radio" name="voiceMode" value="silent"><span class="option-art">∅</span><span><strong>Sem narração</strong><small>Deixar apenas o motion e a trilha ambiente.</small></span><span class="radio-ui"></span></label>
+ </div>
+ <div class="voice-sample">
+  <div class="minor-head"><h3>Roteiro da locução</h3><span>8 cenas</span></div>
+  <div class="voice-scenes"><select id="voiceScene" aria-label="Escolher cena do roteiro"></select><div id="voiceScript" class="script" aria-live="polite"></div></div>
+  <button type="button" class="subtle-button" id="downloadVoice">Baixar roteiro completo (.json) <span aria-hidden="true">↓</span></button>
+ </div>
+ <div class="helper"><span class="helper-icon">i</span><p>O site não recebe sua chave da ElevenLabs. A geração real acontece no computador, em ambiente protegido. Para ajustes avançados na interpretação, <a href="../sections/audio-production.html" target="_blank" rel="noopener">abrir editor técnico de áudio</a>.</p></div>
+</section>
+
+<section class="step-panel" data-panel="2" aria-labelledby="soundTitle" hidden>
+ <div class="step-heading"><div><span class="eyebrow dark">ETAPA 03 / SONS</span><h2 id="soundTitle">Vamos dar vida às cenas.</h2><p>Uma música de fundo suave acompanha a narração. Os efeitos entram nos momentos certos, sem competir com a voz.</p></div></div>
+ <div class="setting"><div><h3>Música ambiente</h3><p>Trilha instrumental original, discreta, com início e encerramento suaves.</p></div><label class="switch"><input id="musicEnabled" type="checkbox" checked aria-label="Ativar música ambiente"><span></span></label></div>
+ <div class="slider-setting" id="musicSettings"><label for="musicVolume">Volume da música <strong id="musicValue">16%</strong></label><input type="range" id="musicVolume" min="0.04" max="0.30" step="0.01" value="0.16"><div class="range-captions"><span>Mais discreta</span><span>Mais presente</span></div></div>
+ <div class="setting"><div><h3>Efeitos sonoros por cena</h3><p>Fluxo de ar, ferramentas, transições e assinatura sonora CLIMAX.</p></div><label class="switch"><input id="sfxEnabled" type="checkbox" checked aria-label="Ativar efeitos sonoros"><span></span></label></div>
+ <div class="slider-setting" id="sfxSettings"><label for="sfxVolume">Intensidade dos efeitos <strong id="sfxValue">75%</strong></label><input type="range" id="sfxVolume" min="0.1" max="1" step="0.05" value="0.75"></div>
+ <details class="details" id="sfxDetails"><summary>Ver efeitos planejados <span id="sfxCount"></span></summary><div id="effects" class="effects"></div></details>
+ <div class="helper"><span class="helper-icon">i</span><p>A trilha ambiente pode ser gerada localmente. Os efeitos específicos são produzidos com a <strong>ElevenLabs Sound Effects</strong> ou substituídos por MP3s licenciados. A mixagem usa volumes seguros como ponto de partida e precisa ser ouvida antes da publicação.</p></div>
+</section>
+
+<section class="step-panel" data-panel="3" aria-labelledby="finishTitle" hidden>
+ <div class="step-heading"><div><span class="eyebrow dark">ETAPA 04 / FINALIZAR</span><h2 id="finishTitle">Tudo organizado. Hora de produzir.</h2><p>Veja as escolhas, siga o passo a passo para renderizar e depois baixe o vídeo completo em MP4.</p></div></div>
+ <div class="review" id="review"></div>
+ <div class="production-guide">
+  <div class="minor-head"><h3>Como gerar seu vídeo final</h3><span>Uma vez no computador</span></div>
+  <ol id="instructions"></ol>
+  <button type="button" class="subtle-button" id="copyInstructions">Copiar todos os comandos <span aria-hidden="true">↗</span></button>
+ </div>
+ <div class="download-area">
+  <div><span class="eyebrow dark">ÚLTIMO PASSO</span><h3>Baixar o MP4 pronto</h3><p id="deliveryStatus" role="status" aria-live="polite">Verificando se o vídeo já está disponível…</p></div>
+  <video id="finalPlayer" controls playsinline preload="metadata" hidden aria-label="Visualização do MP4 final"></video>
+  <label class="upload-file" for="localVideo">Já renderizou? Escolha o MP4 no seu computador <span>Procurar arquivo ↗</span></label>
+  <input type="file" id="localVideo" accept=".mp4,video/mp4" hidden>
+  <button type="button" id="downloadVideo" class="primary-button" disabled>Baixar motion completo em MP4 ↓</button>
+  <p class="fine-print">O MP4 deve conter motion, narração (quando escolhida), música e efeitos selecionados. O arquivo escolhido fica no seu navegador, sem upload.</p>
+ </div>
+</section>
+
+<div class="nav-actions"><button type="button" class="secondary-button" id="previous" hidden>← Voltar</button><span id="stepHint">Etapa 1 de 4</span><button type="button" class="primary-button" id="next">Continuar: Narração →</button></div>
+</div>
+
+<aside class="preview-aside" aria-label="Resumo da produção">
+ <div class="preview-head"><span class="eyebrow dark">VISUALIZAÇÃO</span><strong>CLIMAX Refrigeração</strong></div>
+ <div class="motion-screen" id="motionScreen"><iframe id="motionFrame" title="Animação de demonstração CLIMAX" src="../motion-production/source/motion-source.html?clip=intro&amp;loop=1&amp;format=16x9" loading="lazy"></iframe></div>
+ <p class="preview-caption">Prévia animada do estilo da marca. Não representa o MP4 final.</p>
+ <div class="overview-card"><span class="eyebrow dark">SEU PROJETO</span><dl><div><dt>Motion</dt><dd>Institucional · 68,4 s</dd></div><div><dt>Formato</dt><dd id="summaryFormat">Horizontal · 16:9</dd></div><div><dt>Narração</dt><dd id="summaryVoice">ElevenLabs</dd></div><div><dt>Música</dt><dd id="summaryMusic">Ambiente suave</dd></div><div><dt>Efeitos</dt><dd id="summarySfx">Contextuais</dd></div></dl></div>
+ <p class="privacy"><span aria-hidden="true">◈</span> Chaves da ElevenLabs e áudios privados não são enviados por este editor.</p>
+</aside>
+</div>
+<footer class="footer">CLIMAX · Produção audiovisual · Dados oficiais da identidade visual</footer>
+</main>
+<script type="module" src="./studio.js"></script>
+</body>
+</html>

@@ -3,5 +3,5 @@
 <script>
 const p=new URLSearchParams(location.search),clip=p.get("clip")||"logo-sting",format=p.get("format")||"16x9",s=document.getElementById("stage");
 const clipClass={"logo-sting":"clip-logo","intro":"clip-intro","outro":"clip-outro","loading":"clip-loading","social-cut":"clip-social"}[clip]||"clip-logo";
-s.className="stage "+clipClass+" f-"+format;
+s.className="stage "+clipClass+" f-"+format+(p.get("loop")==="1"?" preview-loop":"");
 </script></body></html>

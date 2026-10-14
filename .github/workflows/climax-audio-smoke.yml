@@ -55,6 +55,11 @@ jobs:
           ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 out/climax-final-16x9-smoke.mp4 | grep -x 'aac'
           ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 out/climax-final-16x9-smoke.mp4 | grep -x 'h264'
           echo 'PASS: MP4 final contém vídeo e áudio.'
+      - name: Testar modo sem voz com música ambiente
+        run: |
+          npm run final:render -- --format=wide --mode=silent --music=original --sfx=off --smoke
+          ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 out/climax-final-16x9-smoke.mp4 | grep -x 'aac'
+          echo 'PASS: modo sem voz preservou música e gerou AAC.'
       - name: Salvar vídeo de smoke test
         if: success()
         uses: actions/upload-artifact@v4

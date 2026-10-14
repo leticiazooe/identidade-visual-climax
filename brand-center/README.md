@@ -66,3 +66,10 @@ Mantenha o Brand Book, os tokens, a biblioteca, os componentes, os templates e o
 - [CLI ElevenLabs, Audition e Remotion](../motion/remotion/README.md): produção de takes, export para mixagem e render de vídeo narrado.
 
 **Segurança:** a chave ElevenLabs fica somente no terminal local; o site público nunca solicita ou grava credenciais. O Audition opera por arquivos WAV, sem alegar edição remota automática.
+
+
+## Criar vídeo (fluxo guiado)
+
+O módulo [Criar Vídeo](production-studio/index.html) organiza a produção institucional em quatro etapas: **Motion → Narração → Sons → Finalizar e baixar**. Ele substitui os acessos dispersos a motion e áudio no menu principal. As páginas técnicas originais `sections/motion-production.html` e `sections/audio-production.html` continuam preservadas para ajustes avançados.
+
+A prévia de motion usa o source local do repositório e não incorpora páginas do GitHub. O site é estático: os MP4s com áudio devem ser renderizados localmente e selecionados para download ou publicados no manifesto, sem expor chaves ElevenLabs.
