@@ -40,7 +40,15 @@ for(let i=0;i<audio.scenes.length;i++){
  if(audio.scenes[i].id!==motion.scenes[i].id||audio.scenes[i].frames!==motion.scenes[i].frames)fail("Áudio fora da timeline: "+i);
  if(!audio.scenes[i].text||audio.scenes[i].text.length>650)fail("Locução inválida: "+i);
 }
-if(!master.includes('data-doc="audio-production"'))fail("Estúdio de áudio não está no menu.");
+if(!master.includes('data-doc="motion-production"')||!master.includes('production-studio/index.html'))fail("Fluxo de produção não está integrado no menu.");
+if(!fs.existsSync(path.join(root,"brand-center/sections/audio-production.html")))fail("Editor avançado de áudio ausente.");
+if(!fs.existsSync(path.join(root,"brand-center/sections/motion-production.html")))fail("Biblioteca avançada de motion ausente.");
+for(const required of ["index.html","studio.css","studio.js"]){
+ if(!fs.existsSync(path.join(root,"brand-center/production-studio",required)))fail("Wizard incompleto: "+required);
+}
+const wizardCheck=spawnSync(process.execPath,["--check",path.join(root,"brand-center/production-studio/studio.js")],{encoding:"utf8"});
+if(wizardCheck.status!==0)fail("Wizard JS inválido: "+wizardCheck.stderr);
+console.log("PASS: fluxo guiado presente e módulos avançados preservados.");
 const audioCheck=spawnSync(process.execPath,["--check",path.join(root,"brand-center/audio-studio.js")],{encoding:"utf8"});
 if(audioCheck.status!==0)fail("audio-studio.js inválido: "+audioCheck.stderr);
 const sound=json("brand-center/data/sound-design.json");
