@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'brand-center/post-studio/**'
+      - 'brand-center/production-studio/**'
+      - 'brand-center/index.html'
       - 'brand-center/sections/audio-production.html'
       - 'brand-center/audio-studio.*'
       - 'brand-center/data/audio-production.json'
@@ -29,6 +31,8 @@ jobs:
         run: npm test --prefix scripts/visual-qa
       - name: Validar Estúdio de Áudio em desktop e mobile
         run: cd scripts/visual-qa && node audio-qa.mjs
+      - name: Validar fluxo intuitivo de produção em quatro etapas
+        run: cd scripts/visual-qa && node production-wizard-qa.mjs
       - name: Salvar capturas e exports
         if: always()
         uses: actions/upload-artifact@v4
