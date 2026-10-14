@@ -36,7 +36,7 @@ try{
  if(!instructions.includes("--format=vertical")||!instructions.includes("--sfx=off")||!instructions.includes("--music-volume=0.12"))throw new Error("Comandos não respeitam escolhas.");
  await page.screenshot({path:path.join(output,"production-04-finish-desktop.png"),fullPage:true});
  await page.locator("[data-go='1']").click();
- await page.locator('input[value="silent"]').check();
+ await page.locator("label.option-card").filter({hasText:"Sem narração"}).click();
  await page.locator("[data-go='3']").click();
  if(!(await page.locator("#instructions").textContent()).includes("--mode=silent"))throw new Error("Sem narração deve usar render silent com música.");
  const shell=await browser.newPage({viewport:{width:1440,height:900}});
