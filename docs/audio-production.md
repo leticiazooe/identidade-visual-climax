@@ -114,3 +114,49 @@ npm run final:publish -- --format=wide --tag=climax-motion-final-v1 --publish
 O comando faz o upload do MP4 e registra o link em `brand-center/data/final-exports.json`. Depois revise a mudança e versione o JSON para habilitar o botão público. Não inclui MP3s privados, projetos Audition ou chaves de API.
 
 **Situação inicial:** manifesto `awaiting-render` sem links ativos. Nenhum vídeo com locução real foi gerado até que a conta ElevenLabs e os takes sejam configurados.
+
+## Sound design contextual com ElevenLabs
+
+**Direção audiovisual CLIMAX:** HVAC realista, tecnológico e discreto. Não há efeitos estridentes, tempestades, gelo ou alarmes. O manifesto [sound-design.json](../brand-center/data/sound-design.json) mapeia **9 efeitos únicos e 11 entradas sonoras em oito cenas**, com prompts em inglês para facilitar o controle de timbre, duração, volumes e momentos de entrada.
+
+| Cena | Efeitos previstos |
+|---|---|
+| A assinatura | Entrada aérea e brilho delicado da marca |
+| O desconforto | Ambiência térmica contida, sem dramatização |
+| Diagnóstico técnico | Click de instrumento e varredura técnica discreta |
+| Manutenção preventiva | Ferramenta metálica cuidadosamente manuseada |
+| Fluxo de ar | Ar climatizado natural e contínuo |
+| Soluções CLIMAX | Três transições de cards usando um único efeito reutilizado |
+| Padrão profissional | Confirmação sonora acolhedora |
+| Chamada para ação | Assinatura sonora final calorosa |
+
+### Gerar efeitos em ElevenLabs (usa créditos)
+
+Requer ELEVENLABS_API_KEY em variável de ambiente e permissões de sound generation na conta. Nunca coloque a chave no Brand Center ou GitHub.
+
+```bash
+cd motion/remotion
+npm run sfx:plan
+npm run sfx:generate -- --asset=cool-airflow --generate
+npm run sfx:generate -- --all --generate
+npm run sfx:check -- --files
+```
+
+O comando gera MP3s em `motion/remotion/public/audio/sfx` (não versionados). A API é POST `/v1/sound-generation`, modelo `eleven_text_to_sound_v2`, duração definida por efeito, `prompt_influence=0.48`, com geração condicionada à opção `--generate`. Os créditos dependem do plano. O sistema **não executa pagamentos nem gera sons sem autorização**.
+
+Na interface 09 há edição dos prompts, duração, volume, reprodução de takes locais e exportação `CLIMAX-SOUND-DESIGN.json`. Para usar esse roteiro editado com o motor Remotion, revise o arquivo exportado e substitua `brand-center/data/sound-design.json` antes de gerar/renderizar, preservando `assetId`, `scene` e `filename`.
+
+### Vídeo final com todas as camadas
+
+```bash
+npm run final:render -- --format=wide --music=original --music-volume=0.16 --sfx=on --sfx-volume=0.75
+npm run final:render -- --format=vertical --music=original --music-volume=0.16 --sfx=on --sfx-volume=0.75
+```
+
+O áudio fica em três camadas: voz em primeiro plano, música ambiente com ducking e SFX com volume independente, fade-in/fade-out e atenuação adicional durante falas. O script verifica os nove arquivos de efeitos antes de iniciar: se algum não existir, informa quais faltam e não produz um MP4 incompleto.
+
+Use `--sfx=off` para um render sem efeitos. Em `--mode=master`, presume-se que a trilha completa já foi mixada no Audition; não duplica SFX no Remotion.
+
+**Revisão obrigatória:** ouvir todos os efeitos, confirmar adequação às cenas, conferir a mixagem e os direitos de uso comercial. A documentação oficial da ElevenLabs descreve os controles de geração e o custo associado à duração. O MP4 completo com efeitos reais depende da conta e aprovação humana.
+
+Documentação API: https://elevenlabs.io/docs/api-reference/text-to-sound-effects/convert

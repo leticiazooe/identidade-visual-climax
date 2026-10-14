@@ -33,6 +33,8 @@
   "audio": {
     "voiceStudio": "../sections/audio-production.html",
     "manifest": "./audio-production.json",
-    "productionGuide": "../../motion/remotion/README.md"
+    "productionGuide": "../../motion/remotion/README.md",
+    "soundDesign": "./sound-design.json",
+    "soundEffectsProvider": "elevenlabs"
   }
 }

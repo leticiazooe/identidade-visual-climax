@@ -33,3 +33,33 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}button:
 .delivery-result>small{display:block;color:#A6CBD9;line-height:1.5;margin-top:12px}
 @media(max-width:900px){.final-delivery{grid-template-columns:1fr}}
 @media(max-width:600px){.final-delivery{padding:18px}}
+
+.sfx-module{border:1px solid #cbdfe9;border-radius:23px;padding:26px;background:#fff;margin-top:18px}
+.sfx-intro{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:22px}
+.sfx-intro h2{font:800 clamp(30px,3vw,43px)/1 "League Spartan";color:#042f4c;margin:8px 0 13px}
+.sfx-intro p{color:#526f80;max-width:830px;margin:0;line-height:1.6}
+.sfx-actions{display:flex;flex-wrap:wrap;gap:9px}
+.sfx-edit{display:grid;grid-template-columns:minmax(220px,320px) minmax(0,1fr);gap:16px}
+.sfx-list-box,.sfx-parameters{background:#f5f9fc;border:1px solid #dce9ef;border-radius:17px;padding:20px}
+.sfx-list-box h3,.sfx-parameters h3{font:800 27px "League Spartan";margin:7px 0}
+.sfx-list-box p{font-size:13px;color:#607b8b}
+.sfx-list{display:grid;gap:7px;margin-top:18px}
+.sfx-list button{background:#fff;color:#23465a;border:1px solid #d0e1e9;border-radius:9px;text-align:left;padding:12px;font-weight:750}
+.sfx-list button.active{background:#0b5ba5;color:#fff;border-color:#0b5ba5}
+.sfx-parameters>label,.sfx-row label,.sfx-playback label{display:block;font-size:14px;font-weight:750;margin:14px 0 8px}
+.sfx-parameters textarea,.sfx-row input{display:block;width:100%;border-radius:11px;padding:12px;border:1px solid #c4d9e4;color:#173f57;background:#fff;box-sizing:border-box}
+.sfx-parameters textarea{resize:vertical;line-height:1.5}
+.sfx-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.sfx-meter{display:flex;align-items:center;gap:15px;margin:20px 0;background:#e4f1f9;padding:12px;border-radius:11px;font-size:14px}
+.sfx-meter input{flex:1;accent-color:#0b5ba5;min-width:80px}
+.sfx-meter b{min-width:40px;text-align:right}
+.sfx-info{font-size:13px;color:#628396}
+.sfx-playback{margin:18px 0 10px;border:1px dashed #b6d5e3;border-radius:12px;padding:15px}
+.sfx-playback input{max-width:100%}
+.sfx-playback audio{display:block;width:100%;margin:12px 0}
+.sfx-playback audio[hidden]{display:none}
+.sfx-playback small{display:block;color:#6a8595;font-size:12px}
+.sfx-commands{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.sfx-caution{font-size:13px;color:#68818c;line-height:1.55}
+@media(max-width:900px){.sfx-edit{grid-template-columns:1fr}.sfx-intro{display:block}.sfx-actions{margin-top:18px}}
+@media(max-width:570px){.sfx-module{padding:17px}.sfx-row{grid-template-columns:1fr}}

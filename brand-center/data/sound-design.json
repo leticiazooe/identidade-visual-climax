@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "1.0.0",
+  "brand": "CLIMAX Refrigeração",
+  "updated": "2026-10-13",
+  "provider": "elevenlabs",
+  "modelId": "eleven_text_to_sound_v2",
+  "outputFormat": "mp3_44100_128",
+  "promptInfluence": 0.48,
+  "license": "Verify commercial usage and subscription terms before publication",
+  "guidelines": {
+    "noSpeech": true,
+    "noMusic": true,
+    "voiceFirst": true,
+    "cleanCorporate": true,
+    "avoid": [
+      "alarms",
+      "ice breaking",
+      "dramatic sci-fi",
+      "loud impacts"
+    ],
+    "requiresArtisticReview": true
+  },
+  "assets": [
+    {
+      "id": "brand-rise",
+      "title": "Abertura institucional",
+      "scene": "signature",
+      "filename": "brand-rise.mp3",
+      "durationSeconds": 2.8,
+      "volume": 0.17,
+      "prompt": "Premium commercial sound design: a restrained airy ascending sweep with warm luminous tonal shimmer, elegant and clean, smooth onset and soft tail, subtle sense of fresh airflow, realistic, no speech, no music, no sharp impact, no sci-fi."
+    },
+    {
+      "id": "ambient-pressure",
+      "title": "Desconforto térmico",
+      "scene": "problem",
+      "filename": "ambient-pressure.mp3",
+      "durationSeconds": 3.4,
+      "volume": 0.09,
+      "prompt": "Cinematic HVAC corporate ad: a quiet and subtle warm room ventilation tension, distant restrained low air rumble with a soft fade, natural interior atmosphere, not alarming, no alarm, no voices, no music, no mechanical failures."
+    },
+    {
+      "id": "precision-click",
+      "title": "Verificação técnica",
+      "scene": "diagnosis",
+      "filename": "precision-click.mp3",
+      "durationSeconds": 0.9,
+      "volume": 0.1,
+      "prompt": "Close microphone recording of one clean precision tactile click from a high-quality technical instrument being switched on, refined controlled mechanical sound, quiet studio ambience, no electronic beep, no music, no speech."
+    },
+    {
+      "id": "scanner-sweep",
+      "title": "Leitura do equipamento",
+      "scene": "diagnosis",
+      "filename": "scanner-sweep.mp3",
+      "durationSeconds": 1.9,
+      "volume": 0.11,
+      "prompt": "Very delicate technical diagnostic sound: restrained soft electronic confirmation followed by a gentle airy horizontal sweep, premium industrial instrumentation, reassuring and calm, no alarms, no sci-fi synth, no voices, no music."
+    },
+    {
+      "id": "service-mechanics",
+      "title": "Manutenção profissional",
+      "scene": "care",
+      "filename": "service-mechanics.mp3",
+      "durationSeconds": 1.7,
+      "volume": 0.11,
+      "prompt": "Subtle high-quality foley of a professional HVAC technician gently adjusting a metal tool and checking a fitting, one precise tiny metal click and quiet handling, realistic commercial sound, no drilling, no clanking, no speech, no music."
+    },
+    {
+      "id": "cool-airflow",
+      "title": "Fluxo de ar climatizado",
+      "scene": "flow",
+      "filename": "cool-airflow.mp3",
+      "durationSeconds": 5.5,
+      "volume": 0.17,
+      "prompt": "Clean air-conditioning vent blowing a slow, steady, silky stream of cool air into a quiet modern room. Soft continuous realistic HVAC whoosh, wide and smooth texture, gentle start and fade, no gust, no wind storm, no music, no voices."
+    },
+    {
+      "id": "card-swish",
+      "title": "Transição das soluções",
+      "scene": "solutions",
+      "filename": "card-swish.mp3",
+      "durationSeconds": 0.75,
+      "volume": 0.1,
+      "prompt": "One subtle premium editorial motion-graphics transition swish, airy and elegant, short fluid sweep with minimal crisp end, refined corporate advertising, no heavy whoosh, no impact, no music, no speech."
+    },
+    {
+      "id": "reassurance",
+      "title": "Compromisso e confiança",
+      "scene": "proof",
+      "filename": "reassurance.mp3",
+      "durationSeconds": 1.8,
+      "volume": 0.12,
+      "prompt": "Soft positive brand confirmation sound for a premium technical services company, two mellow unobtrusive tonal taps and subtle airy warmth fading naturally, grounded and sophisticated, no jingle, no high beep, no speech, no music."
+    },
+    {
+      "id": "logo-resolve",
+      "title": "Assinatura final CLIMAX",
+      "scene": "outro",
+      "filename": "logo-resolve.mp3",
+      "durationSeconds": 2.8,
+      "volume": 0.18,
+      "prompt": "Distinctive premium HVAC brand sonic signature: gentle refined ascending airy sweep ending in a warm clean major harmonic resolution, restrained, reassuring, polished minimalist commercial identity, very soft tail, no voice, no jingles, no music track."
+    }
+  ],
+  "cues": [
+    {
+      "id": "cue-01",
+      "assetId": "brand-rise",
+      "scene": "signature",
+      "offsetFrames": 12
+    },
+    {
+      "id": "cue-02",
+      "assetId": "ambient-pressure",
+      "scene": "problem",
+      "offsetFrames": 15
+    },
+    {
+      "id": "cue-03",
+      "assetId": "precision-click",
+      "scene": "diagnosis",
+      "offsetFrames": 70
+    },
+    {
+      "id": "cue-04",
+      "assetId": "scanner-sweep",
+      "scene": "diagnosis",
+      "offsetFrames": 126
+    },
+    {
+      "id": "cue-05",
+      "assetId": "service-mechanics",
+      "scene": "care",
+      "offsetFrames": 95
+    },
+    {
+      "id": "cue-06",
+      "assetId": "cool-airflow",
+      "scene": "flow",
+      "offsetFrames": 20
+    },
+    {
+      "id": "cue-07",
+      "assetId": "card-swish",
+      "scene": "solutions",
+      "offsetFrames": 85
+    },
+    {
+      "id": "cue-08",
+      "assetId": "card-swish",
+      "scene": "solutions",
+      "offsetFrames": 120
+    },
+    {
+      "id": "cue-09",
+      "assetId": "card-swish",
+      "scene": "solutions",
+      "offsetFrames": 155
+    },
+    {
+      "id": "cue-10",
+      "assetId": "reassurance",
+      "scene": "proof",
+      "offsetFrames": 68
+    },
+    {
+      "id": "cue-11",
+      "assetId": "logo-resolve",
+      "scene": "outro",
+      "offsetFrames": 44
+    }
+  ]
+}

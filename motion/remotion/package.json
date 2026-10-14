@@ -24,7 +24,10 @@
     "render:audio:square": "node scripts/render-audio.mjs --format=square",
     "music:generate": "node scripts/generate-ambient.mjs",
     "final:render": "node scripts/render-final.mjs",
-    "final:publish": "node scripts/publish-final.mjs"
+    "final:publish": "node scripts/publish-final.mjs",
+    "sfx:plan": "node scripts/sfx-cli.mjs plan",
+    "sfx:generate": "node scripts/sfx-cli.mjs generate",
+    "sfx:check": "node scripts/check-sfx.mjs"
   },
   "dependencies": {
     "@remotion/transitions": "4.0.534",
