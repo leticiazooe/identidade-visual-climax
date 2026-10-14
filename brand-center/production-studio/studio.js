@@ -36,7 +36,7 @@ function filenameDownload(name,data,mime="application/json"){
  setTimeout(()=>URL.revokeObjectURL(url),5000);
 }
 function formatToPreview(format){
- return "../motion-production/source/motion-source.html?clip=intro&format="+formats[format].ratio;
+ return "../motion-production/source/motion-source.html?clip=intro&loop=1&format="+formats[format].ratio;
 }
 function syncSummary(){
  $("summaryFormat").textContent=formats[state.format].label;
